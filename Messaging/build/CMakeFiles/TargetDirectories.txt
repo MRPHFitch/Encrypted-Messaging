@@ -1,0 +1,3 @@
+/Users/Phoo/Classes/build/CMakeFiles/main.dir
+/Users/Phoo/Classes/build/CMakeFiles/edit_cache.dir
+/Users/Phoo/Classes/build/CMakeFiles/rebuild_cache.dir
