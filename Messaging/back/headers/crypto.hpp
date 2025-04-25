@@ -6,3 +6,6 @@
  * Description: Function Declarations, including necessary cryptographic functions
  * 
 */
+
+//Don't have to use this name, just let Matthew F. know what you do use.
+namespace cryptography{}
