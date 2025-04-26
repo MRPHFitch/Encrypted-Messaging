@@ -39,7 +39,7 @@ void cleanupOpenssl(){
 SSL_CTX* createContext(bool isServer){
     const SSL_METHOD* method;
     SSL_CTX* ctx;
-
+    //Establish context for either server or client
     if(isServer){
         method=SSLv23_server_method();
     }
@@ -57,6 +57,7 @@ SSL_CTX* createContext(bool isServer){
 
 void configureContext(SSL_CTX* ctx, bool isServer){
     if(isServer){
+        //Set cert and private key for the server
         if(SSL_CTX_use_certificate_file(ctx, "server.crt", SSL_FILETYPE_PEM) <=0){
             ERR_print_errors_fp(stderr);
             exit(EXIT_FAILURE);
@@ -68,12 +69,14 @@ void configureContext(SSL_CTX* ctx, bool isServer){
     }
 }
 int main() {
-    // Initialize OpenSSL (for SSL/TLS, but also used by DH, AES, etc.)
+    // Initialize OpenSSL
     initializeOpenssl();
 
+    //Create SSL context for the server
     SSL_CTX* ctx=createContext(true);
     configureContext(ctx, true);
 
+    //Create the socket
     int serveSock=socket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in addr;
     addr.sin_family=AF_INET;
@@ -86,6 +89,7 @@ int main() {
     cout<<"Listening on port 49250..."<<endl;
 
     while(1){
+        //wrap socket in encryption
         struct sockaddr_in addr;
         uint len=sizeof(addr);
         SSL* ssl;
