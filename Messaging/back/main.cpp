@@ -20,7 +20,7 @@
 
 using namespace std;
 
-void print_hex(const vector<unsigned char>& data) {
+void printHex(const vector<unsigned char>& data) {
     for (unsigned char byte : data) {
         printf("%02x", byte);
     }
@@ -112,7 +112,7 @@ int main() {
 
             //Print for debug
             cout << "My public key (hex): ";
-            print_hex(pubKeyBytes);
+            printHex(pubKeyBytes);
 
             // Step 4: Send public key to peer (simulated in this example)
             SSL_write(ssl, pubKeyBytes.data(), pubKeyBytes.size());
@@ -129,14 +129,14 @@ int main() {
 
             //Print for debug
             cout << "Shared secret (hex): ";
-            print_hex(sharedKey);
+            printHex(sharedKey);
 
             // Step 7: Generate AES key from the shared secret
             vector<unsigned char> sessionKey(sharedKey.begin(), sharedKey.begin() + 32); // AES-256 requires 32 bytes
 
             //Print for debug
             cout << "AES key (hex): ";
-            print_hex(sessionKey);
+            printHex(sessionKey);
 
             // Step 8: Encrypt a message
             string message = "Hello, Peer! This is a secret message.";
@@ -145,7 +145,7 @@ int main() {
 
             //Print for debug
             cout << "Encrypted message (hex): ";
-            print_hex(encMessage);
+            printHex(encMessage);
 
             // Step 9: Send Message
             SSL_write(ssl, encMessage.data(), encMessage.size());
