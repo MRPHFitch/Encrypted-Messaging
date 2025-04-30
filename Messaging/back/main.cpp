@@ -16,10 +16,44 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <unordered_map>
+#include <mutex>
 #include "crypto.hpp"
 
 using namespace std;
 
+struct KeyInfo{
+    string name;
+    string id;
+    vector<unsigned char>idKey;
+    vector<unsigned char>signedKey;
+    vector<unsigned char>signedPreSig;
+    vector<vector<unsigned char>>oneTimeKeys;
+};
+
+class KDC{
+    private:
+        unordered_map<string, KeyInfo>keyMap;
+        mutex mapMutex;
+    public:
+        void addKey(const KeyInfo& info){
+            lock_guard<mutex> lock(mapMutex);
+            keyMap[info.id]=info;
+        }
+        KeyInfo getKey(const string& ID){
+            lock_guard<mutex> lock(mapMutex);
+            if(keyMap.find(ID) != keyMap.end()){
+                return keyMap[ID];
+            }
+            else{
+                throw runtime_error("Key not found.");
+            }
+        }
+        void removeKey(const string& ID){
+            lock_guard<mutex> lock(mapMutex);
+            keyMap.erase(ID);
+        }
+};
 void printHex(const vector<unsigned char>& data) {
     for (unsigned char byte : data) {
         printf("%02x", byte);
@@ -69,8 +103,12 @@ void configureContext(SSL_CTX* ctx, bool isServer){
     }
 }
 int main() {
+    //Initialize KDC
+    KDC control;
+
     // Initialize OpenSSL
     initializeOpenssl();
+    cryptography::initialize();
 
     //Create SSL context for the server
     SSL_CTX* ctx=createContext(true);
@@ -83,15 +121,21 @@ int main() {
     addr.sin_port=htons(49250);
     addr.sin_addr.s_addr=htonl(INADDR_ANY);
 
-    bind(serveSock, (struct sockaddr*)&addr, sizeof(addr));
-    listen(serveSock, 1);
+    if(bind(serveSock, (struct sockaddr*)&addr, sizeof(addr))<0){
+        perror("Unable to bind.");
+        exit(EXIT_FAILURE);
+    }
+    if(listen(serveSock, 1)<0){
+        perror("Unable to listen.");
+        exit(EXIT_FAILURE);
+    }
 
     cout<<"Listening on port 49250..."<<endl;
 
     while(1){
         //wrap socket in encryption
-        struct sockaddr_in addr;
-        uint len=sizeof(addr);
+        struct sockaddr_in clientAddr;
+        socklen_t len=sizeof(clientAddr);
         SSL* ssl;
         int cSock=accept(serveSock, (struct sockaddr*)&addr, &len);
         ssl=SSL_new(ctx);
@@ -101,76 +145,69 @@ int main() {
             ERR_print_errors_fp(stderr);
         }
         else{
-            // Step 1: Generate Diffie-Hellman parameters (shared settings)
-            cout << "Generating Diffie-Hellman parameters...\n";
-            DH *dh = cryptography::generate_dh_params();
+            //Retrieve Client's info
+            string peerAddress=inet_ntoa(clientAddr.sin_addr);
 
-            // Step 2: Generate DH public key
-            BIGNUM *pubKeyBn = BN_new();
-            DH_get0_key(dh, &pubKeyBn, nullptr);
+            //Placeholder data until we can retrieve user data from front end
+            KeyInfo info;
+            info.name="Alice";
+            info.id="123456789";
 
-            // Step 3: Convert public key to bytes
-            vector<unsigned char> pubKeyBytes(DH_size(dh));
-            int len = BN_bn2bin(pubKeyBn, pubKeyBytes.data());
-            pubKeyBytes.resize(len);
+            //Step 1: Generate keys
+            cout << "Generating keys...\n";
+            info.idKey=cryptography::generateKeyPair();
+            info.signedKey=cryptography::genSignedPreKey(info.idKey);
+            info.signedPreSig=cryptography::signPreKey(info.idKey, info.signedKey);
+            info.oneTimeKeys=cryptography::genOneTimeKeys(10);
+            
+            //Store the keys
+            control.addKey(info);
 
-            //Print for debug
-            cout << "My public key (hex): ";
-            printHex(pubKeyBytes);
+            //Get peer info to set up the session
+            KeyInfo retrieve;
+            vector<unsigned char> peerKeyBundle;
+            try{
+                KeyInfo retrieve = control.getKey("2345678901");
 
-            // Step 4: Send public key to peer (simulated in this example)
-            SSL_write(ssl, pubKeyBytes.data(), pubKeyBytes.size());
+                // Concatenate the keys into a single vector
+                peerKeyBundle.insert(peerKeyBundle.end(), retrieve.idKey.begin(), retrieve.idKey.end());
+                peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedKey.begin(), retrieve.signedKey.end());
+                peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedPreSig.begin(), retrieve.signedPreSig.end());
 
-            // Step 5: Assume we receive the peer's public key (simulated here)
-            unsigned char peerKeyBytes[256];
-            int peerKeyLen=SSL_read(ssl, peerKeyBytes, sizeof(peerKeyBytes));
+                // Add all the one time keys that were created
+                for (const auto &oneTimeKey : retrieve.oneTimeKeys){
+                    peerKeyBundle.insert(peerKeyBundle.end(), oneTimeKey.begin(), oneTimeKey.end());
+                }
+            }
+            catch (const runtime_error &e){
+                cout << e.what() << endl;
+            }
 
-            vector<unsigned char> peerKey(peerKeyBytes, peerKeyBytes+peerKeyLen);
+            //Establish the session
+            auto session=cryptography::createSession(peerAddress, peerKeyBundle);
 
-            // Step 6: Generate shared secret using peer's public key
-            cout << "Generating shared secret...\n";
-            vector<unsigned char> sharedKey = cryptography::generate_shared_secret(dh, peerKey);
+            //Encrypt the Message
+            //receive message from front end
+            string message;
+            auto cipher=cryptography::encryptMessage(session, message);
 
-            //Print for debug
-            cout << "Shared secret (hex): ";
-            printHex(sharedKey);
 
-            // Step 7: Generate AES key from the shared secret
-            vector<unsigned char> sessionKey(sharedKey.begin(), sharedKey.begin() + 32); // AES-256 requires 32 bytes
+            //Send Message
+            SSL_write(ssl, message.data(), message.size());
 
-            //Print for debug
-            cout << "AES key (hex): ";
-            printHex(sessionKey);
+            //Decrypt Message
+            auto recCipher=cipher;
+            auto decMessage=cryptography::decryptMessage(session, recCipher);
 
-            // Step 8: Encrypt a message
-            string message = "Hello, Peer! This is a secret message.";
-            vector<unsigned char> encMessage = cryptography::aes_encrypt(
-                vector<unsigned char>(message.begin(), message.end()), sessionKey);
-
-            //Print for debug
-            cout << "Encrypted message (hex): ";
-            printHex(encMessage);
-
-            // Step 9: Send Message
-            SSL_write(ssl, encMessage.data(), encMessage.size());
-
-            // Step 10: Decrypt the message on the receiving side (same peer)
-            vector<unsigned char> decMessage = cryptography::aes_decrypt(encMessage, sessionKey);
-
-            cout << "Decrypted message: ";
-            string decrypted_str(decMessage.begin(), decMessage.end());
-            cout << decrypted_str << endl;
-
-            // Clean up OpenSSL
-            DH_free(dh);
+            SSL_shutdown(ssl);
+            SSL_free(ssl);
+            close(cSock);
         }
-        SSL_shutdown(ssl);
-        SSL_free(ssl);
-        close(cSock);
     }
     close(serveSock);
     SSL_CTX_free(ctx);
     cleanupOpenssl();
+    cryptography::cleanup();
 
     return 0;
 }

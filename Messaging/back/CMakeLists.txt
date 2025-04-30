@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 project(p2p_encrypted_chat)
 
+if(POLICY CMP0042)
+    cmake_policy(SET CMP0042 NEW)
+endif()
+
 # Use C++20
 set(CMAKE_CXX_STANDARD 20)
 
