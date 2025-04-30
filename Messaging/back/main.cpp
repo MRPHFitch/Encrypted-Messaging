@@ -1,10 +1,11 @@
 /**
  * @file Messaging
  * @author Matthew Fitch
- * @version 1.0
+ * @version 2.0
  * @date 2025-04-16
- * Description: Functions for both Client and Server side of things. Initializes communication, uses crypto.cpp
- * to actually negotiate key, encrypt then send message, and decrypt then display message.
+ * @details: Functions for both Client and Server side of things. Sets up a KDC, sockets, and TLS. Wraps the sockets in TLS for secure communication,
+ * encrypts necessary keys before placing into KDC, and retrieves all information of users involved and establishes a chat. Once session established, 
+ * retrieves message from front end, encrypts the message, and sends it to the peer. Peer then decrypts message, and has it sent to front end to display. 
  * 
 */
 #include <iostream>
