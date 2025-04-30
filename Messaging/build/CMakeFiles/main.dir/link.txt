@@ -1,1 +1,1 @@
-/usr/bin/clang++ -g -arch x86_64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/crypto.cpp.o -o main  /usr/local/opt/openssl@3/lib/libssl.dylib /usr/local/opt/openssl@3/lib/libcrypto.dylib
+/usr/bin/c++  -arch x86_64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/main.dir/back/main.cpp.o CMakeFiles/main.dir/back/crypto.cpp.o -o main  /usr/local/opt/openssl@3/lib/libssl.dylib /usr/local/opt/openssl@3/lib/libcrypto.dylib

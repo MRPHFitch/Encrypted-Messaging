@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Phoo/Classes/CS5173/Messaging/back
+CMAKE_SOURCE_DIR = /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Phoo/Classes/build
+CMAKE_BINARY_DIR = /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -72,49 +72,49 @@ include CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/codegen:
 .PHONY : CMakeFiles/main.dir/codegen
 
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main.cpp.o: /Users/Phoo/Classes/CS5173/Messaging/back/main.cpp
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/Phoo/Classes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.o -MF CMakeFiles/main.dir/main.cpp.o.d -o CMakeFiles/main.dir/main.cpp.o -c /Users/Phoo/Classes/CS5173/Messaging/back/main.cpp
+CMakeFiles/main.dir/back/main.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/back/main.cpp.o: /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp
+CMakeFiles/main.dir/back/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/back/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/back/main.cpp.o -MF CMakeFiles/main.dir/back/main.cpp.o.d -o CMakeFiles/main.dir/back/main.cpp.o -c /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp
 
-CMakeFiles/main.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Phoo/Classes/CS5173/Messaging/back/main.cpp > CMakeFiles/main.dir/main.cpp.i
+CMakeFiles/main.dir/back/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/back/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp > CMakeFiles/main.dir/back/main.cpp.i
 
-CMakeFiles/main.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Phoo/Classes/CS5173/Messaging/back/main.cpp -o CMakeFiles/main.dir/main.cpp.s
+CMakeFiles/main.dir/back/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/back/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp -o CMakeFiles/main.dir/back/main.cpp.s
 
-CMakeFiles/main.dir/crypto.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/crypto.cpp.o: /Users/Phoo/Classes/CS5173/Messaging/back/crypto.cpp
-CMakeFiles/main.dir/crypto.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/Phoo/Classes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/crypto.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/crypto.cpp.o -MF CMakeFiles/main.dir/crypto.cpp.o.d -o CMakeFiles/main.dir/crypto.cpp.o -c /Users/Phoo/Classes/CS5173/Messaging/back/crypto.cpp
+CMakeFiles/main.dir/back/crypto.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/back/crypto.cpp.o: /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/crypto.cpp
+CMakeFiles/main.dir/back/crypto.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/back/crypto.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/back/crypto.cpp.o -MF CMakeFiles/main.dir/back/crypto.cpp.o.d -o CMakeFiles/main.dir/back/crypto.cpp.o -c /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/crypto.cpp
 
-CMakeFiles/main.dir/crypto.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/crypto.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Phoo/Classes/CS5173/Messaging/back/crypto.cpp > CMakeFiles/main.dir/crypto.cpp.i
+CMakeFiles/main.dir/back/crypto.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/back/crypto.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/crypto.cpp > CMakeFiles/main.dir/back/crypto.cpp.i
 
-CMakeFiles/main.dir/crypto.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/crypto.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Phoo/Classes/CS5173/Messaging/back/crypto.cpp -o CMakeFiles/main.dir/crypto.cpp.s
+CMakeFiles/main.dir/back/crypto.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/back/crypto.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/crypto.cpp -o CMakeFiles/main.dir/back/crypto.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/main.cpp.o" \
-"CMakeFiles/main.dir/crypto.cpp.o"
+"CMakeFiles/main.dir/back/main.cpp.o" \
+"CMakeFiles/main.dir/back/crypto.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
-main: CMakeFiles/main.dir/main.cpp.o
-main: CMakeFiles/main.dir/crypto.cpp.o
+main: CMakeFiles/main.dir/back/main.cpp.o
+main: CMakeFiles/main.dir/back/crypto.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: /usr/local/opt/openssl@3/lib/libssl.dylib
 main: /usr/local/opt/openssl@3/lib/libcrypto.dylib
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/Phoo/Classes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -126,6 +126,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	cd /Users/Phoo/Classes/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Phoo/Classes/CS5173/Messaging/back /Users/Phoo/Classes/CS5173/Messaging/back /Users/Phoo/Classes/build /Users/Phoo/Classes/build /Users/Phoo/Classes/build/CMakeFiles/main.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/CMakeFiles/main.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/main.dir/depend
 

@@ -57,10 +57,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/Phoo/Classes/CS5173/Messaging/back
+CMAKE_SOURCE_DIR = /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/Phoo/Classes/build
+CMAKE_BINARY_DIR = /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Phoo/Classes/build/CMakeFiles /Users/Phoo/Classes/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/CMakeFiles /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Phoo/Classes/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,53 +129,53 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-crypto.o: crypto.cpp.o
-.PHONY : crypto.o
+back/crypto.o: back/crypto.cpp.o
+.PHONY : back/crypto.o
 
 # target to build an object file
-crypto.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/crypto.cpp.o
-.PHONY : crypto.cpp.o
+back/crypto.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/crypto.cpp.o
+.PHONY : back/crypto.cpp.o
 
-crypto.i: crypto.cpp.i
-.PHONY : crypto.i
+back/crypto.i: back/crypto.cpp.i
+.PHONY : back/crypto.i
 
 # target to preprocess a source file
-crypto.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/crypto.cpp.i
-.PHONY : crypto.cpp.i
+back/crypto.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/crypto.cpp.i
+.PHONY : back/crypto.cpp.i
 
-crypto.s: crypto.cpp.s
-.PHONY : crypto.s
+back/crypto.s: back/crypto.cpp.s
+.PHONY : back/crypto.s
 
 # target to generate assembly for a file
-crypto.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/crypto.cpp.s
-.PHONY : crypto.cpp.s
+back/crypto.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/crypto.cpp.s
+.PHONY : back/crypto.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+back/main.o: back/main.cpp.o
+.PHONY : back/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
+back/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/main.cpp.o
+.PHONY : back/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+back/main.i: back/main.cpp.i
+.PHONY : back/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
+back/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/main.cpp.i
+.PHONY : back/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+back/main.s: back/main.cpp.s
+.PHONY : back/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
+back/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/main.cpp.s
+.PHONY : back/main.cpp.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
-	@echo "... crypto.o"
-	@echo "... crypto.i"
-	@echo "... crypto.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... back/crypto.o"
+	@echo "... back/crypto.i"
+	@echo "... back/crypto.s"
+	@echo "... back/main.o"
+	@echo "... back/main.i"
+	@echo "... back/main.s"
 .PHONY : help
 
 

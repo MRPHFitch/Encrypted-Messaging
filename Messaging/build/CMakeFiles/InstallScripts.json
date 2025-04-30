@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/Users/Phoo/Classes/build/cmake_install.cmake"
+		"/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

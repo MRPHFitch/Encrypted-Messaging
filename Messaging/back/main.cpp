@@ -23,10 +23,10 @@
 
 using namespace std;
 
-struct KeyPair{
-    vector<unsigned char>pubKey;
-    vector<unsigned char>priKey;
-};
+// struct KeyPair{
+//     vector<unsigned char>pubKey;
+//     vector<unsigned char>priKey;
+// };
 
 struct KeyInfo{
     string name;
@@ -127,7 +127,7 @@ int main() {
     addr.sin_port=htons(49250);
     addr.sin_addr.s_addr=htonl(INADDR_ANY);
 
-    if(bind(serveSock, (struct sockaddr*)&addr, sizeof(addr))<0){
+    if(::bind(serveSock, (struct sockaddr*)&addr, sizeof(addr))<0){
         perror("Unable to bind.");
         exit(EXIT_FAILURE);
     }
@@ -163,10 +163,10 @@ int main() {
             info.name="Alice";
             info.id="123456789";
 
-            //Step 1: Generate keys
+            //Step 1: Generate keys 
             cout << "Generating keys...\n";
-            info.idKey=cryptography::generateKeyPair();
-            info.signedKey=cryptography::genSignedPreKey(info.idKey);
+            info.idKey=cryptography::genIDKeyPair();
+            info.signedKey=cryptography::generateSignedPreKey(info.idKey);
             info.signedPreSig=cryptography::signPreKey(info.idKey, info.signedKey);
             info.oneTimeKeys=cryptography::genOneTimeKeys(10);
 
@@ -186,13 +186,13 @@ int main() {
                 KeyInfo retrieve = control.getKey("2345678901");
 
                 // Concatenate the keys into a single vector
-                peerKeyBundle.insert(peerKeyBundle.end(), retrieve.idKey.begin(), retrieve.idKey.end());
-                peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedKey.begin(), retrieve.signedKey.end());
+                peerKeyBundle.insert(peerKeyBundle.end(), retrieve.idKey.pubKey.begin(), retrieve.idKey.pubKey.end());
+                peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedKey.pubKey.begin(), retrieve.signedKey.pubKey.end());
                 peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedPreSig.begin(), retrieve.signedPreSig.end());
 
                 // Add all the one time keys that were created
                 for (const auto &oneTimeKey : retrieve.oneTimeKeys){
-                    peerKeyBundle.insert(peerKeyBundle.end(), oneTimeKey.begin(), oneTimeKey.end());
+                    peerKeyBundle.insert(peerKeyBundle.end(), oneTimeKey.pubKey.begin(), oneTimeKey.pubKey.end());
                 }
             }
             catch (const runtime_error &e){
