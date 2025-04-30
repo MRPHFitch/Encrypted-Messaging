@@ -22,13 +22,18 @@
 
 using namespace std;
 
+struct KeyPair{
+    vector<unsigned char>pubKey;
+    vector<unsigned char>priKey;
+};
+
 struct KeyInfo{
     string name;
     string id;
-    vector<unsigned char>idKey;
-    vector<unsigned char>signedKey;
+    KeyPair idKey;
+    KeyPair signedKey;
     vector<unsigned char>signedPreSig;
-    vector<vector<unsigned char>>oneTimeKeys;
+    vector<KeyPair>oneTimeKeys;
 };
 
 class KDC{
@@ -138,6 +143,10 @@ int main() {
         socklen_t len=sizeof(clientAddr);
         SSL* ssl;
         int cSock=accept(serveSock, (struct sockaddr*)&addr, &len);
+        if(cSock<0){
+            perror("Unable to accept.");
+            continue;
+        }
         ssl=SSL_new(ctx);
         SSL_set_fd(ssl, cSock);
 
@@ -159,6 +168,12 @@ int main() {
             info.signedKey=cryptography::genSignedPreKey(info.idKey);
             info.signedPreSig=cryptography::signPreKey(info.idKey, info.signedKey);
             info.oneTimeKeys=cryptography::genOneTimeKeys(10);
+
+            info.idKey.priKey=cryptography::encryptKey(info.idKey.priKey);
+            info.signedKey.priKey=cryptography::encryptKey(info.signedKey.priKey);
+            for (auto& oneTimeKey : info.oneTimeKeys) {
+                oneTimeKey.priKey = cryptography::encryptKey(oneTimeKey.priKey);
+            }
             
             //Store the keys
             control.addKey(info);
