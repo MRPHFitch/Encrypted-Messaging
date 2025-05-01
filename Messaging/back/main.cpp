@@ -23,11 +23,6 @@
 
 using namespace std;
 
-// struct KeyPair{
-//     vector<unsigned char>pubKey;
-//     vector<unsigned char>priKey;
-// };
-
 struct KeyInfo{
     string name;
     string id;
