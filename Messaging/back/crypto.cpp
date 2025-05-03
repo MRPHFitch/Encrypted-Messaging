@@ -20,6 +20,170 @@
 
 using namespace std;
 
+// This function is not implemented for use yet, shows working RSA tools
+int generateSessionKey() {
+    // Generate RSA key pair
+    RSA* rsa = RSA_new();
+    BIGNUM* bne = BN_new();
+    BN_set_word(bne, RSA_F4);
+    RSA_generate_key_ex(rsa, 2048, bne, NULL); 
+    
+    // Random key value
+    vector<unsigned char> r1;
+    r1.resize(32);
+    unsigned char* signR;
+    RAND_bytes(r1.data(), r1.size());
+
+    vector<unsigned char> recovered;
+    recovered.resize(32);
+
+    std::cout << "R1 (hex): ";
+    for (size_t i = 0; i < r1.size(); i++) {
+        printf("%02x", r1.at(i));
+    }
+    std::cout << std::endl;
+    
+    signR = (unsigned char*)malloc(RSA_size(rsa));
+
+    // Sign
+    int size = RSA_private_encrypt(r1.size(), r1.data(), signR, rsa, RSA_PKCS1_PADDING);
+
+    // Save public key
+    X509* cert = X509_new();
+    EVP_PKEY* pkey = EVP_PKEY_new();
+    EVP_PKEY_assign_RSA(pkey, rsa);
+    X509_set_pubkey(cert, pkey);
+
+    // Extract public key
+    EVP_PKEY* pubKey = EVP_PKEY_new();
+    RSA* extracted = RSA_new();
+    pubKey = X509_get_pubkey(cert);
+    extracted = EVP_PKEY_get1_RSA(pubKey);
+
+    // Verify
+    RSA_public_decrypt(size, signR, recovered.data(), extracted, RSA_PKCS1_PADDING);
+
+    std::cout << "Recovered (hex): ";
+    for (size_t i = 0; i < recovered.size(); i++) {
+        printf("%02x", recovered.at(i));
+    }
+    std::cout << std::endl;
+    
+    // Clean Up
+    BN_free(bne);
+    RSA_free(rsa);
+    RSA_free(extracted);
+    EVP_PKEY_free(pkey);
+    EVP_PKEY_free(pubKey);
+    X509_free(cert);
+    free(signR); //heap corruption error
+
+	return 0;
+}
+
+// This function will take a the HMAC from the root key and derive a message key using HKDF.
+vector <unsigned char> HKDF(vector<unsigned char> MAC) {
+//int main() {
+    /*vector<unsigned char> key;
+    key.resize(32);
+    RAND_bytes(key.data(), key.size());*/
+
+    EVP_KDF* kdf = NULL;
+    EVP_KDF_CTX* kdfCtx = NULL;
+    vector<unsigned char> messageKey;
+	messageKey.resize(32);
+    OSSL_PARAM params[5], * p = params;
+    OSSL_LIB_CTX* libraryCtx = NULL;
+
+	// Initialize OpenSSL library context
+    libraryCtx = OSSL_LIB_CTX_new();
+
+    kdf = EVP_KDF_fetch(libraryCtx, "HKDF", NULL);
+    kdfCtx = EVP_KDF_CTX_new(kdf);
+    EVP_KDF_free(kdf);
+
+    *p++ = OSSL_PARAM_construct_utf8_string(OSSL_KDF_PARAM_DIGEST, const_cast<char*>("SHA256"), 0);
+    *p++ = OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_KEY, MAC.data(), MAC.size());
+    *p = OSSL_PARAM_construct_end();
+
+    EVP_KDF_CTX_set_params(kdfCtx, params);
+
+    EVP_KDF_derive(kdfCtx, messageKey.data(), messageKey.size(), NULL);
+
+	// Clean up
+	EVP_KDF_CTX_free(kdfCtx);
+	OSSL_LIB_CTX_free(libraryCtx);
+    //free(p);
+
+    return messageKey;
+}
+
+// This function will take a root key and generate an HMAC using SHA-256.
+vector<unsigned char> HMAC(vector<unsigned char> rootKey, int data) {
+    // Make rootKey into EVP_PKEY
+    EVP_PKEY* key = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL, rootKey.data(), rootKey.size());
+    
+    // Initialize HMAC
+    EVP_MD_CTX* mdctx = EVP_MD_CTX_new();
+    size_t hmacLen = 32;
+    vector <unsigned char> hmacOut;
+	hmacOut.resize(hmacLen);
+
+    // Generate HMAC
+    EVP_DigestSignInit(mdctx, NULL, EVP_sha256(), NULL, key);
+    EVP_DigestSignUpdate(mdctx, &data, sizeof(data));
+    EVP_DigestSignFinal(mdctx, hmacOut.data(), &hmacLen);
+
+	// Clean up
+	EVP_MD_CTX_free(mdctx);
+	EVP_PKEY_free(key);
+
+	return hmacOut;
+}
+
+vector<vector<unsigned char>> generateChainKeyPair(vector<unsigned char> rootKey) {
+	// Generate message key with HMAC followed by HKDF
+	vector<unsigned char> messageKey = HMAC(rootKey, 0);
+
+    // Generate next root key with HMAC and HKDF
+	vector<unsigned char> x = HMAC(rootKey, 1);
+	vector<unsigned char> nextRootKey = HKDF(x);
+
+	vector<vector<unsigned char>> keyPair;
+	keyPair.push_back(nextRootKey); //first element is the next root key
+	keyPair.push_back(messageKey); //second element is new message key
+
+	return keyPair;
+}
+
+//This was just to test chain was working correctly
+/*int chainTest() {
+    vector<unsigned char> key;
+    key.resize(32);
+    RAND_bytes(key.data(), key.size());
+
+	std::cout << "Key (hex): ";
+	for (size_t i = 0; i < key.size(); i++) {
+		printf("%02x", key.at(i));
+	}
+	std::cout << std::endl;
+
+	vector<vector<unsigned char>> keyPair = generateChainKeyPair(key);
+	std::cout << "Next Root Key (hex): ";
+	for (size_t i = 0; i < keyPair[0].size(); i++) {
+		printf("%02x", keyPair[0].at(i));
+	}
+	std::cout << std::endl;
+
+	std::cout << "Message Key (hex): ";
+	for (size_t i = 0; i < keyPair[1].size(); i++) {
+		printf("%02x", keyPair[1].at(i));
+	}
+	std::cout << std::endl;
+
+    return 0;
+}*/
+
 EncryptedData encryptMessage(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext) {
     // Initialize AES encryption
     EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
