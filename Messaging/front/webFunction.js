@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clientId='uniqueClientId';
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendButton');
+    const recipientInput = document.getElementById('recipientInput');
     const messagesContainer = document.getElementById('messages');
     const sentCiphertextDisplay = document.getElementById('sentCiphertext');
     const receivedCiphertextDisplay = document.getElementById('receivedCiphertext');
@@ -10,6 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let showEncrypted = false;
     const messageHistory = [];
+    let currentRecipient = '';
+
+    // Handle recipient path
+    recipientInput.addEventListener('change', () => {
+        currentRecipient = recipientInput.value.trim();
+        if (currentRecipient) {
+            // Clear message history when changing recipients
+            messageHistory.length = 0;
+            updateChatDisplay();
+            // Notify server of recipient change
+            ws.send(JSON.stringify({
+                type: 'recipient_change',
+                recipientId: currentRecipient
+            }));
+        }
+    });
 
     // non working WebSocket connection to our backend
     const ws = new WebSocket('wss://localhost:49250');
@@ -71,11 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Send message
     sendButton.addEventListener('click', () => {
         const message = messageInput.value.trim();
-        if (message) {
+        if (message && currentRecipient) {
             // Send message to server
             ws.send(JSON.stringify({
                 type: 'message',
-                recipientId: recipientId,
+                recipientId: currentRecipient,
                 content: message
             }));
 
@@ -91,6 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Clear input
             messageInput.value = '';
+        } else if (!currentRecipient) {
+            alert('Please enter a recipient name or ID first');
         }
     });
 

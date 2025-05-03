@@ -14,6 +14,11 @@ struct KeyPair{
     vector<unsigned char>priKey;
 };
 
+struct EncryptedData {
+    vector<unsigned char> ciphertext;
+    int length;
+};
+
 struct Session{
 
 };
