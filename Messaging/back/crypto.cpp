@@ -11,6 +11,11 @@
 #include <openssl/evp.h>
 #include <openssl/hmac.h>
 #include <openssl/rand.h>
+#include <openssl/rsa.h>
+#include <openssl/pem.h>
+#include <openssl/x509.h>
+#include <openssl/kdf.h>
+#include <openssl/params.h>
 #include <openssl/core_names.h>
 #include <openssl/err.h>
 #include <vector>
