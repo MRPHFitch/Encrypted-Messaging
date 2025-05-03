@@ -3,9 +3,10 @@
  * @author Matthew Fitch
  * @version 2.0
  * @date 2025-04-16
- * @details: Functions for both Client and Server side of things. Sets up a KDC, sockets, and TLS. Wraps the sockets in TLS for secure communication,
- * encrypts necessary keys before placing into KDC, and retrieves all information of users involved and establishes a chat. Once session established, 
- * retrieves message from front end, encrypts the message, and sends it to the peer. Peer then decrypts message, and has it sent to front end to display. 
+ * @details: Functions for both Client and Server side of things. Sets up a KDC, encrypts necessary 
+ * keys before placing into KDC, and retrieves all information of users involved and establishes a chat.
+ * Once session established, retrieves message from front end, encrypts the message, and sends it to the peer.
+ * Peer then decrypts message, and has it sent to front end to display. 
  * 
 */
 #include <iostream>
@@ -29,7 +30,6 @@ using namespace std;
 namespace ssl=net::ssl;
 
 struct KeyInfo{
-    string name;
     string id;
     KeyPair idKey;
     KeyPair signedKey;
@@ -122,7 +122,6 @@ int main() {
     while(1){
         // Placeholder data until we can retrieve user data from front end
         KeyInfo info;
-        info.name = "Alice";
 
         // Step 1: Generate keys
         cout << "Generating keys...\n";
@@ -159,6 +158,10 @@ int main() {
         catch (const runtime_error &e){
             cout << e.what() << endl;
         }
+        //////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////
+        //NEED TO RETRIEVE THIS FROM FRONT END
         string recipientName;
         string peerAddress=findIp(recipientName);
 
