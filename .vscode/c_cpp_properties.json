@@ -1,11 +1,11 @@
 {
-  "configurations": [
+    "configurations": [
         {
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/local/opt/openssl@3/include",       // OpenSSL (Homebrew)
-                "/usr/local/include",                      // Also for Homebrew
+                "C:/Program Files/OpenSSL-Win64/include",
+                "/usr/local/include",
                 "${workspaceFolder}/back/headers/**"
             ],
             "defines": [],
