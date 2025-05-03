@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/back/crypto.cpp.o.d"
   "CMakeFiles/main.dir/back/main.cpp.o"
   "CMakeFiles/main.dir/back/main.cpp.o.d"
+  "CMakeFiles/main.dir/back/socketHandler.cpp.o"
+  "CMakeFiles/main.dir/back/socketHandler.cpp.o.d"
   "main"
   "main.pdb"
 )

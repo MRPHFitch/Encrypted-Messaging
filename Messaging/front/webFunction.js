@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const clientId='uniqueClientId';
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendButton');
     const messagesContainer = document.getElementById('messages');
@@ -11,10 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageHistory = [];
 
     // non working WebSocket connection to our backend
-    const ws = new WebSocket('ws://localhost:49250');
+    const ws = new WebSocket('wss://localhost:49250');
 
     ws.onopen = () => {
         console.log('Connected to server');
+        ws.send(JSON.stringify({type:'init', clientId: clientId}));
     };
 
     ws.onmessage = (event) => {
@@ -73,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Send message to server
             ws.send(JSON.stringify({
                 type: 'message',
+                recipientId: recipientId,
                 content: message
             }));
 

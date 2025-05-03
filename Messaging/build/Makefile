@@ -177,6 +177,30 @@ back/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/main.cpp.s
 .PHONY : back/main.cpp.s
 
+back/socketHandler.o: back/socketHandler.cpp.o
+.PHONY : back/socketHandler.o
+
+# target to build an object file
+back/socketHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/socketHandler.cpp.o
+.PHONY : back/socketHandler.cpp.o
+
+back/socketHandler.i: back/socketHandler.cpp.i
+.PHONY : back/socketHandler.i
+
+# target to preprocess a source file
+back/socketHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/socketHandler.cpp.i
+.PHONY : back/socketHandler.cpp.i
+
+back/socketHandler.s: back/socketHandler.cpp.s
+.PHONY : back/socketHandler.s
+
+# target to generate assembly for a file
+back/socketHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/back/socketHandler.cpp.s
+.PHONY : back/socketHandler.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +216,9 @@ help:
 	@echo "... back/main.o"
 	@echo "... back/main.i"
 	@echo "... back/main.s"
+	@echo "... back/socketHandler.o"
+	@echo "... back/socketHandler.i"
+	@echo "... back/socketHandler.s"
 .PHONY : help
 
 

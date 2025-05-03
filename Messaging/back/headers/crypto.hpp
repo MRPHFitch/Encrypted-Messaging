@@ -38,9 +38,9 @@ namespace cryptography{
 
     vector<unsigned char> encryptKey(vector<unsigned char>priKey){}
 
-    vector<unsigned char> encryptMessage(Session sesh, string message){}
+    string encryptMessage(Session sesh, string message){}
 
-    string decryptMessage(Session sesh, vector<unsigned char> message){}
+    string decryptMessage(Session sesh, string message){}
 
     void cleanup(){}
 }

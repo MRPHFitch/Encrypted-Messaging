@@ -1,14 +1,20 @@
 [
 {
   "directory": "/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build",
-  "command": "/usr/bin/c++  -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers -isystem /usr/local/opt/openssl@3/include -std=gnu++20 -arch x86_64 -o CMakeFiles/main.dir/back/main.cpp.o -c /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp",
+  "command": "/usr/bin/c++ -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR) -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR)/back -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers -isystem /usr/local/opt/openssl@3/include -std=gnu++20 -arch x86_64 -o CMakeFiles/main.dir/back/main.cpp.o -c /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp",
   "file": "/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp",
   "output": "CMakeFiles/main.dir/back/main.cpp.o"
 },
 {
   "directory": "/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build",
-  "command": "/usr/bin/c++  -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers -isystem /usr/local/opt/openssl@3/include -std=gnu++20 -arch x86_64 -o CMakeFiles/main.dir/back/crypto.cpp.o -c /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/crypto.cpp",
+  "command": "/usr/bin/c++ -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR) -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR)/back -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers -isystem /usr/local/opt/openssl@3/include -std=gnu++20 -arch x86_64 -o CMakeFiles/main.dir/back/crypto.cpp.o -c /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/crypto.cpp",
   "file": "/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/crypto.cpp",
   "output": "CMakeFiles/main.dir/back/crypto.cpp.o"
+},
+{
+  "directory": "/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build",
+  "command": "/usr/bin/c++ -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR) -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR)/back -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers -isystem /usr/local/opt/openssl@3/include -std=gnu++20 -arch x86_64 -o CMakeFiles/main.dir/back/socketHandler.cpp.o -c /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/socketHandler.cpp",
+  "file": "/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/socketHandler.cpp",
+  "output": "CMakeFiles/main.dir/back/socketHandler.cpp.o"
 }
 ]
