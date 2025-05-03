@@ -60,7 +60,7 @@ class KDC{
             keyMap.erase(ID);
         }
 };
-void printHex(const vector<unsigned char>& data) {
+void printHex(const vector<unsigned char>& data){
     for (unsigned char byte : data) {
         printf("%02x", byte);
     }
@@ -133,8 +133,7 @@ int main() {
 
         info.idKey.priKey = cryptography::encryptKey(info.idKey.priKey);
         info.signedKey.priKey = cryptography::encryptKey(info.signedKey.priKey);
-        for (auto &oneTimeKey : info.oneTimeKeys)
-        {
+        for (auto &oneTimeKey : info.oneTimeKeys){
             oneTimeKey.priKey = cryptography::encryptKey(oneTimeKey.priKey);
         }
 
@@ -144,8 +143,7 @@ int main() {
         // Get peer info to set up the session
         KeyInfo retrieve;
         vector<unsigned char> peerKeyBundle;
-        try
-        {
+        try{
             KeyInfo retrieve = control.getKey("2345678901");
 
             // Concatenate the keys into a single vector
@@ -154,13 +152,11 @@ int main() {
             peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedPreSig.begin(), retrieve.signedPreSig.end());
 
             // Add all the one time keys that were created
-            for (const auto &oneTimeKey : retrieve.oneTimeKeys)
-            {
+            for (const auto &oneTimeKey : retrieve.oneTimeKeys){
                 peerKeyBundle.insert(peerKeyBundle.end(), oneTimeKey.pubKey.begin(), oneTimeKey.pubKey.end());
             }
         }
-        catch (const runtime_error &e)
-        {
+        catch (const runtime_error &e){
             cout << e.what() << endl;
         }
         string recipientName;
