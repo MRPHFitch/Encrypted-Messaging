@@ -13,7 +13,7 @@ cmake_policy(SET CMP0109 NEW)
 # Detect the operating system
 if(APPLE)
     # macOS specific settings
-    set(OPENSSL_ROOT_DIR "/usr/local/opt/openssl") # Adjust this path as needed
+    set(OPENSSL_ROOT_DIR "/usr/local/opt/openssl@3") # Adjust this path as needed
 else()
     # Windows specific settings
     set(OPENSSL_ROOT_DIR "C:/Program Files/OpenSSL-Win64")
