@@ -14,7 +14,7 @@ struct RSAKeyPair{
     RSA* priKey;
 };
 
-struct initationInfo {
+struct initiationInfo {
 	vector<unsigned char> r1;
 	vector<unsigned char> signR1; 
 };
@@ -48,7 +48,7 @@ namespace cryptography{
 
     //This function initiates a session by generating a random key (R1) and signing it with the private RSA key.
     //Returns the signed key and plain random key
-    initationInfo initiateSession(RSA rsa) {}
+    initiationInfo initiateSession(RSA *rsa) {}
 
     //This function generates a session key by decrypting the signed R with the public key from the certificate,
     //and then XORing it with a new random key (R2). It also signs R2 to send back.

@@ -22,6 +22,8 @@ using json=nlohmann::json;
 
 unordered_map<string, shared_ptr<WebSocketStream>> clients;
 mutex connMutex;
+string recipientName;
+mutex recipMutex;
 
 
 void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<void(const string&)> messageReceived){
@@ -33,7 +35,6 @@ void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<
         auto initJson=json::parse(initMessage);
         string clientId=initJson["clientId"];
 
-
         {
             lock_guard<mutex> lock(connMutex);
             clients[clientId]=ws;
@@ -43,16 +44,27 @@ void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<
             buffer.clear();
             ws->read(buffer);
             string message = beast::buffers_to_string(buffer.data());
-            cout << "Received a message from " << clientId<< endl;
-            messageReceived(message);
-            string recipientId="Other client ID";
-            {
-                lock_guard<mutex> lock(connMutex);
-                auto it=clients.find(recipientId);
-                if(it!=clients.end()){
-                    it->second->text(true);
-                    it->second->write(net::buffer(message));
+            auto messageJson=json::parse(message);
+            if(messageJson["type"]=="message"){
+                {
+                    lock_guard<mutex> lock(recipMutex);
+                    recipientName=messageJson["recipientId"];
                 }
+                
+                string content=messageJson["content"];
+                messageReceived(content);
+                cout << "Received a message from " << clientId<< endl;
+                {
+                    lock_guard<mutex> lock(connMutex);
+                    auto it = clients.find(recipientName);
+                    if (it != clients.end()){
+                        it->second->text(true);
+                        it->second->write(net::buffer(message));
+                    }
+                }
+            }
+            else{
+                cerr<<"Recipient not connected."<<endl;
             }
         }
     }
@@ -63,9 +75,14 @@ void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<
     }
 }
 
+string getRecipient(){
+    lock_guard<mutex> lock(recipMutex);
+    return recipientName;
+}
+
 shared_ptr<WebSocketStream> getClientConnection(const string& name){
     lock_guard<mutex> lock(connMutex);
-    auto it = clients.find(name);
+    auto it = clients.find(recipientName);
     if (it != clients.end()){
         return it->second;
     }

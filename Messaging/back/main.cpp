@@ -31,10 +31,7 @@ namespace ssl=net::ssl;
 
 struct KeyInfo{
     string id;
-    KeyPair idKey;
-    KeyPair signedKey;
-    vector<unsigned char>signedPreSig;
-    vector<KeyPair>oneTimeKeys;
+    RSAKeyPair keys;
 };
 
 class KDC{
@@ -66,6 +63,39 @@ void printHex(const vector<unsigned char>& data){
     }
     printf("\n");
 }
+
+//This is needed in order to actually have a sender and reciever. Might need to be shifted into the socketHandler
+//Or stay here.
+// void sendMessage(const std::string& recipientName, const std::string& message) {
+//     // Encrypt the message
+//     auto session = cryptography::initiateSession();
+//     auto seshKey = cryptography::generateSessionKey();
+//     auto messageAndIV = cryptography::generateMessageKeyAndIV();
+//     auto cipher = cryptography::encryptMessage(seshKey, messageAndIV, message);
+
+//     // Send the encrypted message to the server
+//     ws.send(JSON.stringify({
+//         type: 'message',
+//         recipientName: recipientName,
+//         content: cipher
+//     }));
+// }
+
+//Also need this in order to have the recipient actually decrypt the message. Need y'all to figure out where these
+//two go and get them ironed out.
+// ws.onmessage = (event) => {
+//     const data = JSON.parse(event.data);
+//     if (data.type === 'message') {
+//         // Decrypt the message
+//         auto session = cryptography::initiateSession();
+//         auto decMessage = cryptography::decryptMessage(session, data.content);
+
+//         // Display the decrypted message
+//         console.log("Decrypted Message: ", decMessage);
+//     }
+// };
+
+
 
 void sendMessageFront(string& name, string& plaintext, string& ciphertext){
     lock_guard<mutex> lock(connMutex);
@@ -109,12 +139,6 @@ int main() {
     catch(exception const& e){
         cerr<<"Error: "<<e.what()<<endl;
     }
-    string recipientId="someRecipientId";
-    auto recipConnection= getClientConnection(recipientId);
-    if(recipConnection){
-        recipConnection->text(true);
-        recipConnection->write(net::buffer("Hello, recipient!"));
-    }
     //Initialize KDC and crypto file
     KDC control;
 
@@ -125,50 +149,35 @@ int main() {
 
         // Step 1: Generate keys
         cout << "Generating keys...\n";
-        info.idKey = cryptography::genIDKeyPair();
-        info.signedKey = cryptography::generateSignedPreKey(info.idKey);
-        info.signedPreSig = cryptography::signPreKey(info.idKey, info.signedKey);
-        info.oneTimeKeys = cryptography::genOneTimeKeys(10);
-
-        info.idKey.priKey = cryptography::encryptKey(info.idKey.priKey);
-        info.signedKey.priKey = cryptography::encryptKey(info.signedKey.priKey);
-        for (auto &oneTimeKey : info.oneTimeKeys){
-            oneTimeKey.priKey = cryptography::encryptKey(oneTimeKey.priKey);
-        }
+        
 
         // Store the keys
         control.addKey(info);
 
         // Get peer info to set up the session
         KeyInfo retrieve;
-        vector<unsigned char> peerKeyBundle;
+        string recipientName;
+        string peerAddress;
+
         try{
-            KeyInfo retrieve = control.getKey("2345678901");
-
-            // Concatenate the keys into a single vector
-            peerKeyBundle.insert(peerKeyBundle.end(), retrieve.idKey.pubKey.begin(), retrieve.idKey.pubKey.end());
-            peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedKey.pubKey.begin(), retrieve.signedKey.pubKey.end());
-            peerKeyBundle.insert(peerKeyBundle.end(), retrieve.signedPreSig.begin(), retrieve.signedPreSig.end());
-
-            // Add all the one time keys that were created
-            for (const auto &oneTimeKey : retrieve.oneTimeKeys){
-                peerKeyBundle.insert(peerKeyBundle.end(), oneTimeKey.pubKey.begin(), oneTimeKey.pubKey.end());
-            }
+            recipientName=getRecipient();
+            peerAddress=findIp(recipientName);
+        }
+        catch(const runtime_error &e){
+            cout<<e.what()<<endl;
+        }
+        try{
+            KeyInfo retrieve = control.getKey(recipientName);
         }
         catch (const runtime_error &e){
             cout << e.what() << endl;
         }
-        //////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////
-        //NEED TO RETRIEVE THIS FROM FRONT END
-        string recipientName;
-        string peerAddress=findIp(recipientName);
+        
+        
 
         // Get message from front end, establish a session, encrypt the message
-        auto messageReceived=[peerAddress, &peerKeyBundle, &recipientName](const string& message){
-            auto session = cryptography::createSession(peerAddress, peerKeyBundle);
-            auto cipher = cryptography::encryptMessage(session, message);
+        auto messageReceived=[peerAddress, &recipientName](const string& message){
+            sendMessage();
             auto recipConnection=getClientConnection(recipientName);
             if(recipConnection){
                 try{
@@ -182,9 +191,6 @@ int main() {
             else{
                 cerr<<"Recipient not found."<<endl;
             }
-            string recCipher = cipher;
-            auto decMessage = cryptography::decryptMessage(session, recCipher);
-            sendMessageFront(recipientName, decMessage, cipher);
         };
     }
     cryptography::cleanup();

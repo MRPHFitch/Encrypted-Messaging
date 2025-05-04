@@ -65,7 +65,7 @@ RSAKeyPair generateRSAKey() {
 
 // This function initiates a session by generating a random key (R1) and signing it with the private RSA key.
 // Returns the signed key and plain random key
-initationInfo initiateSession(RSA* rsa) {
+initiationInfo initiateSession(RSA* rsa) {
     // Random key value
     vector<unsigned char> r1 = generateRandKey();
     vector<unsigned char> signR1; //will hold signed key
@@ -76,7 +76,7 @@ initationInfo initiateSession(RSA* rsa) {
     int size = RSA_private_encrypt(r1.size(), r1.data(), signR1.data(), rsa, RSA_PKCS1_PADDING);
     signR1.resize(size);
 
-	initationInfo initInfo;
+	initiationInfo initInfo;
 	initInfo.r1 = r1;
 	initInfo.signR1 = signR1;
 
@@ -382,7 +382,7 @@ int test() {
 	Bob.theirPubKey = aliceKeyPair.pubKey;
 
 	// Alice initiates session
-	initationInfo initInfo = initiateSession(Alice.myPriKey);
+	initiationInfo initInfo = initiateSession(Alice.myPriKey);
 
 	// Bob generates session key and R2
 	SessionInfo bobSessionInfo = generateSessionKey(Bob.myPriKey, Bob.theirPubKey, initInfo.signR1);
