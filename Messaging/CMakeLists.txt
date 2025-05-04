@@ -28,12 +28,6 @@ endif()
 
 # Find packages
 find_package(OpenSSL REQUIRED)
-
-if(OpenSSL_FOUND)
-    include_directories(${OpenSSL_INCLUDE_DIR})
-    target_link_libraries(main PRIVATE OpenSSL::SSL OpenSSL::Crypto)
-endif()
-
 find_package(Boost REQUIRED COMPONENTS system)
 
 # Add your source files here
@@ -57,6 +51,11 @@ target_link_libraries(main PRIVATE
     OpenSSL::Crypto 
     Boost::system
 )
+
+if(OpenSSL_FOUND)
+    include_directories(${OpenSSL_INCLUDE_DIR})
+    target_link_libraries(main PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+endif()
 
 # macOS specific linking (if needed)
 if(APPLE)
