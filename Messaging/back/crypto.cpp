@@ -18,6 +18,7 @@
 #include <openssl/params.h>
 #include <openssl/core_names.h>
 #include <openssl/err.h>
+#include <openssl/aes.h>
 #include <vector>
 #include <string>
 #include <cstring>
