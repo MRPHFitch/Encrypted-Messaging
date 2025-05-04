@@ -43,23 +43,28 @@ namespace cryptography{
 
     void initialize(){}
 
-    //Please also ensure that for the Identity Key, Signed Pre Key, and One Time Keys keys generated, 
-    //you return a KeyPair object as shown above.
-    KeyPair genIDKeyPair(){}
+	//Generates RSA key and public key cert and returns it in a structure.
+    RSAKeyPair generateRSAKey() {}
 
-    KeyPair generateSignedPreKey(KeyPair idkey){}
+    //This function initiates a session by generating a random key (R1) and signing it with the private RSA key.
+    //Returns the signed key and plain random key
+    initationInfo initiateSession(RSA rsa) {}
 
-    vector<unsigned char> signPreKey(KeyPair idkey, KeyPair signPreKey){}
+    //This function generates a session key by decrypting the signed R with the public key from the certificate,
+    //and then XORing it with a new random key (R2). It also signs R2 to send back.
+    SessionInfo generateSessionKey(RSA* rsa, X509* cert, vector<unsigned char> signR, vector<unsigned char> r = std::vector<unsigned char>()) {}
 
-    vector<KeyPair> genOneTimeKeys(int num){}
+    //This function uses a root key to chain generate a root key (0), message key (1), and IV (2) for AES encryption.
+    vector<vector<unsigned char>> generateMessageKeyAndIV(vector<unsigned char> rootKey) {}
 
-    Session createSession(string addr, vector<unsigned char> keyBundle){}
+    //This function encrypts a message using AES-256-CBC (PKCS#5 default) and returns the ciphertext along with its length.
+    EncryptedMessageData encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, string message) {}
 
-    vector<unsigned char> encryptKey(vector<unsigned char>priKey){}
+    //This functions returns a boolean indicating whether the HMAC matches the computed HMAC for the given key and text
+    bool verifyHMAC(vector<unsigned char> key, vector<unsigned char> data, vector<unsigned char> receivedHmac) {}
 
-    string encryptMessage(Session sesh, string message){}
-
-    string decryptMessage(Session sesh, string message){}
+    //Decrypts a message using AES-256-CBC and verifies the HMAC before decryption (encrypt-then-authenticate used to make HMAC).
+    string decryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> ciphertext, vector<unsigned char> hmac) {}
 
     void cleanup(){}
 }
