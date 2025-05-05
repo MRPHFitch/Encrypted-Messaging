@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnderCoverChat - Encrypted Messaging</title>
+    <link rel="stylesheet" href="webStyles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="branding">
+                    <h1 class="app-title">UnderCoverChat</h1>
+                    <p class="app-tagline">Your messages, your privacy</p>
+                </div>
+                <button id="toggleEncryption" class="toggle-button">Show Encrypted</button>
+            </div>
+            <div class="recipient-container">
+                <input type="text" id="recipientInput" placeholder="Enter recipient name or ID...">
+            </div>
+            <div class="messages" id="messages">
+                <!-- Messages will be displayed here -->
+            </div>
+            <div class="input-container">
+                <textarea id="messageInput" placeholder="Type your message..."></textarea>
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+        <div class="crypto-info">
+            <div class="sent-ciphertext">
+                <h3>Sent Ciphertext</h3>
+                <div id="sentCiphertext" class="ciphertext-display"></div>
+            </div>
+            <div class="received-message">
+                <h3>Received Message</h3>
+                <div class="received-ciphertext">
+                    <h4>Ciphertext</h4>
+                    <div id="receivedCiphertext" class="ciphertext-display"></div>
+                </div>
+                <div class="decrypted-text">
+                    <h4>Decrypted Text</h4>
+                    <div id="decryptedText" class="plaintext-display"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="webFunction.js"></script>
+</body>
+</html> 
