@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const clientId='uniqueClientId';
+    let clientId = null;  // Will be set by server
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendButton');
     const recipientInput = document.getElementById('recipientInput');
@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const receivedCiphertextDisplay = document.getElementById('receivedCiphertext');
     const decryptedTextDisplay = document.getElementById('decryptedText');
     const toggleButton = document.getElementById('toggleEncryption');
+
+    // Create and add user ID display element
+    const userIdDisplay = document.createElement('div');
+    userIdDisplay.id = 'userIdDisplay';
+    userIdDisplay.style.cssText = 'position: fixed; top: 10px; right: 10px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; font-weight: bold;';
+    document.body.appendChild(userIdDisplay);
 
     let showEncrypted = false;
     const messageHistory = [];
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isConnected = true;
                 reconnectAttempts = 0;
                 // Send init message
-                ws.send(JSON.stringify({type:'init', clientId: clientId}));
+                ws.send(JSON.stringify({type: 'init'}));
             };
 
             ws.onmessage = (event) => {
@@ -47,9 +53,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (data.type === 'init_ack') {
                     console.log('Server acknowledged connection');
+                    clientId = data.clientId;
+                    console.log('Assigned client ID:', clientId);
                     sendButton.disabled = false;
                     messageInput.disabled = false;
                     recipientInput.disabled = false;
+                    
+                    // Update the page title to show the client ID
+                    document.title = `UnderCoverChat - ${clientId}`;
+                    
+                    // Update the user ID display
+                    userIdDisplay.textContent = `Your ID: ${clientId}`;
+                    
+                    // Show a notification to the user
+                    alert(`You have been assigned ID: ${clientId}\nPlease share this ID with others to start chatting!`);
                 }
                 else if (data.type === 'message') {
                     console.log('Received chat message:', data);
@@ -65,7 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             messageHistory.push({
                                 plaintext: data.plaintext,
                                 ciphertext: data.ciphertext,
-                                isReceived: true
+                                isReceived: true,
+                                sender: data.sender
                             });
                             receivedCiphertextDisplay.textContent = data.ciphertext;
                             decryptedTextDisplay.textContent = data.plaintext;
@@ -75,7 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         messageHistory.push({
                             plaintext: data.plaintext,
                             ciphertext: data.ciphertext,
-                            isReceived: true
+                            isReceived: true,
+                            sender: data.sender
                         });
                         receivedCiphertextDisplay.textContent = data.ciphertext;
                         decryptedTextDisplay.textContent = data.plaintext;
@@ -83,6 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Update chat display
                     updateChatDisplay();
+                }
+                else if (data.type === 'error') {
+                    console.error('Server error:', data.message);
+                    alert(data.message);
                 }
             };
 

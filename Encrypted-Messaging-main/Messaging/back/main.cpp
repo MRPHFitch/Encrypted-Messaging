@@ -30,6 +30,7 @@
 #include "headers/crypto.hpp"
 #include "headers/socketHandler.hpp"
 #include "../json.hpp"
+#include <map>
 
 using namespace std;
 using json = nlohmann::json;
@@ -67,6 +68,49 @@ class KDC{
             keyMap.erase(ID);
         }
 };
+
+class ClientManager {
+private:
+    unordered_map<string, shared_ptr<websocket::stream<tcp::socket>>> clients;
+    mutex clientsMutex;
+public:
+    void addClient(const string& id, shared_ptr<websocket::stream<tcp::socket>> ws) {
+        lock_guard<mutex> lock(clientsMutex);
+        clients[id] = ws;
+        cout << "Client " << id << " added. Total clients: " << clients.size() << endl;
+    }
+    
+    void removeClient(const string& id) {
+        lock_guard<mutex> lock(clientsMutex);
+        clients.erase(id);
+        cout << "Client " << id << " removed. Total clients: " << clients.size() << endl;
+    }
+    
+    shared_ptr<websocket::stream<tcp::socket>> getClient(const string& id) {
+        lock_guard<mutex> lock(clientsMutex);
+        auto it = clients.find(id);
+        if (it != clients.end()) {
+            return it->second;
+        }
+        return nullptr;
+    }
+};
+
+ClientManager clientManager;
+
+class IDGenerator {
+private:
+    int nextId = 1;
+    mutex idMutex;
+public:
+    string generateId() {
+        lock_guard<mutex> lock(idMutex);
+        return "user" + to_string(nextId++);
+    }
+};
+
+IDGenerator idGenerator;
+
 void printHex(const vector<unsigned char>& data){
     for (unsigned char byte : data) {
         printf("%02x", byte);
@@ -119,6 +163,7 @@ void sendMessage(const shared_ptr<websocket::stream<Stream>>& ws,
 // Template function to handle both SSL and non-SSL WebSocket sessions
 template<typename Stream>
 void doSession(shared_ptr<websocket::stream<Stream>> ws) {
+    string clientId;
     try {
         cout << "Accepting WebSocket connection..." << endl;
         ws->accept();
@@ -148,11 +193,16 @@ void doSession(shared_ptr<websocket::stream<Stream>> ws) {
                 auto data = json::parse(message);
                 
                 if(data["type"] == "init") {
-                    cout << "Received init message from client" << endl;
-                    // Send acknowledgment
+                    // Generate a unique ID for this client
+                    clientId = idGenerator.generateId();
+                    cout << "Assigned ID " << clientId << " to new client" << endl;
+                    clientManager.addClient(clientId, ws);
+                    
+                    // Send acknowledgment with the assigned ID
                     json response = {
                         {"type", "init_ack"},
-                        {"status", "connected"}
+                        {"status", "connected"},
+                        {"clientId", clientId}
                     };
                     ws->text(true);
                     ws->write(net::buffer(response.dump()), ec);
@@ -168,7 +218,7 @@ void doSession(shared_ptr<websocket::stream<Stream>> ws) {
                 else if(data["type"] == "message") {
                     string recipientId = data["recipientId"].get<string>();
                     string content = data["content"].get<string>();
-                    cout << "Message received for " << recipientId << ": " << content << endl;
+                    cout << "Message from " << clientId << " to " << recipientId << ": " << content << endl;
                     
                     // Encrypt the message
                     auto encryptedData = crypto.encryptMessage(messageAndIV[1], messageAndIV[2], content);
@@ -188,22 +238,45 @@ void doSession(shared_ptr<websocket::stream<Stream>> ws) {
                     }
                     string hmacHex = ss.str();
                     
-                    // Send encrypted message back
-                    json response = {
-                        {"type", "message"},
-                        {"plaintext", content},
-                        {"ciphertext", ciphertextHex},
-                        {"hmac", hmacHex},
-                        {"recipient", recipientId}
-                    };
-                    
-                    ws->text(true);
-                    ws->write(net::buffer(response.dump()), ec);
-                    if(ec) {
-                        cerr << "Error sending message response: " << ec.message() << endl;
-                        break;
+                    // Send encrypted message to recipient
+                    auto recipientWs = clientManager.getClient(recipientId);
+                    if (recipientWs) {
+                        json response = {
+                            {"type", "message"},
+                            {"plaintext", content},
+                            {"ciphertext", ciphertextHex},
+                            {"hmac", hmacHex},
+                            {"recipient", recipientId},
+                            {"sender", clientId}
+                        };
+                        
+                        recipientWs->text(true);
+                        recipientWs->write(net::buffer(response.dump()), ec);
+                        if(ec) {
+                            cerr << "Error sending message to recipient: " << ec.message() << endl;
+                        }
+                        
+                        // Also send confirmation to sender
+                        json senderResponse = {
+                            {"type", "message"},
+                            {"plaintext", content},
+                            {"ciphertext", ciphertextHex},
+                            {"hmac", hmacHex},
+                            {"recipient", recipientId},
+                            {"sender", clientId}
+                        };
+                        
+                        ws->text(true);
+                        ws->write(net::buffer(senderResponse.dump()), ec);
+                    } else {
+                        // Send error to sender if recipient not found
+                        json errorResponse = {
+                            {"type", "error"},
+                            {"message", "Recipient not found"}
+                        };
+                        ws->text(true);
+                        ws->write(net::buffer(errorResponse.dump()), ec);
                     }
-                    cout << "Message response sent" << endl;
                 }
             }
             catch(const std::exception& e) {
@@ -215,64 +288,21 @@ void doSession(shared_ptr<websocket::stream<Stream>> ws) {
     catch(const std::exception& e) {
         cerr << "Error in session: " << e.what() << endl;
     }
+    
+    // Clean up when session ends
+    if (!clientId.empty()) {
+        clientManager.removeClient(clientId);
+    }
     cout << "Session ended" << endl;
 }
 
 int main() {
     try {
-        cout << "Initializing OpenSSL..." << endl;
-        OpenSSL_add_all_algorithms();
-        ERR_load_crypto_strings();
-        
-        cout << "Creating SSL context..." << endl;
+        cout << "Setting up server..." << endl;
         net::io_context ioc;
-        ssl::context ctx{ssl::context::tlsv12};
-
-        // Set SSL options
-        ctx.set_options(
-            ssl::context::default_workarounds |
-            ssl::context::no_sslv2 |
-            ssl::context::no_sslv3 |
-            ssl::context::single_dh_use |
-            ssl::context::no_tlsv1 |
-            ssl::context::no_tlsv1_1
-        );
-
-        // Set verification mode to none for development
-        ctx.set_verify_mode(ssl::verify_none);
-
-        // Set certificate and private key
-        cout << "Loading certificates..." << endl;
-        try {
-            ctx.use_certificate_file("server.cert", ssl::context::pem);
-            cout << "Certificate loaded successfully" << endl;
-        } catch (const std::exception& e) {
-            cerr << "Error loading certificate: " << e.what() << endl;
-            return 1;
-        }
-
-        try {
-            ctx.use_private_key_file("server.key", ssl::context::pem);
-            cout << "Private key loaded successfully" << endl;
-        } catch (const std::exception& e) {
-            cerr << "Error loading private key: " << e.what() << endl;
-            return 1;
-        }
-
-        // Set cipher list
-        SSL_CTX_set_cipher_list(ctx.native_handle(), "HIGH:!aNULL:!MD5");
         
-        // Verify the certificate
-        if (!SSL_CTX_check_private_key(ctx.native_handle())) {
-            cerr << "Private key does not match the certificate" << endl;
-            return 1;
-        }
-        cout << "Certificate verification successful" << endl;
-
-        // Set up non-SSL acceptor only
+        // Set up non-SSL acceptor
         cout << "Setting up acceptor..." << endl;
-        
-        // Non-SSL acceptor
         tcp::acceptor ws_acceptor{ioc};
         boost::system::error_code ec;
         ws_acceptor.open(tcp::v4(), ec);

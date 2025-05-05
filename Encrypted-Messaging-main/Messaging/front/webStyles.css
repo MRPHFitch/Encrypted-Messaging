@@ -145,6 +145,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 h3, h4 {
@@ -161,6 +162,26 @@ h3, h4 {
     font-family: monospace;
     font-size: 14px;
     color: #ffffff;
+    border: 1px solid #404040;
+    margin-top: 10px;
+}
+
+#sentCiphertext, #receivedCiphertext, #decryptedText {
+    background-color: #333333;
+    color: #ffffff;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #404040;
+}
+
+.received-ciphertext, .decrypted-text {
+    margin-top: 15px;
+}
+
+.received-ciphertext h4, .decrypted-text h4 {
+    color: #ffffff;
+    margin-bottom: 5px;
 }
 
 .message {
@@ -222,15 +243,6 @@ button {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-}
-
-.ciphertext-display {
-    background-color: #f8f9fa;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px 0;
-    font-family: monospace;
-    word-wrap: break-word;
 }
 
 .recipient-container {
