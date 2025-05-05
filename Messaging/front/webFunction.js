@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // non working WebSocket connection to our backend
-    const ws = new WebSocket('wss://localhost:49250');
+    const ws = new WebSocket('wss://localhost:8000');
 
     ws.onopen = () => {
         console.log('Connected to server');

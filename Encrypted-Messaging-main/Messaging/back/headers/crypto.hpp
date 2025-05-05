@@ -22,7 +22,7 @@ struct RSAKeyPair{
     RSA* priKey;
 };
 
-struct initationInfo {
+struct initiationInfo {
 	vector<unsigned char> r1;
 	vector<unsigned char> signR1; 
 };
@@ -59,7 +59,7 @@ namespace cryptography{
     RSAKeyPair generateRSAKey();
     X509* signCert(X509* signCert, RSA* key);
     bool verifyCert(X509* cert, X509* signKey);
-    initationInfo initiateSession(X509* cert);
+    initiationInfo initiateSession(X509* cert);
     SessionInfo generateSessionKey(RSA* rsa, X509* cert, vector<unsigned char> signR, vector<unsigned char> r = std::vector<unsigned char>());
     vector<vector<unsigned char>> generateMessageKeys(vector<unsigned char> rootKey);
     EncryptedMessageData encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMAC, string message);

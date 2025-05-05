@@ -22,7 +22,7 @@ using json=nlohmann::json;
 
 unordered_map<string, shared_ptr<WebSocketStream>> clients;
 mutex connMutex;
-string recipientName;
+string recipientId;
 mutex recipMutex;
 
 
@@ -48,7 +48,7 @@ void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<
             if(messageJson["type"]=="message"){
                 {
                     lock_guard<mutex> lock(recipMutex);
-                    recipientName=messageJson["recipientId"];
+                    recipientId=messageJson["recipientId"];
                 }
                 
                 string content=messageJson["content"];
@@ -56,7 +56,7 @@ void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<
                 cout << "Received a message from " << clientId<< endl;
                 {
                     lock_guard<mutex> lock(connMutex);
-                    auto it = clients.find(recipientName);
+                    auto it = clients.find(recipientId);
                     if (it != clients.end()){
                         it->second->text(true);
                         it->second->write(net::buffer(message));
@@ -77,12 +77,12 @@ void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<
 
 string getRecipient(){
     lock_guard<mutex> lock(recipMutex);
-    return recipientName;
+    return recipientId;
 }
 
 shared_ptr<WebSocketStream> getClientConnection(const string& name){
     lock_guard<mutex> lock(connMutex);
-    auto it = clients.find(recipientName);
+    auto it = clients.find(recipientId);
     if (it != clients.end()){
         return it->second;
     }

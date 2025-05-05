@@ -1,11 +1,20 @@
+
 /**
  * @file Messaging
  * @author Nathan
  * @version 1.0
- * @date 2025-05-03
+ * @date 2025-05-04
  * Description: Function Declarations, including necessary cryptographic functions
  * 
 */
+
+#ifndef CRYPTO_HPP
+#define CRYPTO_HPP
+
+#include <vector>
+#include <string>
+#include <openssl/rsa.h>
+#include <openssl/x509.h>
 
 using namespace std;
 
@@ -34,37 +43,49 @@ struct Person {
     vector<unsigned char> rootKey;
 	vector<unsigned char> messageKey;
 	vector<unsigned char> iv;
+	vector<unsigned char> HMACKey;
 	RSA* myPriKey;
 	X509* theirPubKey;
+	X509* serverPubKey;
+};
+struct Server {
+    RSA* serverPriKey;
+    X509* serverPubKey;
+	X509* AlicePubKey;
+	X509* BobPubKey;
 };
 
-
 namespace cryptography{
-
-    void initialize(){}
-
-	//Generates RSA key and public key cert and returns it in a structure.
-    RSAKeyPair generateRSAKey() {}
-
-    //This function initiates a session by generating a random key (R1) and signing it with the private RSA key.
-    //Returns the signed key and plain random key
-    initiationInfo initiateSession(RSA *rsa) {}
-
-    //This function generates a session key by decrypting the signed R with the public key from the certificate,
-    //and then XORing it with a new random key (R2). It also signs R2 to send back.
-    SessionInfo generateSessionKey(RSA* rsa, X509* cert, vector<unsigned char> signR, vector<unsigned char> r = std::vector<unsigned char>()) {}
-
-    //This function uses a root key to chain generate a root key (0), message key (1), and IV (2) for AES encryption.
-    vector<vector<unsigned char>> generateMessageKeyAndIV(vector<unsigned char> rootKey) {}
-
-    //This function encrypts a message using AES-256-CBC (PKCS#5 default) and returns the ciphertext along with its length.
-    EncryptedMessageData encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, string message) {}
-
-    //This functions returns a boolean indicating whether the HMAC matches the computed HMAC for the given key and text
-    bool verifyHMAC(vector<unsigned char> key, vector<unsigned char> data, vector<unsigned char> receivedHmac) {}
-
-    //Decrypts a message using AES-256-CBC and verifies the HMAC before decryption (encrypt-then-authenticate used to make HMAC).
-    string decryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> ciphertext, vector<unsigned char> hmac) {}
-
-    void cleanup(){}
+    // Function declarations
+    RSAKeyPair generateRSAKey();
+    X509* signCert(X509* signCert, RSA* key);
+    bool verifyCert(X509* cert, X509* signKey);
+    initiationInfo initiateSession(X509* cert);
+    SessionInfo generateSessionKey(RSA* rsa, X509* cert, vector<unsigned char> signR, vector<unsigned char> r = std::vector<unsigned char>());
+    vector<vector<unsigned char>> generateMessageKeys(vector<unsigned char> rootKey);
+    EncryptedMessageData encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMAC, string message);
+    bool verifyHMAC(vector<unsigned char> HMACKey, vector<unsigned char> data, vector<unsigned char> receivedHmac);
+    string decryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMACKey, vector<unsigned char> ciphertext, vector<unsigned char> hmac);
+    void cleanup();
 }
+
+class Crypto {
+private:
+    vector<unsigned char> generateRandKey();
+
+public:
+    RSAKeyPair generateRSAKey();
+    X509* signCert(X509* signCert, RSA* key);
+    bool verifyCert(X509* cert, X509* signKey);
+    initiationInfo initiateSession(X509* cert);
+    SessionInfo generateSessionKey(RSA* rsa, X509* cert, vector<unsigned char> signR, vector<unsigned char> r = std::vector<unsigned char>());
+    vector<vector<unsigned char>> generateMessageKeys(vector<unsigned char> rootKey);
+    EncryptedMessageData encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMAC, string message);
+    bool verifyHMAC(vector<unsigned char> HMACKey, vector<unsigned char> data, vector<unsigned char> receivedHmac);
+    string decryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMACKey, vector<unsigned char> ciphertext, vector<unsigned char> hmac);
+    vector<unsigned char> HKDF(vector<unsigned char> MAC);
+    vector<unsigned char> chainHMAC(vector<unsigned char> rootKey, int data);
+    vector<vector<unsigned char>> generateChainKeyPair(vector<unsigned char> rootKey);
+};
+
+#endif // CRYPTO_HPP

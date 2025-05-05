@@ -124,23 +124,23 @@ void doSession(shared_ptr<websocket::stream<Stream>> ws);
 
 template<typename Stream>
 void sendMessage(const shared_ptr<websocket::stream<Stream>>& ws, 
-                const string& recipientName, 
+                const string& recipientId, 
                 const string& message);
 
 // Template function to send messages for both SSL and non-SSL connections
 template<typename Stream>
 void sendMessage(const shared_ptr<websocket::stream<Stream>>& ws, 
-                const string& recipientName, 
+                const string& recipientId, 
                 const string& message) {
     try {
-        cout << "Processing message for " << recipientName << endl;
+        cout << "Processing message for " << recipientId << endl;
         
         // For now, we'll echo back the message with some mock encryption
         json response = {
             {"type", "message"},
             {"plaintext", message},
             {"ciphertext", "encrypted:" + message},  // Mock encryption for now
-            {"recipient", recipientName}
+            {"recipient", recipientId}
         };
 
         cout << "Sending response back to client" << endl;

@@ -117,7 +117,7 @@ bool verifyCert(X509* cert, X509* signKey) {
 
 // This function initiates a session by generating a random key (R1) and signing it with the other party's public RSA key.
 // Returns the signed key and plain random key
-initationInfo initiateSession(X509* cert) {    
+initiationInfo initiateSession(X509* cert) {    
     // Extract partner's public key
     EVP_PKEY* pubKey = EVP_PKEY_new();
     RSA* rsa = RSA_new();
@@ -134,7 +134,7 @@ initationInfo initiateSession(X509* cert) {
     int size = RSA_public_encrypt(r1.size(), r1.data(), signR1.data(), rsa, RSA_PKCS1_PADDING);
     signR1.resize(size);
 
-	initationInfo initInfo;
+	initiationInfo initInfo;
 	initInfo.r1 = r1;
 	initInfo.signR1 = signR1;
 
@@ -467,7 +467,7 @@ int test() {
     Alice.theirPubKey = server.BobPubKey;
 
 	// Alice initiates session
-	initationInfo initInfo = initiateSession(Alice.theirPubKey);
+	initiationInfo initInfo = initiateSession(Alice.theirPubKey);
 
 	//Bob retrives Alice's public key from server
 	if (!verifyCert(signCert(server.AlicePubKey, server.serverPriKey), Bob.serverPubKey)) {

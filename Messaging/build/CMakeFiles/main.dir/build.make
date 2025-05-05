@@ -130,6 +130,8 @@ main: CMakeFiles/main.dir/build.make
 main: /usr/local/opt/openssl@3/lib/libssl.dylib
 main: /usr/local/opt/openssl@3/lib/libcrypto.dylib
 main: /usr/local/lib/libboost_system.dylib
+main: /usr/local/opt/openssl@3/lib/libssl.dylib
+main: /usr/local/opt/openssl@3/lib/libcrypto.dylib
 main: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)

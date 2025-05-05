@@ -7,6 +7,7 @@
 #include <memory>
 #include <boost/beast/websocket.hpp>
 #include <boost/asio/ssl.hpp>
+#include <boost/asio/ip/tcp.hpp>
 
 using namespace std;
 namespace websocket = boost::beast::websocket;
