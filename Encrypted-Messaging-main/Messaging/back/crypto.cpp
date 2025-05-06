@@ -2,7 +2,7 @@
  * @file Messaging
  * @author Nathan and Mason
  * @version 1.0
- * @date 2025-05-03
+ * @date 2025-05-04
  * Description: Implement the .hpp logic. RSA key negotiation, Key chaining, AES, etc.
  * 
 */
@@ -63,11 +63,6 @@ RSAKeyPair Crypto::generateRSAKey() {
 	return keyPair;
 }
 
-<<<<<<< Updated upstream
-// This function initiates a session by generating a random key (R1) and signing it with the private RSA key.
-// Returns the signed key and plain random key
-initiationInfo initiateSession(RSA* rsa) {
-=======
 //This function signs the cert with an RSA private key 
 X509* Crypto::signCert(X509* signCert, RSA* key) {
     //set cert information
@@ -129,7 +124,6 @@ initiationInfo Crypto::initiateSession(X509* cert) {
     pubKey = X509_get_pubkey(cert);
     rsa = EVP_PKEY_get1_RSA(pubKey);
     
->>>>>>> Stashed changes
     // Random key value
     vector<unsigned char> r1 = generateRandKey();
     vector<unsigned char> signR1; //will hold signed key
@@ -137,21 +131,25 @@ initiationInfo Crypto::initiateSession(X509* cert) {
     signR1.resize(RSA_size(rsa));
 
     // Sign key
-    int size = RSA_private_encrypt(r1.size(), r1.data(), signR1.data(), rsa, RSA_PKCS1_PADDING);
+    int size = RSA_public_encrypt(r1.size(), r1.data(), signR1.data(), rsa, RSA_PKCS1_PADDING);
     signR1.resize(size);
 
 	initiationInfo initInfo;
 	initInfo.r1 = r1;
 	initInfo.signR1 = signR1;
 
+	// Clean Up
+	RSA_free(rsa);
+	EVP_PKEY_free(pubKey);
+
     return initInfo;
 }
 
 // This function generates a session key by decrypting the signed R with the public key from the certificate,
 // and then XORing it with a new random key (R2). It also signs R2 to send back.
-SessionInfo Crypto::generateSessionKey(RSA* rsa, X509* cert, vector<unsigned char> signR, vector<unsigned char> r) {
+SessionInfo Crypto::generateSessionKey(RSA* rsa, X509* cert, vector<unsigned char> signR, vector<unsigned char> r = std::vector<unsigned char>()) {
     
-    // Extract public key
+    // Extract partner's public key
     EVP_PKEY* pubKey = EVP_PKEY_new();
     RSA* extractedPubKey = RSA_new();
     pubKey = X509_get_pubkey(cert);
@@ -160,26 +158,26 @@ SessionInfo Crypto::generateSessionKey(RSA* rsa, X509* cert, vector<unsigned cha
     // Verify
     vector<unsigned char> r1;
     r1.resize(32);
-    RSA_public_decrypt(signR.size(), signR.data(), r1.data(), extractedPubKey, RSA_PKCS1_PADDING);
+    RSA_private_decrypt(signR.size(), signR.data(), r1.data(), rsa, RSA_PKCS1_PADDING);
 
-	// Print R1 in hex format for testing
-    std::cout << "R1 (hex): ";
+    // Print R1 in hex format for testing
+    /*std::cout << "R1 (hex): ";
     for (size_t i = 0; i < r1.size(); i++) {
         printf("%02x", r1.at(i));
     }
-    std::cout << std::endl;
+    std::cout << std::endl;*/
 
     vector<unsigned char> r2;
     vector<unsigned char> signR2;
 
-	// We don;t have previous R, so we generate a new one
+	// We don't have previous R, so we generate a new one
     if (r.empty()) {
         // If R is not provided, generate a new random key to XOR
         r2 = generateRandKey();
 
         // Sign R2 to send back
         signR2.resize(RSA_size(rsa));
-        int size = RSA_private_encrypt(r2.size(), r2.data(), signR2.data(), rsa, RSA_PKCS1_PADDING);
+        int size = RSA_public_encrypt(r2.size(), r2.data(), signR2.data(), extractedPubKey, RSA_PKCS1_PADDING);
         signR2.resize(size);
     }
     else { //r is already provided
@@ -188,11 +186,11 @@ SessionInfo Crypto::generateSessionKey(RSA* rsa, X509* cert, vector<unsigned cha
     }
 
 	// Print R2 in hex format for testing
-    std::cout << "R2 (hex): ";
+    /*std::cout << "R2 (hex): ";
     for (size_t i = 0; i < r2.size(); i++) {
         printf("%02x", r2.at(i));
     }
-    std::cout << std::endl;
+    std::cout << std::endl;*/
 
 	// Generate session key from R1 XOR R2
 	vector<unsigned char> sessionKey;
@@ -286,13 +284,8 @@ vector<vector<unsigned char>> Crypto::generateChainKeyPair(vector<unsigned char>
 	return keyPair;
 }
 
-<<<<<<< Updated upstream
-// This function uses generateChainKeyPair to generate a root key (0), message key (1), and IV (2) for AES encryption.
-vector<vector<unsigned char>> generateMessageKeyAndIV(vector<unsigned char> rootKey) {
-=======
 // This function uses generateChainKeyPair to generate a root key (0), message key (1), IV (2), and HMAC Key (3) for AES encryption.
 vector<vector<unsigned char>> Crypto::generateMessageKeys(vector<unsigned char> rootKey) {
->>>>>>> Stashed changes
 	// Generate message key and next root
 	vector<vector<unsigned char>> keyPair = generateChainKeyPair(rootKey);
 	vector<unsigned char> nextRootKey = keyPair.at(0); //next root key
@@ -304,21 +297,23 @@ vector<vector<unsigned char>> Crypto::generateMessageKeys(vector<unsigned char> 
 	vector<unsigned char> iv = keyPair.at(1); //IV
 	iv.resize(AES_BLOCK_SIZE); // Ensure IV is 16 bytes
 
+	//Generate HMAC key using the next root key
+	keyPair = generateChainKeyPair(nextRootKey);
+	nextRootKey = keyPair.at(0); //next root key
+	vector<unsigned char> HMAC = keyPair.at(1); //HMAC key
+
 	//concatonate the keys into a vector of vectors
     vector<vector<unsigned char>> returnKeys;
 	returnKeys.push_back(nextRootKey); //first element is the next root key
 	returnKeys.push_back(messageKey); //second element is the message key
 	returnKeys.push_back(iv); //third element is the IV
+	returnKeys.push_back(HMAC); //fourth element is the HMAC key
 	
 	return returnKeys;
 }
 
 // This function encrypts a message using AES-256-CBC (PKCS#5 default) and returns the ciphertext along with its length.
-<<<<<<< Updated upstream
-EncryptedMessageData encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, string message) {
-=======
-EncryptedMessageData Crypto::encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMAC, string message){
->>>>>>> Stashed changes
+EncryptedMessageData Crypto::encryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMAC, string message) {
 	// Convert message to unsigned char array plaintext
 	vector<unsigned char> plaintext(message.begin(), message.end());
     
@@ -354,11 +349,11 @@ EncryptedMessageData Crypto::encryptMessage(vector<unsigned char> key, vector<un
 
     // Initialize HMAC
     EVP_MD_CTX* mdctx = EVP_MD_CTX_new();
-    size_t hmacLen;
+    size_t hmacLen = 32;
     vector<unsigned char> hmacOut(EVP_MAX_MD_SIZE);
 
 	// format key into EVP_PKEY
-    EVP_PKEY* pkey = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL, key.data(), key.size());
+    EVP_PKEY* pkey = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL, HMAC.data(), HMAC.size());
     // Generate HMAC
     if (EVP_DigestSignInit(mdctx, NULL, EVP_sha256(), NULL, pkey) != 1) {
         EVP_MD_CTX_free(mdctx);
@@ -380,18 +375,14 @@ EncryptedMessageData Crypto::encryptMessage(vector<unsigned char> key, vector<un
 }
 
 // This functions returns a boolean indicating whether the HMAC matches the computed HMAC for the given key and text
-<<<<<<< Updated upstream
-bool verifyHMAC(vector<unsigned char> key, vector<unsigned char> data, vector<unsigned char> receivedHmac) {
-=======
 bool Crypto::verifyHMAC(vector<unsigned char> HMACKey, vector<unsigned char> data, vector<unsigned char> receivedHmac) {
->>>>>>> Stashed changes
     // Initialize HMAC
     EVP_MD_CTX* mdctx = EVP_MD_CTX_new();
-    size_t hmacLen;
+    size_t hmacLen = 32;
     vector<unsigned char> hmacOut(EVP_MAX_MD_SIZE);
 
     // format key into EVP_PKEY
-    EVP_PKEY* pkey = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL, key.data(), key.size());
+    EVP_PKEY* pkey = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL, HMACKey.data(), HMACKey.size());
     // Generate HMAC
     EVP_DigestSignInit(mdctx, NULL, EVP_sha256(), NULL, pkey);
     EVP_DigestSignUpdate(mdctx, data.data(), data.size());
@@ -411,13 +402,9 @@ bool Crypto::verifyHMAC(vector<unsigned char> HMACKey, vector<unsigned char> dat
 }
 
 //Decrypts a message using AES-256-CBC and verifies the HMAC before decryption (encrypt-then-authenticate used to make HMAC).
-<<<<<<< Updated upstream
-string decryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> ciphertext, vector<unsigned char> hmac) {
-=======
 string Crypto::decryptMessage(vector<unsigned char> key, vector<unsigned char> iv, vector<unsigned char> HMACKey, vector<unsigned char> ciphertext, vector<unsigned char> hmac) {
->>>>>>> Stashed changes
 	// Verify HMAC before decryption
-    if (verifyHMAC(key, ciphertext, hmac)) {
+    if (verifyHMAC(HMACKey, ciphertext, hmac)) {
         EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
         vector<unsigned char> plaintext(ciphertext.size()); // Allocate space for plaintext
         int len;
@@ -449,27 +436,6 @@ string Crypto::decryptMessage(vector<unsigned char> key, vector<unsigned char> i
 }
 
 //I had this function named main and commented out main.cpp to test crypto process
-<<<<<<< Updated upstream
-int test() {
-    Person Alice, Bob;
-
-	// Generate RSA keys for Alice and Bob
-	RSAKeyPair aliceKeyPair = generateRSAKey();
-	RSAKeyPair bobKeyPair = generateRSAKey();
-
-    Alice.myPriKey = aliceKeyPair.priKey;
-	Alice.theirPubKey = bobKeyPair.pubKey;
-
-	Bob.myPriKey = bobKeyPair.priKey;
-	Bob.theirPubKey = aliceKeyPair.pubKey;
-
-	// Alice initiates session
-	initiationInfo initInfo = initiateSession(Alice.myPriKey);
-
-	// Bob generates session key and R2
-	SessionInfo bobSessionInfo = generateSessionKey(Bob.myPriKey, Bob.theirPubKey, initInfo.signR1);
-	Bob.rootKey = bobSessionInfo.sessionKey;
-=======
 // int test() {
 //     Person Alice, Bob;
 // 	Server server;
@@ -513,7 +479,6 @@ int test() {
 // 	// Bob generates session key and R2
 // 	SessionInfo bobSessionInfo = generateSessionKey(Bob.myPriKey, Bob.theirPubKey, initInfo.signR1); //remove printing
 // 	Bob.rootKey = bobSessionInfo.sessionKey;
->>>>>>> Stashed changes
 
 //     // Alice generates Session Key with Signed R2
 // 	SessionInfo aliceSessionInfo = generateSessionKey(Alice.myPriKey, Alice.theirPubKey, bobSessionInfo.signR, initInfo.r1);
@@ -532,16 +497,6 @@ int test() {
 // 	}
 // 	std::cout << std::endl;
 
-<<<<<<< Updated upstream
-	//Alice generates key and IV to send her encrypted message
-	vector<vector<unsigned char>> aliceKeys = generateMessageKeyAndIV(Alice.rootKey);
-	Alice.rootKey = aliceKeys.at(0);
-    Alice.messageKey = aliceKeys.at(1); //message key
-	Alice.iv = aliceKeys.at(2);
-
-	//Alice encrypts a message to Bob
-    EncryptedMessageData encrypted = encryptMessage(Alice.messageKey, Alice.iv, "Hello, Bob! This is Alice's message.");
-=======
 // 	//Alice generates key and IV to send her encrypted message
 // 	vector<vector<unsigned char>> aliceKeys = generateMessageKeys(Alice.rootKey);
 // 	Alice.rootKey = aliceKeys.at(0);
@@ -551,23 +506,9 @@ int test() {
 
 // 	//Alice encrypts a message to Bob
 //     EncryptedMessageData encrypted = encryptMessage(Alice.messageKey, Alice.iv, Alice.HMACKey, "Hello, Bob! This is Alice's message.");
->>>>>>> Stashed changes
 
 //     //Data is sent to bob
 
-<<<<<<< Updated upstream
-	//Bob receives the encrypted message and generates his own key and IV
-    vector<vector<unsigned char>> bobKeys = generateMessageKeyAndIV(Bob.rootKey);
-    Bob.rootKey = bobKeys.at(0);
-    Bob.messageKey = bobKeys.at(1); //message key
-    Bob.iv = bobKeys.at(2);
-
-	//Bob decrypts the message
-	std::cout << std::endl << decryptMessage(Bob.messageKey, Bob.iv, encrypted.ciphertext, encrypted.hmac) << std::endl;
-
-    return 0;
-}
-=======
 // 	//Bob receives the encrypted message and generates his own key and IV
 //     vector<vector<unsigned char>> bobKeys = generateMessageKeys(Bob.rootKey);
 //     Bob.rootKey = bobKeys.at(0);
@@ -580,4 +521,3 @@ int test() {
 
 //     return 0;
 // }
->>>>>>> Stashed changes

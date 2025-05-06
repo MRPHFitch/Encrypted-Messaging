@@ -1,6 +1,15 @@
-CMakeFiles/main.dir/back/main.cpp.o: \
-  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
+CMakeFiles/main.dir/back/socketHandler.cpp.o: \
+  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/socketHandler.cpp \
+  /usr/local/include/boost/beast/core.hpp \
+  /usr/local/include/boost/beast/core/detail/config.hpp \
+  /usr/local/include/boost/config.hpp \
+  /usr/local/include/boost/config/user.hpp \
+  /usr/local/include/boost/config/detail/select_compiler_config.hpp \
+  /usr/local/include/boost/config/compiler/clang.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdint.h \
+  /usr/local/include/boost/config/compiler/clang_version.hpp \
+  /usr/local/include/boost/config/detail/select_stdlib_config.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/version \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__configuration/abi.h \
@@ -8,40 +17,102 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__configuration/platform.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__configuration/availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__configuration/language.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/version \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ios \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/ios.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/memory.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/memory_resource.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ios/fpos.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/locale_base_api.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_xlocale.h \
+  /usr/local/include/boost/config/stdlib/libcpp.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/shared_mutex \
+  /usr/local/include/boost/config/detail/select_platform_config.hpp \
+  /usr/local/include/boost/config/platform/macos.hpp \
+  /usr/local/include/boost/config/detail/posix_features.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/unistd.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_bounds.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/ptrcheck.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_bounds.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/unistd.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_posix_vdisable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_seek_set.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_gid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/syslimits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_off_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_pid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_useconds_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_null.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_locale_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__xlocale.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_mb_cur_max.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/compare_three_way.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/three_way_comparable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/common_comparison_category.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/ordering.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/enable_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_same.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/integral_constant.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctermid.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/select.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/appleapiopts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_def.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_timespec.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_timeval.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_time_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_suseconds_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_sigset_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_setsize.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_set.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_clr.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_isset.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_zero.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_copy.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_select.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_dev_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_mode_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uuid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/gethostuuid.h \
+  /usr/local/include/boost/config/detail/suffix.hpp \
+  /usr/local/include/boost/config/helper_macros.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/variant \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/any \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/memory_resource \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/charconv \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/execution \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/barrier \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/format \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/source_location \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/bit \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/latch \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/span \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/compare \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/numbers \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stop_token \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/concepts \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ranges \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/syncstream \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/coroutine \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/semaphore \
+  /usr/local/include/boost/config/detail/cxx_composite.hpp \
+  /usr/local/include/boost/version.hpp \
+  /usr/local/include/boost/core/ignore_unused.hpp \
+  /usr/local/include/boost/static_assert.hpp \
+  /usr/local/include/boost/detail/workaround.hpp \
+  /usr/local/include/boost/config/workaround.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stddef.h \
@@ -57,7 +128,9 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stddef_offsetof.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__cstddef/byte.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/byte.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/enable_if.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_integral.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/integral_constant.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_cv.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_const.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_volatile.h \
@@ -65,113 +138,61 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__cstddef/nullptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__cstddef/ptrdiff_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__cstddef/size_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/common_reference_with.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/convertible_to.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_convertible.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/declval.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/same_as.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/common_reference.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/common_type.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/conditional.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/decay.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_pointer.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_referenceable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_void.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_reference.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_array.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_function.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_extent.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_cvref.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/void_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/copy_cv.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/copy_cvref.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_lvalue_reference.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_rvalue_reference.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_reference.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/equality_comparable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/boolean_testable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/forward.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_const_lvalue_ref.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/totally_ordered.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__exception/exception.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/operations.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/unary_function.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/desugars_to.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/reference_wrapper.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/synth_three_way.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/invoke.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/invoke.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_base_of.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_core_convertible.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_member_pointer.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_reference_wrapper.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/functional.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/nat.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/weak_result_type.h \
+  /usr/local/include/boost/preprocessor/cat.hpp \
+  /usr/local/include/boost/preprocessor/config/config.hpp \
+  /usr/local/include/boost/beast/core/async_base.hpp \
+  /usr/local/include/boost/beast/core/detail/allocator.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/memory \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/addressof.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_const.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/ostream.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/access.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocation_guard.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/align.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocate_at_least.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator_traits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/construct_at.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__assert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__assertion_handler \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__verbose_abort \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/access.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/voidify.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_array.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/declval.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/forward.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_reference.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_reference.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/move.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/conditional.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_constructible.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_lvalue_reference.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_referenceable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_same.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_rvalue_reference.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_nothrow_constructible.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__undef_macros \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/new \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__exception/exception.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdlib.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityVersions.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternalLegacy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/wait.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_pid_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_id_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/appleapiopts.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_mcontext.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_mcontext.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/machine/_structs.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach/i386/_structs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_sigaltstack.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ucontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_sigset_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uid_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/resource.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdint.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uint64_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_intmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_uintmax_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_timeval.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/endian.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/endian.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_endian.h \
@@ -188,33 +209,43 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_malloc_type.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/malloc/_ptrcheck.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_abort.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_dev_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_mode_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdlib \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/type_traits \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/functional.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_const.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_cv.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_pointer.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_void.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/add_volatile.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/aligned_storage.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/nat.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/type_list.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/aligned_union.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/alignment_of.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/common_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/decay.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_extent.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_cvref.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/void_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/extent.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/has_virtual_destructor.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_abstract.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_arithmetic.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_floating_point.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_assignable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_base_of.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_class.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_compound.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_fundamental.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_null_pointer.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_const.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_convertible.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_destructible.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_all_extents.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_empty.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_enum.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_literal_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_member_pointer.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_nothrow_assignable.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_nothrow_destructible.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_object.h \
@@ -234,10 +265,14 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_unsigned.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_volatile.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_signed.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/copy_cv.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_unsigned.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/rank.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/remove_pointer.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/result_of.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/invoke.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_core_convertible.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_reference_wrapper.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/underlying_type.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_final.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/conjunction.h \
@@ -246,6 +281,8 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_aggregate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_swappable.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/negation.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/common_reference.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/copy_cvref.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_bounded_array.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_constant_evaluated.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_nothrow_convertible.h \
@@ -255,10 +292,36 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/unwrap_ref.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/pointer_traits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/limits \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocate_at_least.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator_destructor.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator_arg_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/uses_allocator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/auto_ptr.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/compare_three_way.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/three_way_comparable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/common_comparison_category.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/ordering.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/common_reference_with.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/convertible_to.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/same_as.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/equality_comparable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/boolean_testable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_const_lvalue_ref.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/totally_ordered.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/operations.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/unary_function.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/desugars_to.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/reference_wrapper.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/synth_three_way.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/invoke.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/weak_result_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/ostream.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/memory.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/memory_resource.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocation_guard.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator_destructor.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/compressed_pair.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/tuple.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/tuple_indices.h \
@@ -360,19 +423,14 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_rsize_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_strings.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_string.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/typeinfo \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/memory_order.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/once_flag.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_specialization.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator_arg_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/uses_allocator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/find_index.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/ignore.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/maybe_const.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/compare \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/compare_partial_order_fallback.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/partial_order.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__compare/weak_order.h \
@@ -413,6 +471,7 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__exception/terminate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iosfwd \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/fstream.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/ios.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/istream.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/sstream.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/streambuf.h \
@@ -424,121 +483,15 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/as_const.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/in_place.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/cmp.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/no_destroy.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/private_constructor_tag.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/runetype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wint_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_ctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/clocale \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/locale.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max_element.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/remove.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_segment_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/countr.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/rotate.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/invert_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/bit_reference.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_wctrans_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/___wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_wctype_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/___wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/wchar.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/wchar.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_wchar.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_header_macro.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg___gnuc_va_list.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_va_list.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_va_arg.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg___va_copy.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_va_copy.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_printf.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_seek_set.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctermid.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_off_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/time.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_time.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_clock_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_time_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_timespec.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_time.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wchar.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/remove_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__debug_utils/sanitizers.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/enable_insertable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/bounded_iter.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/wrap_iter.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/noexcept_move_assign_container.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/swap_allocator.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory_resource/polymorphic_allocator.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory_resource/memory_resource.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/container_compatible_range.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/from_range.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__string/char_traits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/fill_n.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_end.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/search.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_first_of.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdio \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__string/extern_template_lists.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_allocator.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/climits \
-  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/syslimits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdexcept \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string_view.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/data.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/empty.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/reverse_access.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/size.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/algorithm \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/adjacent_find.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/all_of.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/any_of.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/binary_search.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lower_bound.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/half_positive.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/copy_backward.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/copy_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/copy_n.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/count.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/popcount.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/count_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/equal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/equal_range.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/upper_bound.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/fill.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_if_not.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/for_each.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/movable_box.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/out_ptr.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/raw_storage_iterator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temporary_buffer.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/assume_aligned.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/concepts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/ranges_construct_at.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/ranges_uninitialized_algorithms.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/in_out_result.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/uses_allocator_construction.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/atomic \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/aliases.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic.h \
@@ -549,12 +502,21 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/to_gcc_order.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/duration.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ratio \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/climits \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/poll_with_backoff.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/high_resolution_clock.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/steady_clock.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/time_point.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/system_clock.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ctime \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/time.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_time.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_clock_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/support.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/support/pthread.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/convert_to_timespec.h \
@@ -585,7 +547,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/fence.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/kill_dependency.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__atomic/atomic_ref.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/concepts \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/common_with.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iterator \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/back_insert_iterator.h \
@@ -598,8 +559,12 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/move_sentinel.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ostream_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ostreambuf_iterator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/wrap_iter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/reverse_access.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/data.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/empty.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/size.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/common_iterator.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/variant \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/forward_like.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__variant/monostate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/counted_iterator.h \
@@ -610,19 +575,118 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/permutable.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/sortable.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/unreachable_sentinel.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/memory \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/align.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/inout_ptr.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_specialization.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/out_ptr.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/raw_storage_iterator.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temporary_buffer.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/assume_aligned.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/concepts.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/ranges_construct_at.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/ranges_uninitialized_algorithms.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/in_out_result.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/uses_allocator_construction.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdexcept \
+  /usr/local/include/boost/beast/core/detail/async_base.hpp \
+  /usr/local/include/boost/core/exchange.hpp \
+  /usr/local/include/boost/beast/core/detail/filtering_cancellation_slot.hpp \
+  /usr/local/include/boost/asio/cancellation_signal.hpp \
+  /usr/local/include/boost/asio/detail/config.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
+  /usr/local/include/boost/asio/cancellation_type.hpp \
+  /usr/local/include/boost/asio/detail/push_options.hpp \
+  /usr/local/include/boost/asio/detail/pop_options.hpp \
+  /usr/local/include/boost/asio/detail/cstddef.hpp \
+  /usr/local/include/boost/asio/detail/type_traits.hpp \
+  /usr/local/include/boost/asio/impl/cancellation_signal.ipp \
+  /usr/local/include/boost/asio/detail/thread_context.hpp \
+  /usr/local/include/boost/asio/detail/call_stack.hpp \
+  /usr/local/include/boost/asio/detail/noncopyable.hpp \
+  /usr/local/include/boost/asio/detail/tss_ptr.hpp \
+  /usr/local/include/boost/asio/detail/keyword_tss_ptr.hpp \
+  /usr/local/include/boost/asio/detail/impl/thread_context.ipp \
+  /usr/local/include/boost/asio/detail/thread_info_base.hpp \
+  /usr/local/include/boost/asio/detail/memory.hpp \
+  /usr/local/include/boost/asio/detail/cstdint.hpp \
+  /usr/local/include/boost/asio/detail/throw_exception.hpp \
+  /usr/local/include/boost/throw_exception.hpp \
+  /usr/local/include/boost/exception/exception.hpp \
+  /usr/local/include/boost/assert/source_location.hpp \
+  /usr/local/include/boost/cstdint.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max_element.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/remove.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_segment_if.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/countr.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/rotate.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/invert_if.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/bit_reference.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cwchar \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cwctype \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cctype \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/runetype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_wint_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_wctrans_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/___wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_wctype_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/wchar.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/wchar.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_wchar.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/stdarg.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_header_macro.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg___gnuc_va_list.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_va_list.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_va_arg.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg___va_copy.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/17/include/__stdarg_va_copy.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_printf.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_if.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/remove_if.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__debug_utils/sanitizers.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/enable_insertable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ios/fpos.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/bounded_iter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/noexcept_move_assign_container.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/swap_allocator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory_resource/polymorphic_allocator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory_resource/memory_resource.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/container_compatible_range.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/from_range.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__string/char_traits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/fill_n.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_end.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/search.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_first_of.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdio \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__string/extern_template_lists.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_allocator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string_view.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/algorithm \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/adjacent_find.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/all_of.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/any_of.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/binary_search.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/lower_bound.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/half_positive.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/copy_backward.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/copy_if.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/copy_n.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/count.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/popcount.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/count_if.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/equal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/equal_range.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/upper_bound.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/fill.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/find_if_not.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/for_each.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/movable_box.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/generate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/generate_n.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/includes.h \
@@ -789,118 +853,25 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/ranges_upper_bound.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/shift_left.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/shift_right.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/bit \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/bit_ceil.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/bit_floor.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/bit_log2.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/bit_width.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/endian.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/has_single_bit.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_category.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_code.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/errc.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cerrno \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_condition.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/system_error.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/mutex \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__condition_variable/condition_variable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/mutex.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/unique_lock.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/tag_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/lock_guard.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/id.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/system_error \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/istream \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ostream/basic_ostream.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/bitset \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit_reference \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_char_like_type.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/streambuf \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/nl_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_char.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_short.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_caddr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_blkcnt_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_blksize_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_gid_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_in_addr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_in_port_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ino_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ino64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_key_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_nlink_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_useconds_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_suseconds_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_def.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_setsize.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_set.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_clr.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_zero.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_isset.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_copy.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fsblkcnt_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_nl_item.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/locale_base_api/bsd_locale_defaults.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/format \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/buffer.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/concepts.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_parse_context.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_error.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/format.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_to_n_result.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/container_adaptor.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/range_default_formatter.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/statically_widen.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/range_formatter.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_context.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_arg.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_arg_store.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_args.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_output.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/parser_std_format_spec.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/unicode.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/extended_grapheme_cluster_table.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/indic_conjunct_break_table.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/width_estimation_table.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/queue.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/deque.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/vector.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/stack.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/ref_view.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/escaped_output_table.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_functions.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_bool.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_integral.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_integral.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/tables.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_base_10.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_result.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/traits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_32_64_or_128_bit.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/empty.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_char.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/write_escaped.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_floating_point.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/chars_format.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/to_underlying.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_floating_point.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_integer.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_pointer.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_tuple.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/queue \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/deque \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
+  /usr/local/include/boost/align/aligned_alloc.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h \
+  /usr/local/include/boost/align/detail/aligned_alloc_posix.hpp \
+  /usr/local/include/boost/align/detail/is_alignment.hpp \
+  /usr/local/include/boost/assert.hpp \
+  /usr/local/include/boost/asio/multiple_exceptions.hpp \
+  /usr/local/include/boost/asio/impl/multiple_exceptions.ipp \
+  /usr/local/include/boost/beast/core/detail/work_guard.hpp \
+  /usr/local/include/boost/asio/executor_work_guard.hpp \
+  /usr/local/include/boost/asio/associated_executor.hpp \
+  /usr/local/include/boost/asio/associator.hpp \
+  /usr/local/include/boost/asio/detail/functional.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/functional \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_negate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/bind.h \
@@ -915,6 +886,8 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/builtin_new_allocator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/strip_signature.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/boyer_moore_searcher.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/array \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/empty.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/is_transparent.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__hash_table \
@@ -924,172 +897,115 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/ranges_iterator_traits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/vector \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit_reference \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/format.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_bool.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/concepts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_parse_context.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_error.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_integral.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_integral.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/tables.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_base_10.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_result.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/errc.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cerrno \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/traits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_32_64_or_128_bit.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_output.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/buffer.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_to_n_result.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/parser_std_format_spec.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_arg.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/unicode.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/extended_grapheme_cluster_table.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/indic_conjunct_break_table.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/width_estimation_table.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/locale_base_api.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_xlocale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_locale_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__xlocale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_mb_cur_max.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/___wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_stdlib.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_time.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wchar.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/once_flag.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/no_destroy.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/private_constructor_tag.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/clocale \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/vector.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/temp_value.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__split_buffer \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/locale \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ios \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_category.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_code.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_condition.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/system_error.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/mutex \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__condition_variable/condition_variable.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/mutex.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/unique_lock.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/tag_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__mutex/lock_guard.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/id.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/system_error \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/streambuf \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/nl_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_char.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_short.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_caddr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_blkcnt_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_blksize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_in_addr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_in_port_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ino_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ino64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_key_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_nlink_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fsblkcnt_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_nl_item.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/locale_base_api/bsd_locale_defaults.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/default_searcher.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/not_fn.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/perfect_forward.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/bind_back.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/bind_front.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stack \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/unistd.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/thread \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/formatter.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/jthread.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_source.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/intrusive_shared_ptr.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_state.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/atomic_unique_lock.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/intrusive_list_view.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_token.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/thread.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/sstream \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/this_thread.h \
-  /usr/local/include/openssl/ssl.h /usr/local/include/openssl/macros.h \
-  /usr/local/include/openssl/opensslconf.h \
-  /usr/local/include/openssl/configuration.h \
-  /usr/local/include/openssl/opensslv.h \
-  /usr/local/include/openssl/e_os2.h \
-  /usr/local/include/openssl/e_ostime.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/time.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_timeval64.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_select.h \
-  /usr/local/include/openssl/comp.h /usr/local/include/openssl/crypto.h \
-  /usr/local/include/openssl/safestack.h \
-  /usr/local/include/openssl/stack.h /usr/local/include/openssl/types.h \
-  /usr/local/include/openssl/cryptoerr.h \
-  /usr/local/include/openssl/symhacks.h \
-  /usr/local/include/openssl/cryptoerr_legacy.h \
-  /usr/local/include/openssl/core.h /usr/local/include/openssl/comperr.h \
-  /usr/local/include/openssl/bio.h /usr/local/include/openssl/bioerr.h \
-  /usr/local/include/openssl/x509.h /usr/local/include/openssl/buffer.h \
-  /usr/local/include/openssl/buffererr.h \
-  /usr/local/include/openssl/evp.h \
-  /usr/local/include/openssl/core_dispatch.h \
-  /usr/local/include/openssl/indicator.h \
-  /usr/local/include/openssl/params.h /usr/local/include/openssl/bn.h \
-  /usr/local/include/openssl/bnerr.h /usr/local/include/openssl/evperr.h \
-  /usr/local/include/openssl/objects.h \
-  /usr/local/include/openssl/obj_mac.h /usr/local/include/openssl/asn1.h \
-  /usr/local/include/openssl/asn1err.h \
-  /usr/local/include/openssl/objectserr.h \
-  /usr/local/include/openssl/ec.h /usr/local/include/openssl/ecerr.h \
-  /usr/local/include/openssl/rsa.h /usr/local/include/openssl/rsaerr.h \
-  /usr/local/include/openssl/dsa.h /usr/local/include/openssl/dh.h \
-  /usr/local/include/openssl/dherr.h /usr/local/include/openssl/dsaerr.h \
-  /usr/local/include/openssl/sha.h /usr/local/include/openssl/x509err.h \
-  /usr/local/include/openssl/x509_vfy.h \
-  /usr/local/include/openssl/lhash.h /usr/local/include/openssl/pkcs7.h \
-  /usr/local/include/openssl/pkcs7err.h \
-  /usr/local/include/openssl/http.h /usr/local/include/openssl/conf.h \
-  /usr/local/include/openssl/conferr.h \
-  /usr/local/include/openssl/conftypes.h \
-  /usr/local/include/openssl/pem.h /usr/local/include/openssl/pemerr.h \
-  /usr/local/include/openssl/hmac.h /usr/local/include/openssl/async.h \
-  /usr/local/include/openssl/asyncerr.h /usr/local/include/openssl/ct.h \
-  /usr/local/include/openssl/cterr.h /usr/local/include/openssl/sslerr.h \
-  /usr/local/include/openssl/sslerr_legacy.h \
-  /usr/local/include/openssl/prov_ssl.h \
-  /usr/local/include/openssl/ssl2.h /usr/local/include/openssl/ssl3.h \
-  /usr/local/include/openssl/tls1.h /usr/local/include/openssl/dtls1.h \
-  /usr/local/include/openssl/srtp.h /usr/local/include/openssl/quic.h \
-  /usr/local/include/openssl/err.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/netinet/in.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/socket.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/constrained_ctypes.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_param.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_param.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/net/net_kev.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_sa_family_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_socklen_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_iovec_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/netinet6/in6.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arpa/inet.h \
-  /usr/local/include/boost/asio.hpp \
-  /usr/local/include/boost/asio/any_completion_executor.hpp \
-  /usr/local/include/boost/asio/detail/config.hpp \
-  /usr/local/include/boost/config.hpp \
-  /usr/local/include/boost/config/user.hpp \
-  /usr/local/include/boost/config/detail/select_compiler_config.hpp \
-  /usr/local/include/boost/config/compiler/clang.hpp \
-  /usr/local/include/boost/config/compiler/clang_version.hpp \
-  /usr/local/include/boost/config/detail/select_stdlib_config.hpp \
-  /usr/local/include/boost/config/stdlib/libcpp.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/shared_mutex \
-  /usr/local/include/boost/config/detail/select_platform_config.hpp \
-  /usr/local/include/boost/config/platform/macos.hpp \
-  /usr/local/include/boost/config/detail/posix_features.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/unistd.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_posix_vdisable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/select.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uuid_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/gethostuuid.h \
-  /usr/local/include/boost/config/detail/suffix.hpp \
-  /usr/local/include/boost/config/helper_macros.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/any \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/memory_resource \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/charconv \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/execution \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/filesystem \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/barrier \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/source_location \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/latch \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/span \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/numbers \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stop_token \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ranges \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/syncstream \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/coroutine \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/semaphore \
-  /usr/local/include/boost/config/detail/cxx_composite.hpp \
-  /usr/local/include/boost/version.hpp \
-  /usr/local/include/boost/asio/execution.hpp \
-  /usr/local/include/boost/asio/execution/allocator.hpp \
-  /usr/local/include/boost/asio/detail/type_traits.hpp \
   /usr/local/include/boost/asio/execution/executor.hpp \
   /usr/local/include/boost/asio/execution/invocable_archetype.hpp \
-  /usr/local/include/boost/asio/detail/push_options.hpp \
-  /usr/local/include/boost/asio/detail/pop_options.hpp \
   /usr/local/include/boost/asio/traits/equality_comparable.hpp \
   /usr/local/include/boost/asio/traits/execute_member.hpp \
+  /usr/local/include/boost/asio/is_executor.hpp \
+  /usr/local/include/boost/asio/detail/is_executor.hpp \
+  /usr/local/include/boost/asio/system_executor.hpp \
+  /usr/local/include/boost/asio/execution.hpp \
+  /usr/local/include/boost/asio/execution/allocator.hpp \
   /usr/local/include/boost/asio/is_applicable_property.hpp \
   /usr/local/include/boost/asio/traits/query_static_constexpr_member.hpp \
   /usr/local/include/boost/asio/traits/static_query.hpp \
   /usr/local/include/boost/asio/execution/any_executor.hpp \
   /usr/local/include/boost/asio/detail/assert.hpp \
-  /usr/local/include/boost/assert.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
   /usr/local/include/boost/asio/detail/atomic_count.hpp \
-  /usr/local/include/boost/asio/detail/cstddef.hpp \
   /usr/local/include/boost/asio/detail/executor_function.hpp \
   /usr/local/include/boost/asio/detail/handler_alloc_helpers.hpp \
-  /usr/local/include/boost/asio/detail/memory.hpp \
-  /usr/local/include/boost/asio/detail/cstdint.hpp \
-  /usr/local/include/boost/asio/detail/throw_exception.hpp \
-  /usr/local/include/boost/throw_exception.hpp \
-  /usr/local/include/boost/exception/exception.hpp \
-  /usr/local/include/boost/assert/source_location.hpp \
-  /usr/local/include/boost/cstdint.hpp \
-  /usr/local/include/boost/config/workaround.hpp \
-  /usr/local/include/boost/align/aligned_alloc.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityMacros.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h \
-  /usr/local/include/boost/align/detail/aligned_alloc_posix.hpp \
-  /usr/local/include/boost/align/detail/is_alignment.hpp \
   /usr/local/include/boost/asio/detail/recycling_allocator.hpp \
-  /usr/local/include/boost/asio/detail/thread_context.hpp \
-  /usr/local/include/boost/asio/detail/call_stack.hpp \
-  /usr/local/include/boost/asio/detail/noncopyable.hpp \
-  /usr/local/include/boost/asio/detail/tss_ptr.hpp \
-  /usr/local/include/boost/asio/detail/keyword_tss_ptr.hpp \
-  /usr/local/include/boost/asio/detail/impl/thread_context.ipp \
-  /usr/local/include/boost/asio/detail/thread_info_base.hpp \
-  /usr/local/include/boost/asio/multiple_exceptions.hpp \
-  /usr/local/include/boost/asio/impl/multiple_exceptions.ipp \
   /usr/local/include/boost/asio/associated_allocator.hpp \
-  /usr/local/include/boost/asio/associator.hpp \
-  /usr/local/include/boost/asio/detail/functional.hpp \
   /usr/local/include/boost/asio/detail/non_const_lvalue.hpp \
   /usr/local/include/boost/asio/detail/scoped_ptr.hpp \
   /usr/local/include/boost/asio/execution/bad_executor.hpp \
@@ -1131,6 +1047,37 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/system/api_config.hpp \
   /usr/local/include/boost/system/detail/interop_category.hpp \
   /usr/local/include/boost/system/detail/std_category.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ostream/basic_ostream.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/bitset \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_char_like_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/container_adaptor.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/range_default_formatter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/statically_widen.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/range_formatter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_context.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_arg_store.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_args.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/queue.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/deque.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/stack.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/ref_view.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/escaped_output_table.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/format_functions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_char.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/write_escaped.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_floating_point.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/chars_format.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/to_underlying.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars_floating_point.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_integer.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_pointer.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_tuple.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/queue \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/deque \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
   /usr/local/include/boost/system/error_category.hpp \
   /usr/local/include/boost/system/detail/error_category_impl.hpp \
   /usr/local/include/boost/system/detail/std_category_impl.hpp \
@@ -1142,10 +1089,19 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/system/detail/throws.hpp \
   /usr/local/include/boost/asio/detail/impl/throw_error.ipp \
   /usr/local/include/boost/system/system_error.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /usr/local/include/boost/asio/error.hpp \
   /usr/local/include/boost/cerrno.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/netdb.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_socklen_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/netinet/in.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/socket.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/constrained_ctypes.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_param.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_param.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/net/net_kev.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_sa_family_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_iovec_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/netinet6/in6.h \
   /usr/local/include/boost/asio/impl/error.ipp \
   /usr/local/include/boost/asio/detail/mutex.hpp \
   /usr/local/include/boost/asio/detail/posix_mutex.hpp \
@@ -1158,30 +1114,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/asio/execution/outstanding_work.hpp \
   /usr/local/include/boost/asio/execution/prefer_only.hpp \
   /usr/local/include/boost/asio/execution/relationship.hpp \
-  /usr/local/include/boost/asio/impl/any_completion_executor.ipp \
-  /usr/local/include/boost/asio/any_completion_handler.hpp \
-  /usr/local/include/boost/asio/any_io_executor.hpp \
-  /usr/local/include/boost/asio/execution_context.hpp \
-  /usr/local/include/boost/asio/impl/execution_context.hpp \
-  /usr/local/include/boost/asio/detail/handler_type_requirements.hpp \
-  /usr/local/include/boost/asio/async_result.hpp \
-  /usr/local/include/boost/asio/default_completion_token.hpp \
-  /usr/local/include/boost/asio/deferred.hpp \
-  /usr/local/include/boost/asio/detail/utility.hpp \
-  /usr/local/include/boost/asio/impl/deferred.hpp \
-  /usr/local/include/boost/asio/detail/service_registry.hpp \
-  /usr/local/include/boost/asio/detail/impl/service_registry.hpp \
-  /usr/local/include/boost/asio/detail/impl/service_registry.ipp \
-  /usr/local/include/boost/asio/impl/execution_context.ipp \
-  /usr/local/include/boost/asio/impl/any_io_executor.ipp \
-  /usr/local/include/boost/asio/associated_cancellation_slot.hpp \
-  /usr/local/include/boost/asio/cancellation_signal.hpp \
-  /usr/local/include/boost/asio/cancellation_type.hpp \
-  /usr/local/include/boost/asio/impl/cancellation_signal.ipp \
-  /usr/local/include/boost/asio/associated_executor.hpp \
-  /usr/local/include/boost/asio/is_executor.hpp \
-  /usr/local/include/boost/asio/detail/is_executor.hpp \
-  /usr/local/include/boost/asio/system_executor.hpp \
   /usr/local/include/boost/asio/impl/system_executor.hpp \
   /usr/local/include/boost/asio/detail/executor_op.hpp \
   /usr/local/include/boost/asio/detail/fenced_block.hpp \
@@ -1194,6 +1126,18 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/asio/detail/posix_global.hpp \
   /usr/local/include/boost/asio/system_context.hpp \
   /usr/local/include/boost/asio/detail/scheduler.hpp \
+  /usr/local/include/boost/asio/execution_context.hpp \
+  /usr/local/include/boost/asio/impl/execution_context.hpp \
+  /usr/local/include/boost/asio/detail/handler_type_requirements.hpp \
+  /usr/local/include/boost/asio/async_result.hpp \
+  /usr/local/include/boost/asio/default_completion_token.hpp \
+  /usr/local/include/boost/asio/deferred.hpp \
+  /usr/local/include/boost/asio/detail/utility.hpp \
+  /usr/local/include/boost/asio/impl/deferred.hpp \
+  /usr/local/include/boost/asio/detail/service_registry.hpp \
+  /usr/local/include/boost/asio/detail/impl/service_registry.hpp \
+  /usr/local/include/boost/asio/detail/impl/service_registry.ipp \
+  /usr/local/include/boost/asio/impl/execution_context.ipp \
   /usr/local/include/boost/asio/detail/conditionally_enabled_event.hpp \
   /usr/local/include/boost/asio/detail/conditionally_enabled_mutex.hpp \
   /usr/local/include/boost/asio/detail/null_event.hpp \
@@ -1217,6 +1161,8 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/asio/detail/kqueue_reactor.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/event.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/queue.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/time.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_timeval64.h \
   /usr/local/include/boost/asio/detail/object_pool.hpp \
   /usr/local/include/boost/asio/detail/reactor_op.hpp \
   /usr/local/include/boost/asio/detail/operation.hpp \
@@ -1244,6 +1190,7 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/uio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/un.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/netinet/tcp.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arpa/inet.h \
   /usr/local/include/boost/asio/detail/timer_queue_base.hpp \
   /usr/local/include/boost/asio/detail/timer_queue_set.hpp \
   /usr/local/include/boost/asio/detail/impl/timer_queue_set.ipp \
@@ -1253,95 +1200,105 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/asio/detail/thread_group.hpp \
   /usr/local/include/boost/asio/impl/system_context.hpp \
   /usr/local/include/boost/asio/impl/system_context.ipp \
-  /usr/local/include/boost/asio/associated_immediate_executor.hpp \
-  /usr/local/include/boost/asio/cancellation_state.hpp \
-  /usr/local/include/boost/asio/recycling_allocator.hpp \
+  /usr/local/include/boost/optional.hpp \
+  /usr/local/include/boost/optional/optional.hpp \
+  /usr/local/include/boost/core/addressof.hpp \
+  /usr/local/include/boost/core/enable_if.hpp \
+  /usr/local/include/boost/core/invoke_swap.hpp \
+  /usr/local/include/boost/core/launder.hpp \
+  /usr/local/include/boost/optional/bad_optional_access.hpp \
+  /usr/local/include/boost/type_traits/alignment_of.hpp \
+  /usr/local/include/boost/type_traits/intrinsics.hpp \
+  /usr/local/include/boost/type_traits/detail/config.hpp \
+  /usr/local/include/boost/type_traits/integral_constant.hpp \
+  /usr/local/include/boost/type_traits/conditional.hpp \
+  /usr/local/include/boost/type_traits/conjunction.hpp \
+  /usr/local/include/boost/type_traits/disjunction.hpp \
+  /usr/local/include/boost/type_traits/has_nothrow_constructor.hpp \
+  /usr/local/include/boost/type_traits/is_default_constructible.hpp \
+  /usr/local/include/boost/type_traits/is_complete.hpp \
+  /usr/local/include/boost/type_traits/declval.hpp \
+  /usr/local/include/boost/type_traits/add_rvalue_reference.hpp \
+  /usr/local/include/boost/type_traits/is_void.hpp \
+  /usr/local/include/boost/type_traits/is_reference.hpp \
+  /usr/local/include/boost/type_traits/is_lvalue_reference.hpp \
+  /usr/local/include/boost/type_traits/is_rvalue_reference.hpp \
+  /usr/local/include/boost/type_traits/remove_reference.hpp \
+  /usr/local/include/boost/type_traits/is_function.hpp \
+  /usr/local/include/boost/type_traits/detail/is_function_cxx_11.hpp \
+  /usr/local/include/boost/type_traits/detail/yes_no_type.hpp \
+  /usr/local/include/boost/type_traits/type_with_alignment.hpp \
+  /usr/local/include/boost/type_traits/is_pod.hpp \
+  /usr/local/include/boost/type_traits/is_scalar.hpp \
+  /usr/local/include/boost/type_traits/is_arithmetic.hpp \
+  /usr/local/include/boost/type_traits/is_integral.hpp \
+  /usr/local/include/boost/type_traits/is_floating_point.hpp \
+  /usr/local/include/boost/type_traits/is_enum.hpp \
+  /usr/local/include/boost/type_traits/is_pointer.hpp \
+  /usr/local/include/boost/type_traits/is_member_pointer.hpp \
+  /usr/local/include/boost/type_traits/is_member_function_pointer.hpp \
+  /usr/local/include/boost/type_traits/detail/is_member_function_pointer_cxx_11.hpp \
+  /usr/local/include/boost/type_traits/remove_const.hpp \
+  /usr/local/include/boost/type_traits/decay.hpp \
+  /usr/local/include/boost/type_traits/is_array.hpp \
+  /usr/local/include/boost/type_traits/remove_bounds.hpp \
+  /usr/local/include/boost/type_traits/remove_extent.hpp \
+  /usr/local/include/boost/type_traits/add_pointer.hpp \
+  /usr/local/include/boost/type_traits/remove_cv.hpp \
+  /usr/local/include/boost/type_traits/is_assignable.hpp \
+  /usr/local/include/boost/type_traits/is_base_of.hpp \
+  /usr/local/include/boost/type_traits/is_base_and_derived.hpp \
+  /usr/local/include/boost/type_traits/is_same.hpp \
+  /usr/local/include/boost/type_traits/is_class.hpp \
+  /usr/local/include/boost/type_traits/is_const.hpp \
+  /usr/local/include/boost/type_traits/is_constructible.hpp \
+  /usr/local/include/boost/type_traits/is_destructible.hpp \
+  /usr/local/include/boost/type_traits/is_convertible.hpp \
+  /usr/local/include/boost/type_traits/is_nothrow_move_assignable.hpp \
+  /usr/local/include/boost/type_traits/has_trivial_move_assign.hpp \
+  /usr/local/include/boost/type_traits/is_volatile.hpp \
+  /usr/local/include/boost/type_traits/has_nothrow_assign.hpp \
+  /usr/local/include/boost/type_traits/enable_if.hpp \
+  /usr/local/include/boost/type_traits/is_nothrow_move_constructible.hpp \
+  /usr/local/include/boost/none.hpp /usr/local/include/boost/none_t.hpp \
+  /usr/local/include/boost/config/pragma_message.hpp \
+  /usr/local/include/boost/optional/optional_fwd.hpp \
+  /usr/local/include/boost/optional/detail/optional_config.hpp \
+  /usr/local/include/boost/optional/detail/optional_factory_support.hpp \
+  /usr/local/include/boost/optional/detail/optional_aligned_storage.hpp \
+  /usr/local/include/boost/optional/detail/optional_hash.hpp \
+  /usr/local/include/boost/optional/detail/optional_utility.hpp \
+  /usr/local/include/boost/optional/detail/optional_trivially_copyable_base.hpp \
+  /usr/local/include/boost/optional/detail/optional_reference_spec.hpp \
+  /usr/local/include/boost/optional/detail/optional_relops.hpp \
+  /usr/local/include/boost/optional/detail/optional_swap.hpp \
   /usr/local/include/boost/asio/append.hpp \
   /usr/local/include/boost/asio/impl/append.hpp \
   /usr/local/include/boost/asio/detail/handler_cont_helpers.hpp \
   /usr/local/include/boost/asio/handler_continuation_hook.hpp \
   /usr/local/include/boost/asio/detail/initiation_base.hpp \
-  /usr/local/include/boost/asio/as_tuple.hpp \
-  /usr/local/include/boost/asio/impl/as_tuple.hpp \
-  /usr/local/include/boost/asio/awaitable.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/coroutine_handle.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/coroutine_traits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/noop_coroutine_handle.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/trivial_awaitables.h \
-  /usr/local/include/boost/asio/impl/awaitable.hpp \
-  /usr/local/include/boost/asio/disposition.hpp \
-  /usr/local/include/boost/asio/post.hpp \
-  /usr/local/include/boost/asio/detail/initiate_post.hpp \
+  /usr/local/include/boost/asio/associated_cancellation_slot.hpp \
+  /usr/local/include/boost/asio/associated_immediate_executor.hpp \
+  /usr/local/include/boost/asio/bind_executor.hpp \
+  /usr/local/include/boost/asio/uses_executor.hpp \
+  /usr/local/include/boost/asio/dispatch.hpp \
+  /usr/local/include/boost/asio/detail/initiate_dispatch.hpp \
   /usr/local/include/boost/asio/detail/work_dispatcher.hpp \
   /usr/local/include/boost/asio/detail/bind_handler.hpp \
-  /usr/local/include/boost/asio/executor_work_guard.hpp \
-  /usr/local/include/boost/asio/this_coro.hpp \
-  /usr/local/include/boost/asio/basic_datagram_socket.hpp \
-  /usr/local/include/boost/asio/basic_socket.hpp \
-  /usr/local/include/boost/asio/detail/io_object_impl.hpp \
-  /usr/local/include/boost/asio/io_context.hpp \
-  /usr/local/include/boost/asio/detail/chrono.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/file_clock.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/calendar.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/day.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/exception.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/hh_mm_ss.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/literals.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/local_info.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/month.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/month_weekday.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/weekday.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/monthday.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/sys_info.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year_month.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year_month_day.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year_month_weekday.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/formatter.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/concepts.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/convert_to_tm.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/zoned_time.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/ostream.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/parser_std_format_spec.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/from_chars_integral.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/from_chars_result.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars.h \
-  /usr/local/include/boost/asio/detail/wrapped_handler.hpp \
-  /usr/local/include/boost/asio/detail/initiate_dispatch.hpp \
-  /usr/local/include/boost/asio/impl/io_context.hpp \
-  /usr/local/include/boost/asio/detail/completion_handler.hpp \
-  /usr/local/include/boost/asio/detail/handler_work.hpp \
-  /usr/local/include/boost/asio/impl/io_context.ipp \
-  /usr/local/include/boost/asio/socket_base.hpp \
-  /usr/local/include/boost/asio/detail/io_control.hpp \
-  /usr/local/include/boost/asio/detail/socket_option.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_service.hpp \
-  /usr/local/include/boost/asio/buffer.hpp \
-  /usr/local/include/boost/asio/detail/array_fwd.hpp \
-  /usr/local/include/boost/asio/detail/string_view.hpp \
-  /usr/local/include/boost/asio/is_contiguous_iterator.hpp \
-  /usr/local/include/boost/asio/detail/is_buffer_sequence.hpp \
-  /usr/local/include/boost/asio/detail/buffer_sequence_adapter.hpp \
-  /usr/local/include/boost/asio/registered_buffer.hpp \
-  /usr/local/include/boost/asio/detail/impl/buffer_sequence_adapter.ipp \
-  /usr/local/include/boost/asio/detail/reactive_null_buffers_op.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_accept_op.hpp \
-  /usr/local/include/boost/asio/detail/socket_holder.hpp \
+  /usr/local/include/boost/asio/post.hpp \
+  /usr/local/include/boost/asio/detail/initiate_post.hpp \
+  /usr/local/include/boost/core/empty_value.hpp \
+  /usr/local/include/boost/beast/core/impl/async_base.hpp \
+  /usr/local/include/boost/beast/core/basic_stream.hpp \
+  /usr/local/include/boost/beast/core/detail/stream_base.hpp \
+  /usr/local/include/boost/asio/steady_timer.hpp \
+  /usr/local/include/boost/asio/basic_waitable_timer.hpp \
+  /usr/local/include/boost/asio/any_io_executor.hpp \
+  /usr/local/include/boost/asio/impl/any_io_executor.ipp \
+  /usr/local/include/boost/asio/detail/chrono_time_traits.hpp \
+  /usr/local/include/boost/asio/detail/deadline_timer_service.hpp \
   /usr/local/include/boost/asio/detail/socket_ops.hpp \
   /usr/local/include/boost/asio/detail/impl/socket_ops.ipp \
-  /usr/local/include/boost/asio/detail/reactive_socket_connect_op.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_recvfrom_op.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_sendto_op.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_service_base.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_recv_op.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_recvmsg_op.hpp \
-  /usr/local/include/boost/asio/detail/reactive_socket_send_op.hpp \
-  /usr/local/include/boost/asio/detail/reactive_wait_op.hpp \
-  /usr/local/include/boost/asio/detail/impl/reactive_socket_service_base.ipp \
-  /usr/local/include/boost/asio/basic_deadline_timer.hpp \
-  /usr/local/include/boost/asio/detail/deadline_timer_service.hpp \
   /usr/local/include/boost/asio/detail/timer_queue.hpp \
   /usr/local/include/boost/asio/detail/date_time_fwd.hpp \
   /usr/local/include/boost/asio/detail/timer_queue_ptime.hpp \
@@ -1350,7 +1307,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/date_time/time_clock.hpp \
   /usr/local/include/boost/date_time/c_time.hpp \
   /usr/local/include/boost/date_time/compiler_config.hpp \
-  /usr/local/include/boost/detail/workaround.hpp \
   /usr/local/include/boost/date_time/locale_config.hpp \
   /usr/local/include/boost/shared_ptr.hpp \
   /usr/local/include/boost/smart_ptr/shared_ptr.hpp \
@@ -1360,12 +1316,10 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/smart_ptr/detail/sp_has_gcc_intrinsics.hpp \
   /usr/local/include/boost/smart_ptr/detail/sp_has_sync_intrinsics.hpp \
   /usr/local/include/boost/smart_ptr/detail/deprecated_macros.hpp \
-  /usr/local/include/boost/config/pragma_message.hpp \
   /usr/local/include/boost/smart_ptr/detail/sp_counted_base_gcc_atomic.hpp \
   /usr/local/include/boost/smart_ptr/detail/sp_typeinfo_.hpp \
   /usr/local/include/boost/smart_ptr/detail/sp_counted_impl.hpp \
   /usr/local/include/boost/core/checked_delete.hpp \
-  /usr/local/include/boost/core/addressof.hpp \
   /usr/local/include/boost/smart_ptr/detail/sp_disable_deprecated.hpp \
   /usr/local/include/boost/smart_ptr/detail/sp_convertible.hpp \
   /usr/local/include/boost/smart_ptr/detail/sp_noexcept.hpp \
@@ -1386,13 +1340,9 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/limits.hpp \
   /usr/local/include/boost/config/no_tr1/cmath.hpp \
   /usr/local/include/boost/date_time/time_duration.hpp \
-  /usr/local/include/boost/core/enable_if.hpp \
   /usr/local/include/boost/date_time/special_defs.hpp \
   /usr/local/include/boost/date_time/time_defs.hpp \
   /usr/local/include/boost/operators.hpp \
-  /usr/local/include/boost/static_assert.hpp \
-  /usr/local/include/boost/type_traits/is_integral.hpp \
-  /usr/local/include/boost/type_traits/integral_constant.hpp \
   /usr/local/include/boost/date_time/time_resolution_traits.hpp \
   /usr/local/include/boost/date_time/int_adapter.hpp \
   /usr/local/include/boost/date_time/gregorian/gregorian_types.hpp \
@@ -1402,14 +1352,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/date_time/gregorian/greg_calendar.hpp \
   /usr/local/include/boost/date_time/gregorian/greg_weekday.hpp \
   /usr/local/include/boost/date_time/constrained_value.hpp \
-  /usr/local/include/boost/type_traits/conditional.hpp \
-  /usr/local/include/boost/type_traits/is_base_of.hpp \
-  /usr/local/include/boost/type_traits/is_base_and_derived.hpp \
-  /usr/local/include/boost/type_traits/intrinsics.hpp \
-  /usr/local/include/boost/type_traits/detail/config.hpp \
-  /usr/local/include/boost/type_traits/remove_cv.hpp \
-  /usr/local/include/boost/type_traits/is_same.hpp \
-  /usr/local/include/boost/type_traits/is_class.hpp \
   /usr/local/include/boost/date_time/date_defs.hpp \
   /usr/local/include/boost/date_time/gregorian/greg_day_of_year.hpp \
   /usr/local/include/boost/date_time/gregorian_calendar.hpp \
@@ -1426,6 +1368,8 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/date_time/adjust_functors.hpp \
   /usr/local/include/boost/date_time/wrapping_int.hpp \
   /usr/local/include/boost/date_time/date_generators.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/sstream \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/istream \
   /usr/local/include/boost/date_time/date_clock_device.hpp \
   /usr/local/include/boost/date_time/date_iterator.hpp \
   /usr/local/include/boost/date_time/time_system_split.hpp \
@@ -1438,8 +1382,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/numeric/conversion/converter.hpp \
   /usr/local/include/boost/numeric/conversion/conversion_traits.hpp \
   /usr/local/include/boost/numeric/conversion/detail/conversion_traits.hpp \
-  /usr/local/include/boost/type_traits/is_arithmetic.hpp \
-  /usr/local/include/boost/type_traits/is_floating_point.hpp \
   /usr/local/include/boost/numeric/conversion/detail/meta.hpp \
   /usr/local/include/boost/mpl/if.hpp \
   /usr/local/include/boost/mpl/aux_/value_wknd.hpp \
@@ -1469,8 +1411,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/mpl/aux_/nttp_decl.hpp \
   /usr/local/include/boost/mpl/aux_/config/nttp.hpp \
   /usr/local/include/boost/mpl/aux_/integral_wrapper.hpp \
-  /usr/local/include/boost/preprocessor/cat.hpp \
-  /usr/local/include/boost/preprocessor/config/config.hpp \
   /usr/local/include/boost/mpl/aux_/lambda_arity_param.hpp \
   /usr/local/include/boost/mpl/aux_/template_arity_fwd.hpp \
   /usr/local/include/boost/mpl/aux_/arity.hpp \
@@ -1621,333 +1561,42 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/asio/detail/timer_scheduler.hpp \
   /usr/local/include/boost/asio/detail/timer_scheduler_fwd.hpp \
   /usr/local/include/boost/asio/detail/wait_handler.hpp \
-  /usr/local/include/boost/asio/basic_file.hpp \
-  /usr/local/include/boost/asio/basic_io_object.hpp \
-  /usr/local/include/boost/asio/basic_random_access_file.hpp \
-  /usr/local/include/boost/asio/basic_raw_socket.hpp \
-  /usr/local/include/boost/asio/basic_readable_pipe.hpp \
-  /usr/local/include/boost/asio/detail/reactive_descriptor_service.hpp \
-  /usr/local/include/boost/asio/detail/descriptor_ops.hpp \
-  /usr/local/include/boost/asio/detail/impl/descriptor_ops.ipp \
-  /usr/local/include/boost/asio/detail/descriptor_read_op.hpp \
-  /usr/local/include/boost/asio/dispatch.hpp \
-  /usr/local/include/boost/asio/detail/descriptor_write_op.hpp \
-  /usr/local/include/boost/asio/posix/descriptor_base.hpp \
-  /usr/local/include/boost/asio/detail/impl/reactive_descriptor_service.ipp \
-  /usr/local/include/boost/asio/basic_seq_packet_socket.hpp \
-  /usr/local/include/boost/asio/basic_serial_port.hpp \
-  /usr/local/include/boost/asio/serial_port_base.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/termios.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/termios.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/ttydefaults.h \
-  /usr/local/include/boost/asio/impl/serial_port_base.hpp \
-  /usr/local/include/boost/asio/impl/serial_port_base.ipp \
-  /usr/local/include/boost/asio/detail/posix_serial_port_service.hpp \
-  /usr/local/include/boost/asio/detail/impl/posix_serial_port_service.ipp \
-  /usr/local/include/boost/asio/basic_signal_set.hpp \
-  /usr/local/include/boost/asio/detail/signal_set_service.hpp \
-  /usr/local/include/boost/asio/signal_set_base.hpp \
-  /usr/local/include/boost/asio/detail/signal_handler.hpp \
-  /usr/local/include/boost/asio/detail/signal_op.hpp \
-  /usr/local/include/boost/asio/detail/impl/signal_set_service.ipp \
-  /usr/local/include/boost/asio/detail/static_mutex.hpp \
-  /usr/local/include/boost/asio/detail/posix_static_mutex.hpp \
-  /usr/local/include/boost/asio/basic_socket_acceptor.hpp \
-  /usr/local/include/boost/asio/basic_socket_iostream.hpp \
-  /usr/local/include/boost/asio/basic_socket_streambuf.hpp \
-  /usr/local/include/boost/asio/basic_stream_socket.hpp \
-  /usr/local/include/boost/asio/steady_timer.hpp \
-  /usr/local/include/boost/asio/basic_waitable_timer.hpp \
-  /usr/local/include/boost/asio/detail/chrono_time_traits.hpp \
+  /usr/local/include/boost/asio/detail/handler_work.hpp \
+  /usr/local/include/boost/asio/detail/io_object_impl.hpp \
+  /usr/local/include/boost/asio/io_context.hpp \
+  /usr/local/include/boost/asio/detail/chrono.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/file_clock.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/calendar.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/day.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/exception.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/hh_mm_ss.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/literals.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/local_info.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/month.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/month_weekday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/weekday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/monthday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/sys_info.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year_month.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year_month_day.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/year_month_weekday.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/formatter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/concepts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/convert_to_tm.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/zoned_time.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/ostream.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/parser_std_format_spec.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/from_chars_integral.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/from_chars_result.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__charconv/to_chars.h \
+  /usr/local/include/boost/asio/detail/wrapped_handler.hpp \
+  /usr/local/include/boost/asio/impl/io_context.hpp \
+  /usr/local/include/boost/asio/detail/completion_handler.hpp \
+  /usr/local/include/boost/asio/impl/io_context.ipp \
   /usr/local/include/boost/asio/wait_traits.hpp \
-  /usr/local/include/boost/asio/basic_stream_file.hpp \
-  /usr/local/include/boost/asio/basic_streambuf.hpp \
-  /usr/local/include/boost/asio/basic_streambuf_fwd.hpp \
-  /usr/local/include/boost/asio/basic_writable_pipe.hpp \
-  /usr/local/include/boost/asio/bind_allocator.hpp \
-  /usr/local/include/boost/asio/bind_cancellation_slot.hpp \
-  /usr/local/include/boost/asio/bind_executor.hpp \
-  /usr/local/include/boost/asio/uses_executor.hpp \
-  /usr/local/include/boost/asio/bind_immediate_executor.hpp \
-  /usr/local/include/boost/asio/buffer_registration.hpp \
-  /usr/local/include/boost/asio/buffered_read_stream_fwd.hpp \
-  /usr/local/include/boost/asio/buffered_read_stream.hpp \
-  /usr/local/include/boost/asio/detail/buffer_resize_guard.hpp \
-  /usr/local/include/boost/asio/detail/buffered_stream_storage.hpp \
-  /usr/local/include/boost/asio/impl/buffered_read_stream.hpp \
-  /usr/local/include/boost/asio/buffered_stream_fwd.hpp \
-  /usr/local/include/boost/asio/buffered_stream.hpp \
-  /usr/local/include/boost/asio/buffered_write_stream.hpp \
-  /usr/local/include/boost/asio/buffered_write_stream_fwd.hpp \
-  /usr/local/include/boost/asio/completion_condition.hpp \
-  /usr/local/include/boost/asio/write.hpp \
-  /usr/local/include/boost/asio/impl/write.hpp \
-  /usr/local/include/boost/asio/detail/base_from_cancellation_state.hpp \
-  /usr/local/include/boost/asio/detail/base_from_completion_cond.hpp \
-  /usr/local/include/boost/asio/detail/consuming_buffers.hpp \
-  /usr/local/include/boost/asio/detail/dependent_type.hpp \
-  /usr/local/include/boost/asio/impl/buffered_write_stream.hpp \
-  /usr/local/include/boost/asio/buffers_iterator.hpp \
-  /usr/local/include/boost/asio/cancel_after.hpp \
-  /usr/local/include/boost/asio/impl/cancel_after.hpp \
-  /usr/local/include/boost/asio/detail/timed_cancel_op.hpp \
-  /usr/local/include/boost/asio/detail/completion_payload.hpp \
-  /usr/local/include/boost/asio/detail/completion_message.hpp \
-  /usr/local/include/boost/asio/detail/completion_payload_handler.hpp \
-  /usr/local/include/boost/asio/cancel_at.hpp \
-  /usr/local/include/boost/asio/impl/cancel_at.hpp \
-  /usr/local/include/boost/asio/co_composed.hpp \
-  /usr/local/include/boost/asio/detail/composed_work.hpp \
-  /usr/local/include/boost/asio/co_spawn.hpp \
-  /usr/local/include/boost/asio/impl/co_spawn.hpp \
-  /usr/local/include/boost/asio/use_awaitable.hpp \
-  /usr/local/include/boost/asio/impl/use_awaitable.hpp \
-  /usr/local/include/boost/asio/compose.hpp \
-  /usr/local/include/boost/asio/composed.hpp \
-  /usr/local/include/boost/asio/connect.hpp \
-  /usr/local/include/boost/asio/impl/connect.hpp \
-  /usr/local/include/boost/asio/connect_pipe.hpp \
-  /usr/local/include/boost/asio/impl/connect_pipe.hpp \
-  /usr/local/include/boost/asio/impl/connect_pipe.ipp \
-  /usr/local/include/boost/asio/consign.hpp \
-  /usr/local/include/boost/asio/impl/consign.hpp \
-  /usr/local/include/boost/asio/coroutine.hpp \
-  /usr/local/include/boost/asio/deadline_timer.hpp \
-  /usr/local/include/boost/asio/defer.hpp \
-  /usr/local/include/boost/asio/detail/initiate_defer.hpp \
-  /usr/local/include/boost/asio/detached.hpp \
-  /usr/local/include/boost/asio/impl/detached.hpp \
-  /usr/local/include/boost/asio/executor.hpp \
-  /usr/local/include/boost/asio/impl/executor.hpp \
-  /usr/local/include/boost/asio/impl/executor.ipp \
-  /usr/local/include/boost/asio/file_base.hpp \
-  /usr/local/include/boost/asio/generic/basic_endpoint.hpp \
-  /usr/local/include/boost/asio/generic/detail/endpoint.hpp \
-  /usr/local/include/boost/asio/generic/detail/impl/endpoint.ipp \
-  /usr/local/include/boost/asio/generic/datagram_protocol.hpp \
-  /usr/local/include/boost/asio/generic/raw_protocol.hpp \
-  /usr/local/include/boost/asio/generic/seq_packet_protocol.hpp \
-  /usr/local/include/boost/asio/generic/stream_protocol.hpp \
-  /usr/local/include/boost/asio/high_resolution_timer.hpp \
-  /usr/local/include/boost/asio/immediate.hpp \
-  /usr/local/include/boost/asio/io_context_strand.hpp \
-  /usr/local/include/boost/asio/detail/strand_service.hpp \
-  /usr/local/include/boost/asio/detail/impl/strand_service.hpp \
-  /usr/local/include/boost/asio/detail/impl/strand_service.ipp \
-  /usr/local/include/boost/asio/ip/address.hpp \
-  /usr/local/include/boost/asio/ip/address_v4.hpp \
-  /usr/local/include/boost/asio/detail/array.hpp \
-  /usr/local/include/boost/asio/detail/winsock_init.hpp \
-  /usr/local/include/boost/asio/ip/impl/address_v4.hpp \
-  /usr/local/include/boost/asio/ip/impl/address_v4.ipp \
-  /usr/local/include/boost/asio/ip/address_v6.hpp \
-  /usr/local/include/boost/asio/ip/impl/address_v6.hpp \
-  /usr/local/include/boost/asio/ip/impl/address_v6.ipp \
-  /usr/local/include/boost/asio/ip/bad_address_cast.hpp \
-  /usr/local/include/boost/asio/ip/impl/address.hpp \
-  /usr/local/include/boost/asio/ip/impl/address.ipp \
-  /usr/local/include/boost/asio/ip/address_v4_iterator.hpp \
-  /usr/local/include/boost/asio/ip/address_v4_range.hpp \
-  /usr/local/include/boost/asio/ip/address_v6_iterator.hpp \
-  /usr/local/include/boost/asio/ip/address_v6_range.hpp \
-  /usr/local/include/boost/asio/ip/network_v4.hpp \
-  /usr/local/include/boost/asio/ip/impl/network_v4.hpp \
-  /usr/local/include/boost/asio/ip/impl/network_v4.ipp \
-  /usr/local/include/boost/asio/ip/network_v6.hpp \
-  /usr/local/include/boost/asio/ip/impl/network_v6.hpp \
-  /usr/local/include/boost/asio/ip/impl/network_v6.ipp \
-  /usr/local/include/boost/asio/ip/basic_endpoint.hpp \
-  /usr/local/include/boost/asio/ip/detail/endpoint.hpp \
-  /usr/local/include/boost/asio/ip/detail/impl/endpoint.ipp \
-  /usr/local/include/boost/asio/ip/impl/basic_endpoint.hpp \
-  /usr/local/include/boost/asio/ip/basic_resolver.hpp \
-  /usr/local/include/boost/asio/ip/basic_resolver_iterator.hpp \
-  /usr/local/include/boost/asio/ip/basic_resolver_entry.hpp \
-  /usr/local/include/boost/asio/ip/basic_resolver_query.hpp \
-  /usr/local/include/boost/asio/ip/resolver_query_base.hpp \
-  /usr/local/include/boost/asio/ip/resolver_base.hpp \
-  /usr/local/include/boost/asio/ip/basic_resolver_results.hpp \
-  /usr/local/include/boost/asio/detail/resolver_service.hpp \
-  /usr/local/include/boost/asio/detail/resolve_endpoint_op.hpp \
-  /usr/local/include/boost/asio/detail/resolve_op.hpp \
-  /usr/local/include/boost/asio/detail/resolve_query_op.hpp \
-  /usr/local/include/boost/asio/detail/resolver_service_base.hpp \
-  /usr/local/include/boost/asio/detail/impl/resolver_service_base.ipp \
-  /usr/local/include/boost/asio/ip/host_name.hpp \
-  /usr/local/include/boost/asio/ip/impl/host_name.ipp \
-  /usr/local/include/boost/asio/ip/icmp.hpp \
-  /usr/local/include/boost/asio/ip/multicast.hpp \
-  /usr/local/include/boost/asio/ip/detail/socket_option.hpp \
-  /usr/local/include/boost/asio/ip/tcp.hpp \
-  /usr/local/include/boost/asio/ip/udp.hpp \
-  /usr/local/include/boost/asio/ip/unicast.hpp \
-  /usr/local/include/boost/asio/ip/v6_only.hpp \
-  /usr/local/include/boost/asio/is_read_buffered.hpp \
-  /usr/local/include/boost/asio/is_write_buffered.hpp \
-  /usr/local/include/boost/asio/local/basic_endpoint.hpp \
-  /usr/local/include/boost/asio/local/detail/endpoint.hpp \
-  /usr/local/include/boost/asio/local/detail/impl/endpoint.ipp \
-  /usr/local/include/boost/asio/local/connect_pair.hpp \
-  /usr/local/include/boost/asio/local/datagram_protocol.hpp \
-  /usr/local/include/boost/asio/local/seq_packet_protocol.hpp \
-  /usr/local/include/boost/asio/local/stream_protocol.hpp \
-  /usr/local/include/boost/asio/packaged_task.hpp \
-  /usr/local/include/boost/asio/detail/future.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/future \
-  /usr/local/include/boost/asio/placeholders.hpp \
-  /usr/local/include/boost/asio/posix/basic_descriptor.hpp \
-  /usr/local/include/boost/asio/posix/basic_stream_descriptor.hpp \
-  /usr/local/include/boost/asio/posix/descriptor.hpp \
-  /usr/local/include/boost/asio/posix/stream_descriptor.hpp \
-  /usr/local/include/boost/asio/prepend.hpp \
-  /usr/local/include/boost/asio/impl/prepend.hpp \
-  /usr/local/include/boost/asio/random_access_file.hpp \
-  /usr/local/include/boost/asio/read.hpp \
-  /usr/local/include/boost/asio/impl/read.hpp \
-  /usr/local/include/boost/asio/read_at.hpp \
-  /usr/local/include/boost/asio/impl/read_at.hpp \
-  /usr/local/include/boost/asio/read_until.hpp \
-  /usr/local/include/boost/asio/detail/regex_fwd.hpp \
-  /usr/local/include/boost/asio/impl/read_until.hpp \
-  /usr/local/include/boost/asio/readable_pipe.hpp \
-  /usr/local/include/boost/asio/redirect_error.hpp \
-  /usr/local/include/boost/asio/impl/redirect_error.hpp \
-  /usr/local/include/boost/asio/require_concept.hpp \
-  /usr/local/include/boost/asio/traits/require_concept_member.hpp \
-  /usr/local/include/boost/asio/traits/require_concept_free.hpp \
-  /usr/local/include/boost/asio/traits/static_require_concept.hpp \
-  /usr/local/include/boost/asio/serial_port.hpp \
-  /usr/local/include/boost/asio/signal_set.hpp \
-  /usr/local/include/boost/asio/static_thread_pool.hpp \
-  /usr/local/include/boost/asio/thread_pool.hpp \
-  /usr/local/include/boost/asio/impl/thread_pool.hpp \
-  /usr/local/include/boost/asio/detail/blocking_executor_op.hpp \
-  /usr/local/include/boost/asio/impl/thread_pool.ipp \
-  /usr/local/include/boost/asio/strand.hpp \
-  /usr/local/include/boost/asio/detail/strand_executor_service.hpp \
-  /usr/local/include/boost/asio/detail/impl/strand_executor_service.hpp \
-  /usr/local/include/boost/asio/detail/impl/strand_executor_service.ipp \
-  /usr/local/include/boost/asio/stream_file.hpp \
-  /usr/local/include/boost/asio/streambuf.hpp \
-  /usr/local/include/boost/asio/system_timer.hpp \
-  /usr/local/include/boost/asio/use_future.hpp \
-  /usr/local/include/boost/asio/impl/use_future.hpp \
-  /usr/local/include/boost/asio/version.hpp \
-  /usr/local/include/boost/asio/windows/basic_object_handle.hpp \
-  /usr/local/include/boost/asio/windows/basic_overlapped_handle.hpp \
-  /usr/local/include/boost/asio/windows/basic_random_access_handle.hpp \
-  /usr/local/include/boost/asio/windows/basic_stream_handle.hpp \
-  /usr/local/include/boost/asio/windows/object_handle.hpp \
-  /usr/local/include/boost/asio/windows/overlapped_handle.hpp \
-  /usr/local/include/boost/asio/windows/overlapped_ptr.hpp \
-  /usr/local/include/boost/asio/windows/random_access_handle.hpp \
-  /usr/local/include/boost/asio/windows/stream_handle.hpp \
-  /usr/local/include/boost/asio/writable_pipe.hpp \
-  /usr/local/include/boost/asio/write_at.hpp \
-  /usr/local/include/boost/asio/impl/write_at.hpp \
-  /usr/local/include/boost/asio/ssl.hpp \
-  /usr/local/include/boost/asio/ssl/context.hpp \
-  /usr/local/include/boost/asio/ssl/context_base.hpp \
-  /usr/local/include/boost/asio/ssl/detail/openssl_types.hpp \
-  /usr/local/include/openssl/engine.h /usr/local/include/openssl/rand.h \
-  /usr/local/include/openssl/randerr.h /usr/local/include/openssl/ui.h \
-  /usr/local/include/openssl/uierr.h \
-  /usr/local/include/openssl/engineerr.h \
-  /usr/local/include/openssl/x509v3.h \
-  /usr/local/include/openssl/x509v3err.h \
-  /usr/local/include/boost/asio/ssl/detail/openssl_init.hpp \
-  /usr/local/include/boost/asio/ssl/detail/impl/openssl_init.ipp \
-  /usr/local/include/boost/asio/ssl/detail/password_callback.hpp \
-  /usr/local/include/boost/asio/ssl/detail/verify_callback.hpp \
-  /usr/local/include/boost/asio/ssl/verify_context.hpp \
-  /usr/local/include/boost/asio/ssl/verify_mode.hpp \
-  /usr/local/include/boost/asio/ssl/impl/context.hpp \
-  /usr/local/include/boost/asio/ssl/impl/context.ipp \
-  /usr/local/include/boost/asio/ssl/error.hpp \
-  /usr/local/include/boost/asio/ssl/impl/error.ipp \
-  /usr/local/include/boost/asio/ssl/host_name_verification.hpp \
-  /usr/local/include/boost/asio/ssl/impl/host_name_verification.ipp \
-  /usr/local/include/boost/asio/ssl/stream.hpp \
-  /usr/local/include/boost/asio/ssl/detail/buffered_handshake_op.hpp \
-  /usr/local/include/boost/asio/ssl/detail/engine.hpp \
-  /usr/local/include/boost/asio/ssl/stream_base.hpp \
-  /usr/local/include/boost/asio/ssl/detail/impl/engine.ipp \
-  /usr/local/include/boost/asio/ssl/detail/handshake_op.hpp \
-  /usr/local/include/boost/asio/ssl/detail/io.hpp \
-  /usr/local/include/boost/asio/ssl/detail/stream_core.hpp \
-  /usr/local/include/boost/asio/ssl/detail/read_op.hpp \
-  /usr/local/include/boost/asio/ssl/detail/shutdown_op.hpp \
-  /usr/local/include/boost/asio/ssl/detail/write_op.hpp \
-  /usr/local/include/boost/beast/core.hpp \
-  /usr/local/include/boost/beast/core/detail/config.hpp \
-  /usr/local/include/boost/core/ignore_unused.hpp \
-  /usr/local/include/boost/beast/core/async_base.hpp \
-  /usr/local/include/boost/beast/core/detail/allocator.hpp \
-  /usr/local/include/boost/beast/core/detail/async_base.hpp \
-  /usr/local/include/boost/core/exchange.hpp \
-  /usr/local/include/boost/beast/core/detail/filtering_cancellation_slot.hpp \
-  /usr/local/include/boost/beast/core/detail/work_guard.hpp \
-  /usr/local/include/boost/optional.hpp \
-  /usr/local/include/boost/optional/optional.hpp \
-  /usr/local/include/boost/core/invoke_swap.hpp \
-  /usr/local/include/boost/core/launder.hpp \
-  /usr/local/include/boost/optional/bad_optional_access.hpp \
-  /usr/local/include/boost/type_traits/alignment_of.hpp \
-  /usr/local/include/boost/type_traits/conjunction.hpp \
-  /usr/local/include/boost/type_traits/disjunction.hpp \
-  /usr/local/include/boost/type_traits/has_nothrow_constructor.hpp \
-  /usr/local/include/boost/type_traits/is_default_constructible.hpp \
-  /usr/local/include/boost/type_traits/is_complete.hpp \
-  /usr/local/include/boost/type_traits/declval.hpp \
-  /usr/local/include/boost/type_traits/add_rvalue_reference.hpp \
-  /usr/local/include/boost/type_traits/is_void.hpp \
-  /usr/local/include/boost/type_traits/is_reference.hpp \
-  /usr/local/include/boost/type_traits/is_lvalue_reference.hpp \
-  /usr/local/include/boost/type_traits/is_rvalue_reference.hpp \
-  /usr/local/include/boost/type_traits/remove_reference.hpp \
-  /usr/local/include/boost/type_traits/is_function.hpp \
-  /usr/local/include/boost/type_traits/detail/is_function_cxx_11.hpp \
-  /usr/local/include/boost/type_traits/detail/yes_no_type.hpp \
-  /usr/local/include/boost/type_traits/type_with_alignment.hpp \
-  /usr/local/include/boost/type_traits/is_pod.hpp \
-  /usr/local/include/boost/type_traits/is_scalar.hpp \
-  /usr/local/include/boost/type_traits/is_enum.hpp \
-  /usr/local/include/boost/type_traits/is_pointer.hpp \
-  /usr/local/include/boost/type_traits/is_member_pointer.hpp \
-  /usr/local/include/boost/type_traits/is_member_function_pointer.hpp \
-  /usr/local/include/boost/type_traits/detail/is_member_function_pointer_cxx_11.hpp \
-  /usr/local/include/boost/type_traits/remove_const.hpp \
-  /usr/local/include/boost/type_traits/decay.hpp \
-  /usr/local/include/boost/type_traits/is_array.hpp \
-  /usr/local/include/boost/type_traits/remove_bounds.hpp \
-  /usr/local/include/boost/type_traits/remove_extent.hpp \
-  /usr/local/include/boost/type_traits/add_pointer.hpp \
-  /usr/local/include/boost/type_traits/is_assignable.hpp \
-  /usr/local/include/boost/type_traits/is_const.hpp \
-  /usr/local/include/boost/type_traits/is_constructible.hpp \
-  /usr/local/include/boost/type_traits/is_destructible.hpp \
-  /usr/local/include/boost/type_traits/is_convertible.hpp \
-  /usr/local/include/boost/type_traits/is_nothrow_move_assignable.hpp \
-  /usr/local/include/boost/type_traits/has_trivial_move_assign.hpp \
-  /usr/local/include/boost/type_traits/is_volatile.hpp \
-  /usr/local/include/boost/type_traits/has_nothrow_assign.hpp \
-  /usr/local/include/boost/type_traits/enable_if.hpp \
-  /usr/local/include/boost/type_traits/is_nothrow_move_constructible.hpp \
-  /usr/local/include/boost/none.hpp /usr/local/include/boost/none_t.hpp \
-  /usr/local/include/boost/optional/optional_fwd.hpp \
-  /usr/local/include/boost/optional/detail/optional_config.hpp \
-  /usr/local/include/boost/optional/detail/optional_factory_support.hpp \
-  /usr/local/include/boost/optional/detail/optional_aligned_storage.hpp \
-  /usr/local/include/boost/optional/detail/optional_hash.hpp \
-  /usr/local/include/boost/optional/detail/optional_utility.hpp \
-  /usr/local/include/boost/optional/detail/optional_trivially_copyable_base.hpp \
-  /usr/local/include/boost/optional/detail/optional_reference_spec.hpp \
-  /usr/local/include/boost/optional/detail/optional_relops.hpp \
-  /usr/local/include/boost/optional/detail/optional_swap.hpp \
-  /usr/local/include/boost/core/empty_value.hpp \
-  /usr/local/include/boost/beast/core/impl/async_base.hpp \
-  /usr/local/include/boost/beast/core/basic_stream.hpp \
-  /usr/local/include/boost/beast/core/detail/stream_base.hpp \
   /usr/local/include/boost/beast/core/error.hpp \
   /usr/local/include/boost/beast/core/impl/error.hpp \
   /usr/local/include/boost/beast/core/impl/error.ipp \
@@ -1956,7 +1605,40 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/core/stream_traits.hpp \
   /usr/local/include/boost/beast/core/detail/static_const.hpp \
   /usr/local/include/boost/beast/core/detail/stream_traits.hpp \
+  /usr/local/include/boost/asio/buffer.hpp \
+  /usr/local/include/boost/asio/detail/array_fwd.hpp \
+  /usr/local/include/boost/asio/detail/string_view.hpp \
+  /usr/local/include/boost/asio/is_contiguous_iterator.hpp \
+  /usr/local/include/boost/asio/detail/is_buffer_sequence.hpp \
   /usr/local/include/boost/type_traits/make_void.hpp \
+  /usr/local/include/boost/asio/basic_socket.hpp \
+  /usr/local/include/boost/asio/socket_base.hpp \
+  /usr/local/include/boost/asio/detail/io_control.hpp \
+  /usr/local/include/boost/asio/detail/socket_option.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_service.hpp \
+  /usr/local/include/boost/asio/detail/buffer_sequence_adapter.hpp \
+  /usr/local/include/boost/asio/registered_buffer.hpp \
+  /usr/local/include/boost/asio/detail/impl/buffer_sequence_adapter.ipp \
+  /usr/local/include/boost/asio/detail/reactive_null_buffers_op.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_accept_op.hpp \
+  /usr/local/include/boost/asio/detail/socket_holder.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_connect_op.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_recvfrom_op.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_sendto_op.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_service_base.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_recv_op.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_recvmsg_op.hpp \
+  /usr/local/include/boost/asio/detail/reactive_socket_send_op.hpp \
+  /usr/local/include/boost/asio/detail/reactive_wait_op.hpp \
+  /usr/local/include/boost/asio/detail/impl/reactive_socket_service_base.ipp \
+  /usr/local/include/boost/asio/basic_stream_socket.hpp \
+  /usr/local/include/boost/asio/connect.hpp \
+  /usr/local/include/boost/asio/impl/connect.hpp \
+  /usr/local/include/boost/asio/detail/base_from_cancellation_state.hpp \
+  /usr/local/include/boost/asio/cancellation_state.hpp \
+  /usr/local/include/boost/asio/executor.hpp \
+  /usr/local/include/boost/asio/impl/executor.hpp \
+  /usr/local/include/boost/asio/impl/executor.ipp \
   /usr/local/include/boost/enable_shared_from_this.hpp \
   /usr/local/include/boost/smart_ptr/enable_shared_from_this.hpp \
   /usr/local/include/boost/smart_ptr/weak_ptr.hpp \
@@ -1990,6 +1672,7 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/core/detail/bind_continuation.hpp \
   /usr/local/include/boost/beast/core/detail/remap_post_to_defer.hpp \
   /usr/local/include/boost/beast/core/detail/is_invocable.hpp \
+  /usr/local/include/boost/asio/coroutine.hpp \
   /usr/local/include/boost/make_shared.hpp \
   /usr/local/include/boost/smart_ptr/make_shared.hpp \
   /usr/local/include/boost/smart_ptr/make_shared_object.hpp \
@@ -2090,6 +1773,16 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/core/detail/variant.hpp \
   /usr/local/include/boost/beast/core/buffers_generator.hpp \
   /usr/local/include/boost/beast/core/impl/buffers_generator.hpp \
+  /usr/local/include/boost/asio/write.hpp \
+  /usr/local/include/boost/asio/completion_condition.hpp \
+  /usr/local/include/boost/asio/basic_streambuf_fwd.hpp \
+  /usr/local/include/boost/asio/impl/write.hpp \
+  /usr/local/include/boost/asio/detail/base_from_completion_cond.hpp \
+  /usr/local/include/boost/asio/detail/consuming_buffers.hpp \
+  /usr/local/include/boost/asio/detail/dependent_type.hpp \
+  /usr/local/include/boost/asio/compose.hpp \
+  /usr/local/include/boost/asio/composed.hpp \
+  /usr/local/include/boost/asio/detail/composed_work.hpp \
   /usr/local/include/boost/beast/core/buffers_range.hpp \
   /usr/local/include/boost/beast/core/detail/buffers_range_adaptor.hpp \
   /usr/local/include/boost/beast/core/buffers_suffix.hpp \
@@ -2264,6 +1957,39 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/core/impl/string.ipp \
   /usr/local/include/boost/beast/core/detail/string.hpp \
   /usr/local/include/boost/beast/core/tcp_stream.hpp \
+  /usr/local/include/boost/asio/ip/tcp.hpp \
+  /usr/local/include/boost/asio/basic_socket_acceptor.hpp \
+  /usr/local/include/boost/asio/basic_socket_iostream.hpp \
+  /usr/local/include/boost/asio/basic_socket_streambuf.hpp \
+  /usr/local/include/boost/asio/ip/basic_endpoint.hpp \
+  /usr/local/include/boost/asio/ip/address.hpp \
+  /usr/local/include/boost/asio/ip/address_v4.hpp \
+  /usr/local/include/boost/asio/detail/array.hpp \
+  /usr/local/include/boost/asio/detail/winsock_init.hpp \
+  /usr/local/include/boost/asio/ip/impl/address_v4.hpp \
+  /usr/local/include/boost/asio/ip/impl/address_v4.ipp \
+  /usr/local/include/boost/asio/ip/address_v6.hpp \
+  /usr/local/include/boost/asio/ip/impl/address_v6.hpp \
+  /usr/local/include/boost/asio/ip/impl/address_v6.ipp \
+  /usr/local/include/boost/asio/ip/bad_address_cast.hpp \
+  /usr/local/include/boost/asio/ip/impl/address.hpp \
+  /usr/local/include/boost/asio/ip/impl/address.ipp \
+  /usr/local/include/boost/asio/ip/detail/endpoint.hpp \
+  /usr/local/include/boost/asio/ip/detail/impl/endpoint.ipp \
+  /usr/local/include/boost/asio/ip/impl/basic_endpoint.hpp \
+  /usr/local/include/boost/asio/ip/basic_resolver.hpp \
+  /usr/local/include/boost/asio/ip/basic_resolver_iterator.hpp \
+  /usr/local/include/boost/asio/ip/basic_resolver_entry.hpp \
+  /usr/local/include/boost/asio/ip/basic_resolver_query.hpp \
+  /usr/local/include/boost/asio/ip/resolver_query_base.hpp \
+  /usr/local/include/boost/asio/ip/resolver_base.hpp \
+  /usr/local/include/boost/asio/ip/basic_resolver_results.hpp \
+  /usr/local/include/boost/asio/detail/resolver_service.hpp \
+  /usr/local/include/boost/asio/detail/resolve_endpoint_op.hpp \
+  /usr/local/include/boost/asio/detail/resolve_op.hpp \
+  /usr/local/include/boost/asio/detail/resolve_query_op.hpp \
+  /usr/local/include/boost/asio/detail/resolver_service_base.hpp \
+  /usr/local/include/boost/asio/detail/impl/resolver_service_base.ipp \
   /usr/local/include/boost/beast/websocket.hpp \
   /usr/local/include/boost/beast/websocket/error.hpp \
   /usr/local/include/boost/beast/websocket/impl/error.hpp \
@@ -2458,27 +2184,284 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/websocket/impl/read.hpp \
   /usr/local/include/boost/beast/websocket/impl/stream.hpp \
   /usr/local/include/boost/beast/websocket/impl/write.hpp \
-  /usr/local/include/boost/beast/http.hpp \
-  /usr/local/include/boost/beast/http/basic_dynamic_body.hpp \
-  /usr/local/include/boost/beast/http/basic_dynamic_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/basic_file_body.hpp \
-  /usr/local/include/boost/beast/http/basic_file_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/buffer_body.hpp \
-  /usr/local/include/boost/beast/http/buffer_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/dynamic_body.hpp \
-  /usr/local/include/boost/beast/http/dynamic_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/file_body.hpp \
-  /usr/local/include/boost/beast/http/file_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/impl/file_body_win32.hpp \
-  /usr/local/include/boost/beast/http/message_generator.hpp \
-  /usr/local/include/boost/beast/http/message_generator_fwd.hpp \
-  /usr/local/include/boost/beast/http/impl/message_generator.hpp \
-  /usr/local/include/boost/beast/http/span_body.hpp \
-  /usr/local/include/boost/beast/http/span_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/vector_body.hpp \
-  /usr/local/include/boost/beast/http/vector_body_fwd.hpp \
+  /usr/local/include/boost/beast/websocket/ssl.hpp \
+  /usr/local/include/boost/asio/ssl/stream.hpp \
+  /usr/local/include/boost/asio/ssl/context.hpp \
+  /usr/local/include/boost/asio/ssl/context_base.hpp \
+  /usr/local/include/boost/asio/ssl/detail/openssl_types.hpp \
+  /usr/local/include/openssl/conf.h /usr/local/include/openssl/macros.h \
+  /usr/local/include/openssl/opensslconf.h \
+  /usr/local/include/openssl/configuration.h \
+  /usr/local/include/openssl/opensslv.h /usr/local/include/openssl/bio.h \
+  /usr/local/include/openssl/e_os2.h /usr/local/include/openssl/crypto.h \
+  /usr/local/include/openssl/safestack.h \
+  /usr/local/include/openssl/stack.h /usr/local/include/openssl/types.h \
+  /usr/local/include/openssl/cryptoerr.h \
+  /usr/local/include/openssl/symhacks.h \
+  /usr/local/include/openssl/cryptoerr_legacy.h \
+  /usr/local/include/openssl/core.h /usr/local/include/openssl/bioerr.h \
+  /usr/local/include/openssl/lhash.h \
+  /usr/local/include/openssl/conferr.h \
+  /usr/local/include/openssl/conftypes.h \
+  /usr/local/include/openssl/ssl.h /usr/local/include/openssl/e_ostime.h \
+  /usr/local/include/openssl/comp.h /usr/local/include/openssl/comperr.h \
+  /usr/local/include/openssl/x509.h /usr/local/include/openssl/buffer.h \
+  /usr/local/include/openssl/buffererr.h \
+  /usr/local/include/openssl/evp.h \
+  /usr/local/include/openssl/core_dispatch.h \
+  /usr/local/include/openssl/indicator.h \
+  /usr/local/include/openssl/params.h /usr/local/include/openssl/bn.h \
+  /usr/local/include/openssl/bnerr.h /usr/local/include/openssl/evperr.h \
+  /usr/local/include/openssl/objects.h \
+  /usr/local/include/openssl/obj_mac.h /usr/local/include/openssl/asn1.h \
+  /usr/local/include/openssl/asn1err.h \
+  /usr/local/include/openssl/objectserr.h \
+  /usr/local/include/openssl/ec.h /usr/local/include/openssl/ecerr.h \
+  /usr/local/include/openssl/rsa.h /usr/local/include/openssl/rsaerr.h \
+  /usr/local/include/openssl/dsa.h /usr/local/include/openssl/dh.h \
+  /usr/local/include/openssl/dherr.h /usr/local/include/openssl/dsaerr.h \
+  /usr/local/include/openssl/sha.h /usr/local/include/openssl/x509err.h \
+  /usr/local/include/openssl/x509_vfy.h \
+  /usr/local/include/openssl/pkcs7.h \
+  /usr/local/include/openssl/pkcs7err.h \
+  /usr/local/include/openssl/http.h /usr/local/include/openssl/pem.h \
+  /usr/local/include/openssl/pemerr.h /usr/local/include/openssl/hmac.h \
+  /usr/local/include/openssl/async.h \
+  /usr/local/include/openssl/asyncerr.h /usr/local/include/openssl/ct.h \
+  /usr/local/include/openssl/cterr.h /usr/local/include/openssl/sslerr.h \
+  /usr/local/include/openssl/sslerr_legacy.h \
+  /usr/local/include/openssl/prov_ssl.h \
+  /usr/local/include/openssl/ssl2.h /usr/local/include/openssl/ssl3.h \
+  /usr/local/include/openssl/tls1.h /usr/local/include/openssl/dtls1.h \
+  /usr/local/include/openssl/srtp.h /usr/local/include/openssl/quic.h \
+  /usr/local/include/openssl/engine.h /usr/local/include/openssl/rand.h \
+  /usr/local/include/openssl/randerr.h /usr/local/include/openssl/ui.h \
+  /usr/local/include/openssl/uierr.h /usr/local/include/openssl/err.h \
+  /usr/local/include/openssl/engineerr.h \
+  /usr/local/include/openssl/x509v3.h \
+  /usr/local/include/openssl/x509v3err.h \
+  /usr/local/include/boost/asio/ssl/detail/openssl_init.hpp \
+  /usr/local/include/boost/asio/ssl/detail/impl/openssl_init.ipp \
+  /usr/local/include/boost/asio/ssl/detail/password_callback.hpp \
+  /usr/local/include/boost/asio/ssl/detail/verify_callback.hpp \
+  /usr/local/include/boost/asio/ssl/verify_context.hpp \
+  /usr/local/include/boost/asio/ssl/verify_mode.hpp \
+  /usr/local/include/boost/asio/ssl/impl/context.hpp \
+  /usr/local/include/boost/asio/ssl/impl/context.ipp \
+  /usr/local/include/boost/asio/ssl/error.hpp \
+  /usr/local/include/boost/asio/ssl/impl/error.ipp \
+  /usr/local/include/boost/asio/ssl/detail/buffered_handshake_op.hpp \
+  /usr/local/include/boost/asio/ssl/detail/engine.hpp \
+  /usr/local/include/boost/asio/detail/static_mutex.hpp \
+  /usr/local/include/boost/asio/detail/posix_static_mutex.hpp \
+  /usr/local/include/boost/asio/ssl/stream_base.hpp \
+  /usr/local/include/boost/asio/ssl/detail/impl/engine.ipp \
+  /usr/local/include/boost/asio/ssl/detail/handshake_op.hpp \
+  /usr/local/include/boost/asio/ssl/detail/io.hpp \
+  /usr/local/include/boost/asio/ssl/detail/stream_core.hpp \
+  /usr/local/include/boost/asio/ssl/detail/read_op.hpp \
+  /usr/local/include/boost/asio/ssl/detail/shutdown_op.hpp \
+  /usr/local/include/boost/asio/ssl/detail/write_op.hpp \
+  /usr/local/include/boost/beast/websocket/impl/ssl.hpp \
+  /usr/local/include/boost/asio.hpp \
+  /usr/local/include/boost/asio/any_completion_executor.hpp \
+  /usr/local/include/boost/asio/impl/any_completion_executor.ipp \
+  /usr/local/include/boost/asio/any_completion_handler.hpp \
+  /usr/local/include/boost/asio/recycling_allocator.hpp \
+  /usr/local/include/boost/asio/as_tuple.hpp \
+  /usr/local/include/boost/asio/impl/as_tuple.hpp \
+  /usr/local/include/boost/asio/awaitable.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/coroutine_handle.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/coroutine_traits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/noop_coroutine_handle.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__coroutine/trivial_awaitables.h \
+  /usr/local/include/boost/asio/impl/awaitable.hpp \
+  /usr/local/include/boost/asio/disposition.hpp \
+  /usr/local/include/boost/asio/this_coro.hpp \
+  /usr/local/include/boost/asio/basic_datagram_socket.hpp \
+  /usr/local/include/boost/asio/basic_deadline_timer.hpp \
+  /usr/local/include/boost/asio/basic_file.hpp \
+  /usr/local/include/boost/asio/basic_io_object.hpp \
+  /usr/local/include/boost/asio/basic_random_access_file.hpp \
+  /usr/local/include/boost/asio/basic_raw_socket.hpp \
+  /usr/local/include/boost/asio/basic_readable_pipe.hpp \
+  /usr/local/include/boost/asio/detail/reactive_descriptor_service.hpp \
+  /usr/local/include/boost/asio/detail/descriptor_ops.hpp \
+  /usr/local/include/boost/asio/detail/impl/descriptor_ops.ipp \
+  /usr/local/include/boost/asio/detail/descriptor_read_op.hpp \
+  /usr/local/include/boost/asio/detail/descriptor_write_op.hpp \
+  /usr/local/include/boost/asio/posix/descriptor_base.hpp \
+  /usr/local/include/boost/asio/detail/impl/reactive_descriptor_service.ipp \
+  /usr/local/include/boost/asio/basic_seq_packet_socket.hpp \
+  /usr/local/include/boost/asio/basic_serial_port.hpp \
+  /usr/local/include/boost/asio/serial_port_base.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/termios.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/termios.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/ttydefaults.h \
+  /usr/local/include/boost/asio/impl/serial_port_base.hpp \
+  /usr/local/include/boost/asio/impl/serial_port_base.ipp \
+  /usr/local/include/boost/asio/detail/posix_serial_port_service.hpp \
+  /usr/local/include/boost/asio/detail/impl/posix_serial_port_service.ipp \
+  /usr/local/include/boost/asio/basic_signal_set.hpp \
+  /usr/local/include/boost/asio/detail/signal_set_service.hpp \
+  /usr/local/include/boost/asio/signal_set_base.hpp \
+  /usr/local/include/boost/asio/detail/signal_handler.hpp \
+  /usr/local/include/boost/asio/detail/signal_op.hpp \
+  /usr/local/include/boost/asio/detail/impl/signal_set_service.ipp \
+  /usr/local/include/boost/asio/basic_stream_file.hpp \
+  /usr/local/include/boost/asio/basic_streambuf.hpp \
+  /usr/local/include/boost/asio/basic_writable_pipe.hpp \
+  /usr/local/include/boost/asio/bind_allocator.hpp \
+  /usr/local/include/boost/asio/bind_cancellation_slot.hpp \
+  /usr/local/include/boost/asio/bind_immediate_executor.hpp \
+  /usr/local/include/boost/asio/buffer_registration.hpp \
+  /usr/local/include/boost/asio/buffered_read_stream_fwd.hpp \
+  /usr/local/include/boost/asio/buffered_read_stream.hpp \
+  /usr/local/include/boost/asio/detail/buffer_resize_guard.hpp \
+  /usr/local/include/boost/asio/detail/buffered_stream_storage.hpp \
+  /usr/local/include/boost/asio/impl/buffered_read_stream.hpp \
+  /usr/local/include/boost/asio/buffered_stream_fwd.hpp \
+  /usr/local/include/boost/asio/buffered_stream.hpp \
+  /usr/local/include/boost/asio/buffered_write_stream.hpp \
+  /usr/local/include/boost/asio/buffered_write_stream_fwd.hpp \
+  /usr/local/include/boost/asio/impl/buffered_write_stream.hpp \
+  /usr/local/include/boost/asio/buffers_iterator.hpp \
+  /usr/local/include/boost/asio/cancel_after.hpp \
+  /usr/local/include/boost/asio/impl/cancel_after.hpp \
+  /usr/local/include/boost/asio/detail/timed_cancel_op.hpp \
+  /usr/local/include/boost/asio/detail/completion_payload.hpp \
+  /usr/local/include/boost/asio/detail/completion_message.hpp \
+  /usr/local/include/boost/asio/detail/completion_payload_handler.hpp \
+  /usr/local/include/boost/asio/cancel_at.hpp \
+  /usr/local/include/boost/asio/impl/cancel_at.hpp \
+  /usr/local/include/boost/asio/co_composed.hpp \
+  /usr/local/include/boost/asio/co_spawn.hpp \
+  /usr/local/include/boost/asio/impl/co_spawn.hpp \
+  /usr/local/include/boost/asio/use_awaitable.hpp \
+  /usr/local/include/boost/asio/impl/use_awaitable.hpp \
+  /usr/local/include/boost/asio/connect_pipe.hpp \
+  /usr/local/include/boost/asio/impl/connect_pipe.hpp \
+  /usr/local/include/boost/asio/impl/connect_pipe.ipp \
+  /usr/local/include/boost/asio/consign.hpp \
+  /usr/local/include/boost/asio/impl/consign.hpp \
+  /usr/local/include/boost/asio/deadline_timer.hpp \
+  /usr/local/include/boost/asio/defer.hpp \
+  /usr/local/include/boost/asio/detail/initiate_defer.hpp \
+  /usr/local/include/boost/asio/detached.hpp \
+  /usr/local/include/boost/asio/impl/detached.hpp \
+  /usr/local/include/boost/asio/file_base.hpp \
+  /usr/local/include/boost/asio/generic/basic_endpoint.hpp \
+  /usr/local/include/boost/asio/generic/detail/endpoint.hpp \
+  /usr/local/include/boost/asio/generic/detail/impl/endpoint.ipp \
+  /usr/local/include/boost/asio/generic/datagram_protocol.hpp \
+  /usr/local/include/boost/asio/generic/raw_protocol.hpp \
+  /usr/local/include/boost/asio/generic/seq_packet_protocol.hpp \
+  /usr/local/include/boost/asio/generic/stream_protocol.hpp \
+  /usr/local/include/boost/asio/high_resolution_timer.hpp \
+  /usr/local/include/boost/asio/immediate.hpp \
+  /usr/local/include/boost/asio/io_context_strand.hpp \
+  /usr/local/include/boost/asio/detail/strand_service.hpp \
+  /usr/local/include/boost/asio/detail/impl/strand_service.hpp \
+  /usr/local/include/boost/asio/detail/impl/strand_service.ipp \
+  /usr/local/include/boost/asio/ip/address_v4_iterator.hpp \
+  /usr/local/include/boost/asio/ip/address_v4_range.hpp \
+  /usr/local/include/boost/asio/ip/address_v6_iterator.hpp \
+  /usr/local/include/boost/asio/ip/address_v6_range.hpp \
+  /usr/local/include/boost/asio/ip/network_v4.hpp \
+  /usr/local/include/boost/asio/ip/impl/network_v4.hpp \
+  /usr/local/include/boost/asio/ip/impl/network_v4.ipp \
+  /usr/local/include/boost/asio/ip/network_v6.hpp \
+  /usr/local/include/boost/asio/ip/impl/network_v6.hpp \
+  /usr/local/include/boost/asio/ip/impl/network_v6.ipp \
+  /usr/local/include/boost/asio/ip/host_name.hpp \
+  /usr/local/include/boost/asio/ip/impl/host_name.ipp \
+  /usr/local/include/boost/asio/ip/icmp.hpp \
+  /usr/local/include/boost/asio/ip/multicast.hpp \
+  /usr/local/include/boost/asio/ip/detail/socket_option.hpp \
+  /usr/local/include/boost/asio/ip/udp.hpp \
+  /usr/local/include/boost/asio/ip/unicast.hpp \
+  /usr/local/include/boost/asio/ip/v6_only.hpp \
+  /usr/local/include/boost/asio/is_read_buffered.hpp \
+  /usr/local/include/boost/asio/is_write_buffered.hpp \
+  /usr/local/include/boost/asio/local/basic_endpoint.hpp \
+  /usr/local/include/boost/asio/local/detail/endpoint.hpp \
+  /usr/local/include/boost/asio/local/detail/impl/endpoint.ipp \
+  /usr/local/include/boost/asio/local/connect_pair.hpp \
+  /usr/local/include/boost/asio/local/datagram_protocol.hpp \
+  /usr/local/include/boost/asio/local/seq_packet_protocol.hpp \
+  /usr/local/include/boost/asio/local/stream_protocol.hpp \
+  /usr/local/include/boost/asio/packaged_task.hpp \
+  /usr/local/include/boost/asio/detail/future.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/future \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/thread \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/formatter.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/jthread.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_source.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/intrusive_shared_ptr.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_state.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/atomic_unique_lock.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/intrusive_list_view.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_token.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/thread.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__thread/this_thread.h \
+  /usr/local/include/boost/asio/placeholders.hpp \
+  /usr/local/include/boost/asio/posix/basic_descriptor.hpp \
+  /usr/local/include/boost/asio/posix/basic_stream_descriptor.hpp \
+  /usr/local/include/boost/asio/posix/descriptor.hpp \
+  /usr/local/include/boost/asio/posix/stream_descriptor.hpp \
+  /usr/local/include/boost/asio/prepend.hpp \
+  /usr/local/include/boost/asio/impl/prepend.hpp \
+  /usr/local/include/boost/asio/random_access_file.hpp \
+  /usr/local/include/boost/asio/read.hpp \
+  /usr/local/include/boost/asio/impl/read.hpp \
+  /usr/local/include/boost/asio/read_at.hpp \
+  /usr/local/include/boost/asio/impl/read_at.hpp \
+  /usr/local/include/boost/asio/read_until.hpp \
+  /usr/local/include/boost/asio/detail/regex_fwd.hpp \
+  /usr/local/include/boost/asio/impl/read_until.hpp \
+  /usr/local/include/boost/asio/readable_pipe.hpp \
+  /usr/local/include/boost/asio/redirect_error.hpp \
+  /usr/local/include/boost/asio/impl/redirect_error.hpp \
+  /usr/local/include/boost/asio/require_concept.hpp \
+  /usr/local/include/boost/asio/traits/require_concept_member.hpp \
+  /usr/local/include/boost/asio/traits/require_concept_free.hpp \
+  /usr/local/include/boost/asio/traits/static_require_concept.hpp \
+  /usr/local/include/boost/asio/serial_port.hpp \
+  /usr/local/include/boost/asio/signal_set.hpp \
+  /usr/local/include/boost/asio/static_thread_pool.hpp \
+  /usr/local/include/boost/asio/thread_pool.hpp \
+  /usr/local/include/boost/asio/impl/thread_pool.hpp \
+  /usr/local/include/boost/asio/detail/blocking_executor_op.hpp \
+  /usr/local/include/boost/asio/impl/thread_pool.ipp \
+  /usr/local/include/boost/asio/strand.hpp \
+  /usr/local/include/boost/asio/detail/strand_executor_service.hpp \
+  /usr/local/include/boost/asio/detail/impl/strand_executor_service.hpp \
+  /usr/local/include/boost/asio/detail/impl/strand_executor_service.ipp \
+  /usr/local/include/boost/asio/stream_file.hpp \
+  /usr/local/include/boost/asio/streambuf.hpp \
+  /usr/local/include/boost/asio/system_timer.hpp \
+  /usr/local/include/boost/asio/use_future.hpp \
+  /usr/local/include/boost/asio/impl/use_future.hpp \
+  /usr/local/include/boost/asio/version.hpp \
+  /usr/local/include/boost/asio/windows/basic_object_handle.hpp \
+  /usr/local/include/boost/asio/windows/basic_overlapped_handle.hpp \
+  /usr/local/include/boost/asio/windows/basic_random_access_handle.hpp \
+  /usr/local/include/boost/asio/windows/basic_stream_handle.hpp \
+  /usr/local/include/boost/asio/windows/object_handle.hpp \
+  /usr/local/include/boost/asio/windows/overlapped_handle.hpp \
+  /usr/local/include/boost/asio/windows/overlapped_ptr.hpp \
+  /usr/local/include/boost/asio/windows/random_access_handle.hpp \
+  /usr/local/include/boost/asio/windows/stream_handle.hpp \
+  /usr/local/include/boost/asio/writable_pipe.hpp \
+  /usr/local/include/boost/asio/write_at.hpp \
+  /usr/local/include/boost/asio/impl/write_at.hpp \
+  /usr/local/include/boost/asio/ssl.hpp \
+  /usr/local/include/boost/asio/ssl/host_name_verification.hpp \
+  /usr/local/include/boost/asio/ssl/impl/host_name_verification.ipp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers/crypto.hpp \
-  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/json.hpp \
+  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers/socketHandler.hpp \
+  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/../json.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/valarray \
@@ -2528,7 +2511,4 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/take_while_view.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/transform_view.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/views.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/istream_view.h \
-  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers/socketHandler.hpp \
-  /usr/local/include/boost/beast/websocket/ssl.hpp \
-  /usr/local/include/boost/beast/websocket/impl/ssl.hpp
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/istream_view.h

@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/back/main.cpp.o: \
-  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/main.cpp \
+  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Encrypted-Messaging-main/Messaging/back/main.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -1878,9 +1878,10 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/asio/ssl/detail/read_op.hpp \
   /usr/local/include/boost/asio/ssl/detail/shutdown_op.hpp \
   /usr/local/include/boost/asio/ssl/detail/write_op.hpp \
-  /usr/local/include/boost/beast/core.hpp \
+  /usr/local/include/boost/beast.hpp \
   /usr/local/include/boost/beast/core/detail/config.hpp \
   /usr/local/include/boost/core/ignore_unused.hpp \
+  /usr/local/include/boost/beast/core.hpp \
   /usr/local/include/boost/beast/core/async_base.hpp \
   /usr/local/include/boost/beast/core/detail/allocator.hpp \
   /usr/local/include/boost/beast/core/detail/async_base.hpp \
@@ -2264,14 +2265,11 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/core/impl/string.ipp \
   /usr/local/include/boost/beast/core/detail/string.hpp \
   /usr/local/include/boost/beast/core/tcp_stream.hpp \
-  /usr/local/include/boost/beast/websocket.hpp \
-  /usr/local/include/boost/beast/websocket/error.hpp \
-  /usr/local/include/boost/beast/websocket/impl/error.hpp \
-  /usr/local/include/boost/beast/websocket/impl/error.ipp \
-  /usr/local/include/boost/beast/websocket/option.hpp \
-  /usr/local/include/boost/beast/websocket/rfc6455.hpp \
-  /usr/local/include/boost/beast/http/empty_body.hpp \
-  /usr/local/include/boost/beast/http/empty_body_fwd.hpp \
+  /usr/local/include/boost/beast/http.hpp \
+  /usr/local/include/boost/beast/http/basic_dynamic_body.hpp \
+  /usr/local/include/boost/beast/http/basic_dynamic_body_fwd.hpp \
+  /usr/local/include/boost/beast/core/detail/buffer.hpp \
+  /usr/local/include/boost/beast/core/detail/clamp.hpp \
   /usr/local/include/boost/beast/http/error.hpp \
   /usr/local/include/boost/beast/http/impl/error.hpp \
   /usr/local/include/boost/beast/http/impl/error.ipp \
@@ -2302,7 +2300,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/move/adl_move_swap.hpp \
   /usr/local/include/boost/beast/http/impl/fields.hpp \
   /usr/local/include/boost/beast/core/detail/buffers_ref.hpp \
-  /usr/local/include/boost/beast/core/detail/clamp.hpp \
   /usr/local/include/boost/beast/core/detail/temporary_buffer.hpp \
   /usr/local/include/boost/beast/core/detail/impl/temporary_buffer.ipp \
   /usr/local/include/boost/beast/http/verb.hpp \
@@ -2324,8 +2321,52 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/core/detail/varint.hpp \
   /usr/local/include/boost/beast/http/impl/fields.ipp \
   /usr/local/include/boost/beast/http/impl/message.hpp \
+  /usr/local/include/boost/beast/http/basic_file_body.hpp \
+  /usr/local/include/boost/beast/http/basic_file_body_fwd.hpp \
+  /usr/local/include/boost/beast/http/basic_parser.hpp \
+  /usr/local/include/boost/beast/http/detail/basic_parser.hpp \
+  /usr/local/include/boost/beast/core/detail/char_buffer.hpp \
+  /usr/local/include/boost/beast/http/detail/basic_parser.ipp \
+  /usr/local/include/boost/beast/http/impl/basic_parser.hpp \
+  /usr/local/include/boost/make_unique.hpp \
+  /usr/local/include/boost/smart_ptr/make_unique.hpp \
+  /usr/local/include/boost/beast/http/impl/basic_parser.ipp \
+  /usr/local/include/boost/beast/http/buffer_body.hpp \
+  /usr/local/include/boost/beast/http/buffer_body_fwd.hpp \
+  /usr/local/include/boost/beast/http/dynamic_body.hpp \
+  /usr/local/include/boost/beast/http/dynamic_body_fwd.hpp \
+  /usr/local/include/boost/beast/http/empty_body.hpp \
+  /usr/local/include/boost/beast/http/empty_body_fwd.hpp \
+  /usr/local/include/boost/beast/http/file_body.hpp \
+  /usr/local/include/boost/beast/http/file_body_fwd.hpp \
+  /usr/local/include/boost/beast/http/impl/file_body_win32.hpp \
+  /usr/local/include/boost/beast/http/message_generator.hpp \
+  /usr/local/include/boost/beast/http/message_generator_fwd.hpp \
+  /usr/local/include/boost/beast/http/serializer.hpp \
+  /usr/local/include/boost/beast/http/serializer_fwd.hpp \
+  /usr/local/include/boost/beast/http/impl/serializer.hpp \
+  /usr/local/include/boost/beast/http/impl/message_generator.hpp \
+  /usr/local/include/boost/beast/http/parser.hpp \
+  /usr/local/include/boost/beast/http/impl/parser.hpp \
+  /usr/local/include/boost/beast/http/read.hpp \
+  /usr/local/include/boost/beast/http/impl/read.hpp \
+  /usr/local/include/boost/beast/core/detail/read.hpp \
+  /usr/local/include/boost/beast/core/detail/impl/read.hpp \
+  /usr/local/include/boost/beast/http/span_body.hpp \
+  /usr/local/include/boost/beast/http/span_body_fwd.hpp \
   /usr/local/include/boost/beast/http/string_body.hpp \
   /usr/local/include/boost/beast/http/string_body_fwd.hpp \
+  /usr/local/include/boost/beast/http/vector_body.hpp \
+  /usr/local/include/boost/beast/http/vector_body_fwd.hpp \
+  /usr/local/include/boost/beast/http/write.hpp \
+  /usr/local/include/boost/beast/http/impl/write.hpp \
+  /usr/local/include/boost/beast/version.hpp \
+  /usr/local/include/boost/beast/websocket.hpp \
+  /usr/local/include/boost/beast/websocket/error.hpp \
+  /usr/local/include/boost/beast/websocket/impl/error.hpp \
+  /usr/local/include/boost/beast/websocket/impl/error.ipp \
+  /usr/local/include/boost/beast/websocket/option.hpp \
+  /usr/local/include/boost/beast/websocket/rfc6455.hpp \
   /usr/local/include/boost/beast/websocket/impl/rfc6455.hpp \
   /usr/local/include/boost/beast/websocket/stream.hpp \
   /usr/local/include/boost/beast/websocket/stream_base.hpp \
@@ -2417,8 +2458,6 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/zlib/detail/deflate_stream.hpp \
   /usr/local/include/boost/beast/zlib/detail/ranges.hpp \
   /usr/local/include/boost/beast/zlib/detail/deflate_stream.ipp \
-  /usr/local/include/boost/make_unique.hpp \
-  /usr/local/include/boost/smart_ptr/make_unique.hpp \
   /usr/local/include/boost/beast/zlib/inflate_stream.hpp \
   /usr/local/include/boost/beast/zlib/detail/inflate_stream.hpp \
   /usr/local/include/boost/beast/zlib/detail/bitstream.hpp \
@@ -2431,54 +2470,20 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /usr/local/include/boost/beast/core/detail/service_base.hpp \
   /usr/local/include/boost/beast/websocket/detail/service.ipp \
   /usr/local/include/boost/beast/websocket/detail/soft_mutex.hpp \
-  /usr/local/include/boost/beast/http/read.hpp \
-  /usr/local/include/boost/beast/http/basic_parser.hpp \
-  /usr/local/include/boost/beast/http/detail/basic_parser.hpp \
-  /usr/local/include/boost/beast/core/detail/char_buffer.hpp \
-  /usr/local/include/boost/beast/http/detail/basic_parser.ipp \
-  /usr/local/include/boost/beast/http/impl/basic_parser.hpp \
-  /usr/local/include/boost/beast/http/impl/basic_parser.ipp \
-  /usr/local/include/boost/beast/http/impl/read.hpp \
-  /usr/local/include/boost/beast/http/parser.hpp \
-  /usr/local/include/boost/beast/http/impl/parser.hpp \
-  /usr/local/include/boost/beast/core/detail/buffer.hpp \
-  /usr/local/include/boost/beast/core/detail/read.hpp \
-  /usr/local/include/boost/beast/core/detail/impl/read.hpp \
-  /usr/local/include/boost/beast/http/write.hpp \
-  /usr/local/include/boost/beast/http/serializer.hpp \
-  /usr/local/include/boost/beast/http/serializer_fwd.hpp \
-  /usr/local/include/boost/beast/http/impl/serializer.hpp \
-  /usr/local/include/boost/beast/http/impl/write.hpp \
   /usr/local/include/boost/beast/websocket/impl/accept.hpp \
   /usr/local/include/boost/beast/websocket/detail/type_traits.hpp \
-  /usr/local/include/boost/beast/version.hpp \
   /usr/local/include/boost/beast/websocket/impl/close.hpp \
   /usr/local/include/boost/beast/websocket/impl/handshake.hpp \
   /usr/local/include/boost/beast/websocket/impl/ping.hpp \
   /usr/local/include/boost/beast/websocket/impl/read.hpp \
   /usr/local/include/boost/beast/websocket/impl/stream.hpp \
   /usr/local/include/boost/beast/websocket/impl/write.hpp \
-  /usr/local/include/boost/beast/http.hpp \
-  /usr/local/include/boost/beast/http/basic_dynamic_body.hpp \
-  /usr/local/include/boost/beast/http/basic_dynamic_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/basic_file_body.hpp \
-  /usr/local/include/boost/beast/http/basic_file_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/buffer_body.hpp \
-  /usr/local/include/boost/beast/http/buffer_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/dynamic_body.hpp \
-  /usr/local/include/boost/beast/http/dynamic_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/file_body.hpp \
-  /usr/local/include/boost/beast/http/file_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/impl/file_body_win32.hpp \
-  /usr/local/include/boost/beast/http/message_generator.hpp \
-  /usr/local/include/boost/beast/http/message_generator_fwd.hpp \
-  /usr/local/include/boost/beast/http/impl/message_generator.hpp \
-  /usr/local/include/boost/beast/http/span_body.hpp \
-  /usr/local/include/boost/beast/http/span_body_fwd.hpp \
-  /usr/local/include/boost/beast/http/vector_body.hpp \
-  /usr/local/include/boost/beast/http/vector_body_fwd.hpp \
-  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers/crypto.hpp \
-  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/json.hpp \
+  /usr/local/include/boost/beast/zlib.hpp \
+  /usr/local/include/boost/beast/websocket/ssl.hpp \
+  /usr/local/include/boost/beast/websocket/impl/ssl.hpp \
+  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Encrypted-Messaging-main/Messaging/back/headers/crypto.hpp \
+  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Encrypted-Messaging-main/Messaging/back/headers/socketHandler.hpp \
+  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Encrypted-Messaging-main/Messaging/back/../json.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/valarray \
@@ -2528,7 +2533,4 @@ CMakeFiles/main.dir/back/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/take_while_view.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/transform_view.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/views.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/istream_view.h \
-  /Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers/socketHandler.hpp \
-  /usr/local/include/boost/beast/websocket/ssl.hpp \
-  /usr/local/include/boost/beast/websocket/impl/ssl.hpp
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ranges/istream_view.h

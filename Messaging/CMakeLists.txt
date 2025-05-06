@@ -40,6 +40,7 @@ add_executable(main
 # Include directories
 target_include_directories(main PRIVATE 
     ${OPENSSL_INCLUDE_DIR}
+    ${CMAKE_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/back
     ${CMAKE_SOURCE_DIR}/back/headers
     ${Boost_INCLUDE_DIR}

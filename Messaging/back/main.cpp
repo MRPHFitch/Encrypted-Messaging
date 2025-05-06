@@ -20,15 +20,24 @@
 #include <arpa/inet.h>
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>
+#include <boost/beast/core.hpp>
+#include <boost/beast/websocket.hpp>
+#include <boost/beast/http.hpp>
 #include <unistd.h>
 #include <unordered_map>
 #include <mutex>
 #include "crypto.hpp"
-#include "socketHandler.cpp"
+#include "json.hpp"
+#include "socketHandler.hpp"
 
 using namespace std;
+using json=nlohmann::json;
+namespace beast=boost::beast;
+namespace http = boost::beast::http;
+namespace net=boost::asio;
 namespace ssl=net::ssl;
 
+<<<<<<< Updated upstream
 struct KeyInfo{
     string id;
     RSAKeyPair keys;
@@ -57,6 +66,10 @@ class KDC{
             keyMap.erase(ID);
         }
 };
+=======
+string peerAddress;
+KDC control;
+>>>>>>> Stashed changes
 void printHex(const vector<unsigned char>& data){
     for (unsigned char byte : data) {
         printf("%02x", byte);
@@ -121,10 +134,15 @@ void sendMessageFront(string& name, string& plaintext, string& ciphertext){
     }
 }
 int main() {
+<<<<<<< Updated upstream
+=======
+    //Initialize KDC and crypto file
+>>>>>>> Stashed changes
     try{
         net::io_context ioc;
         ssl::context ctx{ssl::context::tlsv12};
 
+<<<<<<< Updated upstream
         ctx.use_certificate_file("server.cert", ssl::context::pem);
         ctx.use_certificate_file("server.key", ssl::context::pem);
         tcp::acceptor acceptor{ioc, {tcp::v4(), 49250}};
@@ -134,11 +152,98 @@ int main() {
             acceptor.accept(socket);
             auto ws=make_shared<WebSocketStream>(std::move(socket), ctx);
             thread{bind(&doSession, ws)}.detach();
+=======
+        // Load the server cert and private key
+        try{
+
+            ctx.use_certificate_file("localhost.pem", ssl::context::pem);
+            ctx.use_private_key_file("localhost-key.pem", ssl::context::pem);
+        }
+        catch(const exception &e){
+            cerr<<"Failed to load cert/key"<<endl;
+        }
+        
+        cout << "Setting up acceptor..." << endl;
+        boost::system::error_code ec;
+        tcp::acceptor acceptor{ioc};
+        acceptor.open(tcp::v4(), ec);
+        if (ec) {
+            cerr << "Error opening WS acceptor: " << ec.message() << endl;
+            return 1;
+        }
+        acceptor.set_option(tcp::acceptor::reuse_address(true));
+        acceptor.bind(tcp::endpoint(tcp::v4(), 8081), ec);
+        if (ec) {
+            cerr << "Error binding WS acceptor: " << ec.message() << endl;
+            return 1;
+        }
+        acceptor.listen(boost::asio::socket_base::max_listen_connections, ec);
+        if (ec) {
+            cerr << "Error listening on WS acceptor: " << ec.message() << endl;
+            return 1;
+        }
+        cout << "Server listening on port 8081..." << endl;
+        
+        auto handleConn = [](tcp::socket socket, ssl::context& ctx) {
+            try {
+                std::cout << "New connection from: " << socket.remote_endpoint().address().to_string() 
+                          << ":" << socket.remote_endpoint().port() << std::endl;
+        
+                // Create an SSL stream and perform the SSL handshake
+                cout<<"Creating SSL stream"<<endl;
+                ssl::stream<tcp::socket> ssl_stream(std::move(socket), ctx);
+                cout<<"Starting the handshake."<<endl;
+                ssl_stream.handshake(ssl::stream_base::server);
+                cout<<"Handshake completed."<<endl;
+        
+                // Create a WebSocket stream using the SSL stream then ensure the handshake occurs
+                cout<<"Wrapping in socket stream."<<endl;
+                auto ws = std::make_shared<WebSocketStream>(std::move(ssl_stream));
+                beast::flat_buffer buffer;
+                http::request<http::string_body> req;
+                try{
+                    cout<<"Reading HTTP upgrade request."<<endl;
+                    http::read(*ws, buffer, req);
+                    cout<<"Upgrade request received:\n."<<req<<endl;
+                    ws->accept(req);
+                    cout<<"webSocket accepted."<<endl;
+                }
+                catch(const beast::system_error &e){
+                    cerr<<"WebSocket connection failed: "<<e.code().message()<<endl;
+                    return;
+                }
+               
+
+        
+                std::thread t([ws]() {
+                    try {
+                        std::cout << "Starting session..." << std::endl;
+                        doSession(ws, control);
+                        std::cout << "Session ended" << std::endl;
+                    } catch (const std::exception& e) {
+                        std::cerr << "Error in session: " << e.what() << std::endl;
+                    }
+                });
+                t.detach();
+            } catch (const std::exception& e) {
+                std::cerr << "Error handling connection: " << e.what() << std::endl;
+            }
+        };
+        
+        // Endless loop for the connection
+        for (;;){
+            tcp::socket sock{ioc};
+            cout << "Waiting for connection on port 8081..." << endl;
+            acceptor.accept(sock);
+            cout << "New connection accepted" << endl;
+            std::thread{handleConn, std::move(sock), std::ref(ctx)}.detach();
+>>>>>>> Stashed changes
         }
     }
     catch(exception const& e){
         cerr<<"Error: "<<e.what()<<endl;
     }
+<<<<<<< Updated upstream
     //Initialize KDC and crypto file
     KDC control;
 
@@ -194,5 +299,8 @@ int main() {
         };
     }
     cryptography::cleanup();
+=======
+    peerAddress="";
+>>>>>>> Stashed changes
     return 0;
 }

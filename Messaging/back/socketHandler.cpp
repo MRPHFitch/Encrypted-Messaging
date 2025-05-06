@@ -9,6 +9,11 @@
 #include <unordered_map>
 #include <mutex>
 #include <memory>
+<<<<<<< Updated upstream
+=======
+#include "crypto.hpp"
+#include "socketHandler.hpp"
+>>>>>>> Stashed changes
 #include "../json.hpp"
 
 namespace beast=boost::beast;
@@ -24,6 +29,7 @@ unordered_map<string, shared_ptr<WebSocketStream>> clients;
 mutex connMutex;
 string recipientName;
 mutex recipMutex;
+<<<<<<< Updated upstream
 
 
 void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<void(const string&)> messageReceived){
@@ -60,6 +66,234 @@ void doSession(shared_ptr<WebSocketStream> ws, const string& clientId, function<
                     if (it != clients.end()){
                         it->second->text(true);
                         it->second->write(net::buffer(message));
+=======
+RSAKeyPair session;
+initiationInfo initInfo;
+vector<vector<unsigned char>> messageAndIV;
+
+void ClientManager::addClient(const string &id, shared_ptr<WebSocketStream> ws){
+    lock_guard<mutex> lock(connMutex);
+    clients[id] = ws;
+    cout << "Client " << id << " added. Total clients: " << clients.size() << endl;
+}
+
+void ClientManager::removeClient(const string &id){
+    lock_guard<mutex> lock(connMutex);
+    clients.erase(id);
+    cout << "Client " << id << " removed. Total clients: " << clients.size() << endl;
+}
+
+shared_ptr<WebSocketStream> ClientManager::getClient(const string &id){
+    lock_guard<mutex> lock(connMutex);
+    auto it = clients.find(id);
+    if (it != clients.end()){
+        return it->second;
+    }
+    return nullptr;
+}
+
+ClientManager clientMan;
+
+
+class IDGenerator{
+private:
+    int nextId = 1;
+    mutex idMutex;
+public:
+    string generateId(){
+        lock_guard<mutex> lock(idMutex);
+        return "user" + to_string(nextId++);
+    }
+};
+
+IDGenerator idGen;
+
+// Forward declarations
+template<typename Stream>
+void doSession(shared_ptr<WebSocketStream> ws);
+
+template<typename Stream>
+void sendMessage(const shared_ptr<WebSocketStream>& ws, const string& recipientId, const string& message);
+
+// Template function to send messages for both SSL and non-SSL connections
+template<typename Stream>
+void sendMessage(const shared_ptr<WebSocketStream>& ws, const string& recipientId, const string& message) {
+    try {
+        cout << "Processing message for " << recipientId << endl;
+        
+        // For now, we'll echo back the message with some mock encryption
+        json response = {
+            {"type", "message"},
+            {"plaintext", message},
+            {"ciphertext", "encrypted:" + message},  // Mock encryption for now
+            {"recipient", recipientId}
+        };
+
+        cout << "Sending response back to client" << endl;
+        boost::system::error_code ec;
+        ws->text(true);
+        ws->write(net::buffer(response.dump()), ec);
+        
+        if(ec) {
+            cerr << "Error sending message response: " << ec.message() << endl;
+            return;
+        }
+        
+        cout << "Message sent successfully" << endl;
+    }
+    catch(const std::exception& e) {
+        cerr << "Error in sendMessage: " << e.what() << endl;
+    }
+}
+
+void doSession(shared_ptr<WebSocketStream> ws, KDC& control) {
+    string clientId;
+    try {
+        cout << "Accepting WebSocket connection..." << endl;
+        ws->accept();
+        cout << "WebSocket connection accepted" << endl;
+        
+        // Initialize crypto for this session
+        Crypto crypto;
+        session=crypto.generateRSAKey();
+        initInfo=crypto.initiateSession(session.pubKey);
+        messageAndIV=crypto.generateMessageKeys(initInfo.r1);
+        KeyInfo info;
+
+        // Step 1: Generate keys
+        cout << "Generating keys...\n";
+        info.keys=session;
+        info.messageKeys=messageAndIV;
+        info.initInfo=initInfo;
+    
+        // Store the keys
+        control.addKey(info);
+
+        // Get peer info to set up the session
+        KeyInfo retrieve;
+        string recipientId;
+        for(;;) {
+            try {
+                beast::flat_buffer buffer;
+                cout << "Waiting for message..." << endl;
+                boost::system::error_code ec;
+                ws->read(buffer, ec);
+                
+                if(ec) {
+                    cerr << "Error reading message: " << ec.message() << endl;
+                    break;
+                }
+                
+                string message = beast::buffers_to_string(buffer.data());
+                cout << "Received message: " << message << endl;
+                
+                auto data = json::parse(message);
+                recipientId=data["recipientId"];
+
+                try{
+                    if (!recipientId.empty()) {
+                        try {
+                            peerAddress = findIp(recipientId);
+                        } catch (const runtime_error &e){
+                            cout<<e.what()<<endl;
+                        }
+                    }
+                }
+                catch(const runtime_error &e){
+                    cout<<e.what()<<endl;
+                }
+                try{
+                    KeyInfo retrieve = control.getKey(recipientId);
+                }
+                catch (const runtime_error &e){
+                    cout << e.what() << endl;
+                }
+                
+                if(data["type"] == "init") {
+                    // Generate a unique ID for this client
+                    clientId = idGen.generateId();
+                    cout << "Assigned ID " << clientId << " to new client" << endl;
+                    clientMan.addClient(clientId, ws);
+                    
+                    // Send acknowledgment with the assigned ID
+                    json response = {
+                        {"type", "init_ack"},
+                        {"status", "connected"},
+                        {"clientId", clientId}
+                    };
+                    ws->text(true);
+                    ws->write(net::buffer(response.dump()), ec);
+                    if(ec) {
+                        cerr << "Error sending init_ack: " << ec.message() << endl;
+                        break;
+                    }
+                }
+                else if(data["type"] == "recipient_change") {
+                    cout << "Recipient changed to: " << data["recipientId"] << endl;
+                    // No response needed for recipient change
+                }
+                else if(data["type"] == "message") {
+                    recipientId = data["recipientId"].get<string>();
+                    string content = data["content"].get<string>();
+                    cout << "Message from " << clientId << " to " << recipientId << ": " << content << endl;
+                    
+                    // Encrypt the message
+                    auto encryptedData = crypto.encryptMessage(messageAndIV[1], messageAndIV[2], messageAndIV[3], content);
+                    
+                    // Convert ciphertext to hex string for transmission
+                    stringstream ss;
+                    for(unsigned char byte : encryptedData.ciphertext) {
+                        ss << hex << setw(2) << setfill('0') << (int)byte;
+                    }
+                    string ciphertextHex = ss.str();
+                    
+                    // Convert HMAC to hex string
+                    ss.str("");
+                    ss.clear();
+                    for(unsigned char byte : encryptedData.hmac) {
+                        ss << hex << setw(2) << setfill('0') << (int)byte;
+                    }
+                    string hmacHex = ss.str();
+                    
+                    // Send encrypted message to recipient
+                    auto recipientWs = clientMan.getClient(recipientId);
+                    if (recipientWs) {
+                        json response = {
+                            {"type", "message"},
+                            {"plaintext", content},
+                            {"ciphertext", ciphertextHex},
+                            {"hmac", hmacHex},
+                            {"recipient", recipientId},
+                            {"sender", clientId}
+                        };
+                        
+                        recipientWs->text(true);
+                        recipientWs->write(net::buffer(response.dump()), ec);
+                        if(ec) {
+                            cerr << "Error sending message to recipient: " << ec.message() << endl;
+                        }
+                        
+                        // Also send confirmation to sender
+                        json senderResponse = {
+                            {"type", "message"},
+                            {"plaintext", content},
+                            {"ciphertext", ciphertextHex},
+                            {"hmac", hmacHex},
+                            {"recipient", recipientId},
+                            {"sender", clientId}
+                        };
+                        
+                        ws->text(true);
+                        ws->write(net::buffer(senderResponse.dump()), ec);
+                    } else {
+                        // Send error to sender if recipient not found
+                        json errorResponse = {
+                            {"type", "error"},
+                            {"message", "Recipient not found"}
+                        };
+                        ws->text(true);
+                        ws->write(net::buffer(errorResponse.dump()), ec);
+>>>>>>> Stashed changes
                     }
                 }
             }

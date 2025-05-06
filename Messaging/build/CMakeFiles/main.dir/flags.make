@@ -4,7 +4,11 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB
 
+<<<<<<< Updated upstream
 CXX_INCLUDES = -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR) -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/$(CMAKE_SOURCE_DIR)/back -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers -isystem /usr/local/opt/openssl@3/include
+=======
+CXX_INCLUDES = -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back -I/Users/Phoo/Classes/CS5173/Encrypted-Messaging/Messaging/back/headers -isystem /usr/local/opt/openssl@3/include
+>>>>>>> Stashed changes
 
 CXX_FLAGSx86_64 = -std=gnu++20 -arch x86_64
 
